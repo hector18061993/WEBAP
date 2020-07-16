@@ -277,11 +277,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
 
 <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1aE0WtuiVtGobAxmOxnlDFAT_c1DM0ZE"type="text/javascript"></script>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
         (function() { // generacion de mapa
             window.onload = function()

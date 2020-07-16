@@ -47,6 +47,7 @@
                                         echo "<th>Nombre</th>";
                                         echo "<th>Descripcion</th>";
                                         echo "<th>Ubicacion de la Estacion</th>";
+                                        
                                         echo "<th>Tipo de Combustible</th>";
                                         echo "<th>Costo del Combustible</th>";
                                         echo "<th>Acción</th>";
