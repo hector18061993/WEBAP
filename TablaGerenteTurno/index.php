@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Listado de Productos </title>
+    <title>Listado de Gerentes en Sistema  </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -30,8 +30,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h1 class="pull-left">Productos en Sistema AP</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo Producto</a></div>
+                        <h1 class="pull-left">Gerentes en Sistema</h1><br><br>
+                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo Gerente</a></div>
                     </div>
                     <?php
                     // Include config file
@@ -45,11 +45,13 @@
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>Nombre</th>";
+                                        echo "<th>Apellidos</th>";
+                                        echo "<th>Turno Actual</th>";
                                         echo "<th>Direccion</th>";
                                         echo "<th>Telefono</th>";
-                                        echo "<th>Email</th>";
-                                        echo "<th>Usuario</th>";
-                                        echo "<th>Clave</th>";
+                                        echo "<th>Correo</th>";
+                                        echo "<th>Nombre de Usuario</th>";
+                                        echo "<th>Clave de Usuario</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -57,11 +59,13 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
+                                        echo "<td>" . $row['apellidos'] . "</td>";
+                                        echo "<td>" . $row['turno'] . "</td>";
                                         echo "<td>" . $row['direccion'] . "</td>";
                                         echo "<td>" . $row['telefono'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['usuario'] . "</td>";
-                                        echo "<td>" . $row['clave'] . "</td>";
+                                        echo "<td>" . $row['usuariogerente'] . "</td>";
+                                        echo "<td>" . $row['clavegerente'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='read.php?id=". $row['id'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
                                             echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Muestrario de las Estaciones de Servicio</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -30,15 +30,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h1 class="pull-left">Estaciones de Servicio Registradas</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar una nueva estacion</a></div>
+                        <h1 class="pull-left">Usuarios en Sistema AP</h1><br><br>
+                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo usuario</a></div>
                     </div>
                     <?php
                     // Include config file
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM t_estaciones";
+                    $sql = "SELECT * FROM t_combustible";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -46,18 +46,8 @@
                                     echo "<tr>";
                                         echo "<th>Nombre</th>";
                                         echo "<th>Descripcion</th>";
-                                        echo "<th>Ubicacion</th>";
-                                        echo "<th>Razon Social</th>";
-                                        echo "<th>RFC</th>";
-                                        echo "<th>Zona</th>";
-                                        echo "<th>Supervisor</th>";
-                                        echo "<th>Prioridad</th>";
-                                        echo "<th>Direccion</th>";
-                                        echo "<th>Telefono</th>";
-                                        echo "<th>Correo</th>";
-                                        echo "<th>Estacion Activa</th>";
-                                        echo "<th>Estacion en Servicio</th>";
-                                        
+                                        echo "<th>Costo actual</th>";
+                                        echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -65,22 +55,11 @@
                                     echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
                                         echo "<td>" . $row['descripcion'] . "</td>";
-                                        echo "<td>" . $row['cx'],  
-                                                      $row['cy'] . "</td>";
-                                        echo "<td>" . $row['razonsocial'] . "</td>";
-                                        echo "<td>" . $row['rfc'] . "</td>";
-                                        echo "<td>" . $row['zona'] . "</td>";
-                                        echo "<td>" . $row['supervisor'] . "</td>";
-                                        echo "<td>" . $row['prioridad'] . "</td>";
-                                        echo "<td>" . $row['direccion'] . "</td>";
-                                        echo "<td>" . $row['telefono'] . "</td>";
-                                        echo "<td>" . $row['correo'] . "</td>";
-                                        echo "<td>" . $row['activo'] . "</td>";
-                                        echo "<td>" . $row['enservicio'] . "</td>";
+                                        echo "<td>" . $row['costoactual'] . "</td>";
                                         echo "<td>";
-                                        echo "<a href='read.php?id=". $row['id'] ."' title='Ver estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='read.php?id=". $row['id'] ."' title='Ver usuario' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

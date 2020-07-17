@@ -3,83 +3,207 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$nombre = $descripcion = $cx = $cy = $tipocombustible = $costocombustible = "";
-$nombre_err = $descripcion_err = $cx_err = $cy_err = $tipocombustible_err = $costocombustible_err = "";
+$nombre = $descripcion =  $cx = $cy = $razonsocial = $rfc =$zona =$supervisor = $prioridad = $direccion= $telefono= $correo = $activo= $enservicio = 
+$idproducto = $idservicio = $idgerente1 = $idgerente2 = $idgerente3 = "";
+
+$nombre_err = $descripcion_err = $cx_err = $cy_err = $razonsocial_err = $rfc_err = $zona_err = $supervisor_err = $prioridad_err = $direccion_err = 
+$telefono_err = $correo_err = $activo_err = $enservicio_err = $idproducto_err = $idservicio_err = $idgerente1_err = $idgerente2_err = 
+$idgerente3_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Get hidden input value
     $id = $_POST["id"];
     
-    // Validando el registro de nmombre
+    // Validando el campo Nombre(s) 
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un nombre de estacion.";     
+        $nombre_err = "Por favor ingrese un apellido.";     
     } else{
         $nombre = $input_nombre;
     }
 
-    // Validando ubicacion
+    // Validando el campo Apellido(s)
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese una ubicacion de la estacion.";     
+        $descripcion_err = "Por favor ingrese un apellido.";     
     } else{
         $descripcion = $input_descripcion;
     }
 
-     
-    // Validando gerente en turno
+    
+    // Validando el campo Email
     $input_cx = trim($_POST["cx"]);
     if(empty($input_cx)){
-        $cx_err = "Por favor ingrese un gerente en turno actual.";     
+        $cx_err = "Por favor ingrese un correo electronico.";     
     } else{
         $cx = $input_cx;
     }
 
-    // Validando estado actual de la estacion
+    // Validando el campo Telefono
     $input_cy = trim($_POST["cy"]);
     if(empty($input_cy)){
-        $cy_err = "Por favor ingrese un estado actual de la estacion.";     
+        $cy_err = "Por favor ingrese un numero telefonico.";     
     } else{
         $cy = $input_cy;
     }
 
-    // Validando precio gasolina magna 
-    $input_tipocombustible = trim($_POST["tipocombustible"]);
-    if(empty($input_tipocombustible)){
-        $tipocombustible_err = "Por favor ingrese un precio de la gasolina magna.";     
+    // Validando el campo Tipo de Usuario
+    $input_razonsocial = trim($_POST["razonsocial"]);
+    if(empty($input_razonsocial)){
+        $razonsocial_err = "Por favor ingrese un tipo de usuario.";     
     } else{
-        $tipocombustible = $input_tipocombustible;
+        $razonsocial = $input_razonsocial;
     }
 
-    // Validando costo gasolina premium 
-    $input_costocombustible = trim($_POST["costocombustible"]);
-    if(empty($input_costocombustible)){
-        $costocombustible_err = "Por favor ingrese un costo de la gasolina premium.";     
+
+    // Validar el campo Usuario
+    $input_rfc = trim($_POST["rfc"]);
+    if(empty($input_rfc)){
+        $rfc_err = "Por favor ingrese un usuario.";     
     } else{
-        $costocombustible = $input_costocombustible;
+        $rfc = $input_rfc;
     }
+    
+    // Validar el campo Usuario
+    $input_zona = trim($_POST["zona"]);
+    if(empty($input_zona)){
+        $zona_err = "Por favor ingrese un usuario.";     
+    } else{
+        $zona = $input_zona;
+    }
+
+     // Validar el campo Usuario
+    $input_supervisor = trim($_POST["supervisor"]);
+    if(empty($input_supervisor)){
+        $supervisor_err = "Por favor ingrese un usuario.";     
+    } else{
+        $supervisor = $input_supervisor;
+    }
+
+     // Validar el campo Usuario
+    $input_prioridad = trim($_POST["prioridad"]);
+    if(empty($input_prioridad)){
+        $prioridad_err = "Por favor ingrese un usuario.";     
+    } else{
+        $prioridad = $input_prioridad;
+    }
+
+     // Validar el campo Usuario
+    $input_direccion = trim($_POST["direccion"]);
+    if(empty($input_direccion)){
+        $direccion_err = "Por favor ingrese un usuario.";     
+    } else{
+        $direccion = $input_direccion;
+    }
+ // Validar el campo Usuario
+    $input_telefono = trim($_POST["telefono"]);
+    if(empty($input_telefono)){
+        $telefono_err = "Por favor ingrese un usuario.";     
+    } else{
+        $telefono = $input_telefono;
+    }
+
+     // Validar el campo Usuario
+    $input_correo = trim($_POST["correo"]);
+    if(empty($input_correo)){
+        $correo_err = "Por favor ingrese un usuario.";     
+    } else{
+        $correo = $input_correo;
+    }
+
+     // Validar el campo Usuario
+    $input_activo = trim($_POST["activo"]);
+    if(empty($input_activo)){
+        $activo_err = "Por favor ingrese un usuario.";     
+    } else{
+        $activo = $input_activo;
+    }
+
+     // Validar el campo Usuario
+    $input_enservicio = trim($_POST["enservicio"]);
+    if(empty($input_enservicio)){
+        $enservicio_err = "Por favor ingrese un usuario.";     
+    } else{
+        $enservicio = $input_enservicio;
+    }
+
+     // Validar el campo Usuario
+    $input_idproducto = trim($_POST["idproducto"]);
+    if(empty($input_idproducto)){
+        $idproducto_err = "Por favor ingrese un usuario.";     
+    } else{
+        $idproducto = $input_idproducto;
+    }
+
+     // Validar el campo Usuario
+    $input_idservicio = trim($_POST["idservicio"]);
+    if(empty($input_idservicio)){
+        $idservicio_err = "Por favor ingrese un usuario.";     
+    } else{
+        $idservicio = $input_idservicio;
+    }
+
+     // Validar el campo Usuario
+    $input_idgerente1 = trim($_POST["idgerente1"]);
+    if(empty($input_idgerente1)){
+        $idgerente1_err = "Por favor ingrese un usuario.";     
+    } else{
+        $idgerente1 = $input_idgerente1;
+    }
+
+    // Validar el campo Usuario
+    $input_idgerente2 = trim($_POST["idgerente2"]);
+    if(empty($input_idgerente2)){
+        $idgerente2_err = "Por favor ingrese un usuario.";     
+    } else{
+        $idgerente2 = $input_idgerente2;
+    }
+
+    // Validar el campo Usuario
+    $input_idgerente3 = trim($_POST["idgerente3"]);
+    if(empty($input_idgerente3)){
+        $idgerente3_err = "Por favor ingrese un usuario.";     
+    } else{
+        $idgerente3 = $input_idgerente3;
+    } 
 
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($cx_err) && empty($cy_err) 
-                        && empty($tipocombustible_err) && empty($costocombustible_err)){
+    if(empty($nombre_err) && empty($descripcion_err)  && empty($cx_err) && empty($cy_err) && empty($razonsocial_err) && empty($rfc_err) 
+                          && empty($zona_err) && empty($supervisor_err) && empty($prioridad_err) && empty($direccion_err) && empty($telefono_err) 
+                          && empty($correo_err) && empty($activo_err) && empty($enservicio_err) && empty($idproducto_err) && empty($idservicio_err) 
+                          && empty($idgerente1_err) && empty($idgerente2_err) && empty($idgerente3_err)){
 
         // Prepare an update statement
-        $sql = "UPDATE t_estaciones SET nombre=?, descripcion=?, cx=?, cy=?, tipocombustible=?, 
-        costocombustible=? WHERE id=?";
+        $sql = "UPDATE t_estaciones SET nombre=?, descripcion=?, cx=?, cy=?, razonsocial=?, rfc=?, zona=?, supervisor=?, prioridad=?, direccion=?, telefono=?, correo=?, activo=?, enservicio=?, idproducto=?, idservicio=?, idgerente1=?, idgerente2=?, idgerente3=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssssssi", $param_nombre, $param_descripcion, $param_cx, 
-                $param_cy, $param_tipocombustible, $param_costocombustible, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssssssssssssssssssi", $param_nombre, $param_descripcion, $param_cx, $param_cy, 
+                $param_razonsocial, $param_rfc, $param_zona, $param_supervisor, $param_prioridad, $param_direccion, 
+                $param_telefono, $param_correo, $param_activo, $param_enservicio, $param_idproducto, $param_idservicio, $param_idgerente1, 
+                $param_idgerente2, $param_idgerente3, $param_id);
             
             // Set parameters
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
             $param_cx = $cx;
             $param_cy = $cy;
-            $param_tipocombustible = $tipocombustible;
-            $param_costocombustible = $costocombustible;            
+            $param_razonsocial = $razonsocial;
+            $param_rfc = $rfc;
+            $param_zona = $zona;
+            $param_supervisor = $supervisor;
+            $param_prioridad = $prioridad;
+            $param_direccion = $direccion;
+            $param_telefono = $telefono;
+            $param_correo = $correo;
+            $param_activo = $activo;
+            $param_enservicio = $enservicio;
+            $param_idproducto = $idproducto;
+            $param_idservicio = $idservicio;
+            $param_idgerente1 = $idgerente1;
+            $param_idgerente2 = $idgerente2;
+            $param_idgerente3 = $idgerente3;
             $param_id = $id;
             
             // Attempt to execute the prepared statement
@@ -127,8 +251,22 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $descripcion = $row["descripcion"];
                     $cx = $row["cx"];
                     $cy = $row["cy"];
-                    $tipocombustible = $row["tipocombustible"];
-                    $costocombustible = $row["costocombustible"];
+                    $razonsocial = $row["razonsocial"];
+                    $rfc = $row["rfc"];
+                    $zona = $row["zona"];
+                    $supervisor = $row["supervisor"];
+                    $prioridad = $row["prioridad"];
+                    $direccion = $row["direccion"];
+                    $telefono = $row["telefono"];
+                    $correo = $row["correo"];
+                    $activo = $row["activo"];
+                    $enservicio = $row["enservicio"];
+                    $idproducto = $row["idproducto"];
+                    $idservicio = $row["idservicio"];
+                    $idgerente1 = $row["idgerente1"];
+                    $idgerente2 = $row["idgerente2"];
+                    $idgerente3 = $row["idgerente3"];
+                    
                    
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
@@ -237,26 +375,101 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                     <input type="text" class="form-control" readonly  name="cx" id="cx" autocomplete="off"/></td>
                                     <td>Coordenada Y</td>
                                     <td>
-                                    <input type="text" class="form-control"  readonly name="cy" id="cy" autocomplete="off"/></td>
-                                        
+                                    <input type="text" class="form-control"  readonly name="cy" id="cy" autocomplete="off"/></td>    
                                     </tr>
-
-                                  </table>   
-
-
-
-                            
+                                  </table> 
                         </div>
                     
-                        <div class="form-group <?php echo (!empty($tipocombustible_err)) ? 'has-error' : ''; ?>">
-                            <label>Tipo de Combustible:</label>
-                            <input type="text" name="tipocombustible" class="form-control" value="<?php echo $tipocombustible; ?>">
-                            <span class="help-block"><?php echo $tipocombustible_err;?></span>
+                        <div class="form-group <?php echo (!empty($razonsocial_err)) ? 'has-error' : ''; ?>">
+                            <label> Razon social de la Estacion:</label> 
+                            <input type="text" name="razonsocial" class="form-control" value="<?php echo $razonsocial; ?>">
+                            <span class="help-block"><?php echo $razonsocial_err;?></span>
                         </div>
-                        <div class="form-group <?php echo (!empty($costocombustible_err)) ? 'has-error' : ''; ?>">
-                            <label>Costo del Combustible:</label>
-                            <input type="text" name="costocombustible" class="form-control" value="<?php echo $costocombustible; ?>">
-                            <span class="help-block"><?php echo $costocombustible_err;?></span>
+                        
+                        <div class="form-group <?php echo (!empty($rfc_err)) ? 'has-error' : ''; ?>">
+                            <label>RFC de la Estacion:</label>
+                            <input type="text" name="rfc" class="form-control" value="<?php echo $rfc; ?>">
+                            <span class="help-block"><?php echo $rfc_err;?></span>
+                        </div>
+
+
+                        <div class="form-group <?php echo (!empty($zona_err)) ? 'has-error' : ''; ?>">
+                            <label>Zona de la Estacion:</label>
+                            <input type="text" name="zona" class="form-control" value="<?php echo $zona; ?>">
+                            <span class="help-block"><?php echo $zona_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($supervisor_err)) ? 'has-error' : ''; ?>">
+                            <label>Supervisor de la Estacion:</label>
+                            <input type="text" name="supervisor" class="form-control" value="<?php echo $supervisor; ?>">
+                            <span class="help-block"><?php echo $supervisor_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($prioridad_err)) ? 'has-error' : ''; ?>">
+                            <label>Prioridad de la Estacion:</label>
+                            <input type="text" name="prioridad" class="form-control" value="<?php echo $prioridad; ?>">
+                            <span class="help-block"><?php echo $prioridad_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($direccion_err)) ? 'has-error' : ''; ?>">
+                            <label>Direccion de la Estacion:</label>
+                            <input type="text" name="direccion" class="form-control" value="<?php echo $direccion; ?>">
+                            <span class="help-block"><?php echo $direccion_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($telefono_err)) ? 'has-error' : ''; ?>">
+                            <label>Telefono de la Estacion:</label>
+                            <input type="text" name="telefono" class="form-control" value="<?php echo $telefono; ?>">
+                            <span class="help-block"><?php echo $telefono_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($correo_err)) ? 'has-error' : ''; ?>">
+                            <label>Correo de la Estacion:</label>
+                            <input type="text" name="correo" class="form-control" value="<?php echo $correo; ?>">
+                            <span class="help-block"><?php echo $correo_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($activo_err)) ? 'has-error' : ''; ?>">
+                            <label>Estado de la Estacion:</label>
+                            <input type="text" name="activo" class="form-control" value="<?php echo $activo; ?>">
+                            <span class="help-block"><?php echo $activo_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($enservicio_err)) ? 'has-error' : ''; ?>">
+                            <label>Funcionamiento de la Estacion:</label>
+                            <input type="text" name="enservicio" class="form-control" value="<?php echo $enservicio; ?>">
+                            <span class="help-block"><?php echo $enservicio_err;?></span>
+                        </div>
+                        
+                        <div class="form-group <?php echo (!empty($idproducto_err)) ? 'has-error' : ''; ?>">
+                            <label>Id Producto de la Estacion:</label>
+                            <input type="text" name="idproducto" class="form-control" value="<?php echo $idproducto; ?>">
+                            <span class="help-block"><?php echo $idproducto_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($idservicio_err)) ? 'has-error' : ''; ?>">
+                            <label>Id Servicio de la Estacion:</label>
+                            <input type="text" name="idservicio" class="form-control" value="<?php echo $idservicio; ?>">
+                            <span class="help-block"><?php echo $idservicio_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($idgerente1_err)) ? 'has-error' : ''; ?>">
+                            <label>Id Gerente1 :</label>
+                            <input type="text" name="idgerente1" class="form-control" value="<?php echo $idgerente1; ?>">
+                            <span class="help-block"><?php echo $idgerente1_err;?></span>
+                        </div>
+
+                         <div class="form-group <?php echo (!empty($idgerente2_err)) ? 'has-error' : ''; ?>">
+                            <label>Id Gerente2 :</label>
+                            <input type="text" name="idgerente2" class="form-control" value="<?php echo $idgerente2; ?>">
+                            <span class="help-block"><?php echo $idgerente2_err;?></span>
+                        </div>
+
+
+                         <div class="form-group <?php echo (!empty($idgerente3_err)) ? 'has-error' : ''; ?>">
+                            <label>Id Gerente3 :</label>
+                            <input type="text" name="idgerente3" class="form-control" value="<?php echo $idgerente3; ?>">
+                            <span class="help-block"><?php echo $idgerente3_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Enviar">

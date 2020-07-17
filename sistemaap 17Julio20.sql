@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2020 a las 00:38:26
+-- Tiempo de generación: 18-07-2020 a las 00:57:32
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.2.31
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `sistemaap`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_combustible`
+--
+
+CREATE TABLE `t_combustible` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  `costoactual` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `t_combustible`
+--
+
+INSERT INTO `t_combustible` (`id`, `nombre`, `descripcion`, `costoactual`) VALUES
+(2, 'Combustible Magna', 'Para todo tipo de motores con inyeccion directa', '$15.78');
 
 -- --------------------------------------------------------
 
@@ -50,30 +70,33 @@ INSERT INTO `t_contacto` (`id`, `nombre`, `descripcion`) VALUES
 
 CREATE TABLE `t_estaciones` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(255) NOT NULL,
+  `nombre` varchar(250) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
   `cx` varchar(20) NOT NULL,
   `cy` varchar(20) NOT NULL,
-  `tipocombustible` varchar(255) NOT NULL,
-  `costocombustible` varchar(10) NOT NULL,
+  `razonsocial` varchar(250) NOT NULL,
+  `rfc` varchar(250) NOT NULL,
+  `zona` varchar(250) NOT NULL,
+  `supervisor` varchar(250) NOT NULL,
+  `prioridad` varchar(250) NOT NULL,
+  `direccion` varchar(250) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `correo` varchar(250) NOT NULL,
+  `activo` int(2) NOT NULL,
+  `enservicio` int(2) NOT NULL,
   `idproducto` int(11) NOT NULL,
   `idservicio` int(11) NOT NULL,
-  `idgerenteturno` int(11) NOT NULL,
-  `idquejas` int(11) NOT NULL,
-  `idsugerencias` int(11) NOT NULL,
-  `idusuario` int(11) NOT NULL
+  `idgerente1` int(11) NOT NULL,
+  `idgerente2` int(11) NOT NULL,
+  `idgerente3` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `t_estaciones`
 --
 
-INSERT INTO `t_estaciones` (`id`, `nombre`, `descripcion`, `cx`, `cy`, `tipocombustible`, `costocombustible`, `idproducto`, `idservicio`, `idgerenteturno`, `idquejas`, `idsugerencias`, `idusuario`) VALUES
-(1, 'Toluca Norte', 'Estacion ubicada en Alfredo del Mazo', '123456789', '123456789', 'disel', '$14.30', 0, 0, 0, 0, 0, 0),
-(4, 'SANTA CRUZ', 'GASOLINA CONTAMINADA', '19.25415551377145', '-99.58080623626708', 'Magna', '$14.50', 0, 0, 0, 0, 0, 0),
-(5, 'SANTA CRUZ', 'GASOLINA CONTAMINADA', '19.255451984776446', '-99.57805965423583', 'Magna', '$14.30', 0, 0, 0, 0, 0, 0),
-(6, 'SAN JUAN DE LAS HUERTAS', 'NUEVA ESTACION EN SAN JUAN DE LAS HUERTAS', '19.246306766325997', '-99.76132664021179', 'disel', '$14.90', 0, 0, 0, 0, 0, 0),
-(7, 'metepec', 'estacion metepec', '19.252372849408083', '-99.5818362045288', 'disel', '$17.00', 0, 0, 0, 0, 0, 0);
+INSERT INTO `t_estaciones` (`id`, `nombre`, `descripcion`, `cx`, `cy`, `razonsocial`, `rfc`, `zona`, `supervisor`, `prioridad`, `direccion`, `telefono`, `correo`, `activo`, `enservicio`, `idproducto`, `idservicio`, `idgerente1`, `idgerente2`, `idgerente3`) VALUES
+(2, 'Metepec', 'metepec centro', '19.25938304319944', '-99.60462912601363', 'Moral', 'WER456TTT', 'CENTRO', 'Call', 'Bajo', 'Metepec Centro', '7865484848', 'estacionmetepec@gmail.com', 1, 1, 1, 1, 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -84,19 +107,21 @@ INSERT INTO `t_estaciones` (`id`, `nombre`, `descripcion`, `cx`, `cy`, `tipocomb
 CREATE TABLE `t_gerenteturno` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `apellidos` varchar(255) NOT NULL,
+  `turno` varchar(255) DEFAULT NULL,
   `direccion` varchar(255) NOT NULL,
-  `telefono` varchar(255) DEFAULT NULL,
+  `telefono` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `usuario` varchar(255) NOT NULL,
-  `clave` varchar(255) NOT NULL
+  `usuariogerente` varchar(255) NOT NULL,
+  `clavegerente` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `t_gerenteturno`
 --
 
-INSERT INTO `t_gerenteturno` (`id`, `nombre`, `direccion`, `telefono`, `email`, `usuario`, `clave`) VALUES
-(2, 'Eduardo Gomez', 'Avenida Las Torres 1501', '554145865', 'eduardo@gmail.com', 'eduardoadmin', 'eduardoadmin');
+INSERT INTO `t_gerenteturno` (`id`, `nombre`, `apellidos`, `turno`, `direccion`, `telefono`, `email`, `usuariogerente`, `clavegerente`) VALUES
+(5, 'Rafael', 'Sanchez Cruz', 'Vespertino', 'La cruz Comalco', '754845454152415', 'rafael@gmail.com', 'rafael1', 'rafael1');
 
 -- --------------------------------------------------------
 
@@ -138,6 +163,26 @@ CREATE TABLE `t_noticia` (
 
 INSERT INTO `t_noticia` (`id`, `nombre`, `descripcion`, `imagen`) VALUES
 (2, 'Proximamente...', 'Proximamente se apertura nueva estacion', 'imagen2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `t_prioridad`
+--
+
+CREATE TABLE `t_prioridad` (
+  `id` int(3) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `t_prioridad`
+--
+
+INSERT INTO `t_prioridad` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'Alto', 'De suma importancia'),
+(3, 'Medio-Alto', 'De poca importancia');
 
 -- --------------------------------------------------------
 
@@ -227,30 +272,35 @@ INSERT INTO `t_sugerencias` (`id`, `nombre`, `descripcion`, `correo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `t_usuario`
+-- Estructura de tabla para la tabla `t_supervisor`
 --
 
-CREATE TABLE `t_usuario` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `direccion` varchar(255) NOT NULL,
-  `telefono` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `cargo` varchar(255) NOT NULL,
-  `usuario` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+CREATE TABLE `t_supervisor` (
+  `id` int(5) NOT NULL,
+  `nombre` varchar(300) NOT NULL,
+  `apellidos` varchar(300) NOT NULL,
+  `correo` varchar(255) NOT NULL,
+  `zona` varchar(255) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `estacion` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `t_usuario`
+-- Volcado de datos para la tabla `t_supervisor`
 --
 
-INSERT INTO `t_usuario` (`id`, `nombre`, `direccion`, `telefono`, `email`, `cargo`, `usuario`, `password`) VALUES
-(1, 'Administrador', 'San Juan s/n', '722148975626', 'administrador@gmail.com', 'administrador', 'administrador1', 'administrador1 ');
+INSERT INTO `t_supervisor` (`id`, `nombre`, `apellidos`, `correo`, `zona`, `telefono`, `estacion`) VALUES
+(3, 'Arturo', 'Rodriguez', 'arturo@gmail.com', 'Mexico', '7894949497', 'mexico');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `t_combustible`
+--
+ALTER TABLE `t_combustible`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `t_contacto`
@@ -283,6 +333,12 @@ ALTER TABLE `t_noticia`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `t_prioridad`
+--
+ALTER TABLE `t_prioridad`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `t_producto`
 --
 ALTER TABLE `t_producto`
@@ -307,14 +363,20 @@ ALTER TABLE `t_sugerencias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `t_usuario`
+-- Indices de la tabla `t_supervisor`
 --
-ALTER TABLE `t_usuario`
+ALTER TABLE `t_supervisor`
   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `t_combustible`
+--
+ALTER TABLE `t_combustible`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `t_contacto`
@@ -326,13 +388,13 @@ ALTER TABLE `t_contacto`
 -- AUTO_INCREMENT de la tabla `t_estaciones`
 --
 ALTER TABLE `t_estaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `t_gerenteturno`
 --
 ALTER TABLE `t_gerenteturno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `t_informacionempresa`
@@ -345,6 +407,12 @@ ALTER TABLE `t_informacionempresa`
 --
 ALTER TABLE `t_noticia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `t_prioridad`
+--
+ALTER TABLE `t_prioridad`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `t_producto`
@@ -371,10 +439,10 @@ ALTER TABLE `t_sugerencias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `t_usuario`
+-- AUTO_INCREMENT de la tabla `t_supervisor`
 --
-ALTER TABLE `t_usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `t_supervisor`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
