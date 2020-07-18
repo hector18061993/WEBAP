@@ -50,11 +50,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ver Empleado</title>
+    <title>Ver los Datos del Combustible</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -69,25 +70,26 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Ver Noticias</h2>
+                        <h2>Ver los Datos del Combustible</h2>
                     </div>
                     <div class="form-group">
-                        <label>Nombre del Combustible:</label>
+                        <label>Nombre del tipo de Combustible:</label>
                         <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Descripcion del Combustible:</label>
+                        <label>Descripcion del tipo de Combustible:</label>
                         <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Costo del Combustible:</label>
-                        <p class="form-control-static"><?php echo $row["costo"]; ?></p>
+                        <label>Costo actual del Combustible:</label>
+                        <p class="form-control-static"><?php echo $row["costoactual"]; ?></p>
                     </div>
                     
-                    <p><a href="index.php" class="btn btn-primary">Volver</a></p>
+                    <p><a href="index.php" class="btn btn-primary">Regresar a la Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>
     </div>
 </body>
 </html>
+

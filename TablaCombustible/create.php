@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Nombre(s) 
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un apellido.";     
+        $nombre_err = "Favor de ingresar un nombre del Combustible.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      // Validando el campo Nombre(s) 
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese un apellido.";     
+        $descripcion_err = "Favor de ingresar la descripcion del Combustible.";     
     } else{
         $descripcion = $input_descripcion;
     }
@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Email
     $input_costoactual = trim($_POST["costoactual"]);
     if(empty($input_costoactual)){
-        $costoactual_err = "Por favor ingrese un correo electronico.";     
+        $costoactual_err = "Favor de ingresar el costo del Combustible.";     
     } else{
         $costoactual = $input_costoactual;
     }
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Empleado</title>
+    <title>Agregar Combustibles a Sistema</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -89,31 +89,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Agregar Usuario</h2>
+                        <h2>Agregar Registros de Combustibles</h2>
                     </div>
-                    <p>Favor de llenar el siguiente formulario, para agregar el usuario.</p>
+                    <p>Favor de ingresar los nuevos datos del Combustible .</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
-                            <label>Nombre del tipo de Combustible:</label>
-                            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
+                            <label>Nombre del Tipo de Combustible:</label>
+                            <input placeholder="NOMBRE DEL COMBUSTIBLE" type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion del Combustible:</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <label>Descripcion del tipo de Combustible:</label>
+                            <input placeholder="DESCRIPCION ACERCA DEL COMBUSTIBLE" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($costoactual_err)) ? 'has-error' : ''; ?>">
-                            <label>Costo Actual del Combustible:</label>
-                            <input type="text" name="costoactual" class="form-control" value="<?php echo $costoactual; ?>">
+                            <label>Costo Actual del tipo de Combustible:</label>
+                            <input placeholder="COSTO ACTUAL DEL COMBUSTIBLE" type="text" name="costoactual" class="form-control" value="<?php echo $costoactual; ?>">
                             <span class="help-block"><?php echo $costoactual_err;?></span>
                         </div>
                        
-                        <input type="submit" class="btn btn-primary" value="Agregar" >
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar Nuevos Datos de Registro" >
+                        <a href="index.php" class="btn btn-default">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

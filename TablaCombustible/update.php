@@ -14,7 +14,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate name
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un apellido.";     
+        $nombre_err = "Favor de ingresar el nuevo nombre del Combustible.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -22,7 +22,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate lastname
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese un apellido.";     
+        $descripcion_err = "Favor de ingresar la nueva descripcion del Combustible.";     
     } else{
         $descripcion = $input_descripcion;
     }
@@ -31,7 +31,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate email
     $input_costoactual = trim($_POST["costoactual"]);
     if(empty($input_costoactual)){
-        $costoactual_err = "Por favor ingrese un usuario.";     
+        $costoactual_err = "Favor de ingresar el nuevo costo del Combustible.";     
     } else{
         $costoactual = $input_costoactual;
     }
@@ -121,6 +121,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 }
 ?>
+
  
 <!DOCTYPE html>
 <html lang="en">
@@ -141,32 +142,32 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Actualizar Datos</h2>
+                        <h2>Actualizar Datos de Combustibles</h2>
                     </div>
                     <p>Edite los datos de entrada y envíe para actualizar el registro de usuarios.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
-                            <label>Nombre del Combustible:</label>
-                            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
+                            <label>Nuevo nombre del Tipo de Combustible:</label>
+                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion del Combustible:</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <label>Nueva descripcion del tipo de Combustible:</label>
+                            <input placeholder="NUEVO DESCRIPCION ACERCA DEL COMBUSTIBLE" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
                        <div class="form-group <?php echo (!empty($costoactual_err)) ? 'has-error' : ''; ?>">
-                            <label>Costo Nuevo del Combustible:</label>
-                            <input type="text" name="costoactual" class="form-control" value="<?php echo $costoactual; ?>">
+                            <label>Nuevo costo Actual del tipo de Combustible:</label>
+                            <input placeholder="NUEVO COSTO ACTUAL DEL COMBUSTIBLE" type="text" name="costoactual" class="form-control" value="<?php echo $costoactual; ?>">
                             <span class="help-block"><?php echo $costoactual_err;?></span>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Actualizar los datos del registro">
+                        <a href="index.php" class="btn btn-default">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

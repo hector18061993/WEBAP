@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Pantalla Principal Combustible</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -28,10 +28,10 @@
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-18">
                     <div class="page-header clearfix">
-                        <h1 class="pull-left">Usuarios en Sistema AP</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo usuario</a></div>
+                        <h1 class="pull-left">Tipo de Combustibles Registrados en Sistema</h1><br><br>
+                        <br><a href="create.php" class="btn btn-success pull-right">Agregar un Nuevo tipo de Combustible</a></div>
                     </div>
                     <?php
                     // Include config file
@@ -57,9 +57,9 @@
                                         echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>" . $row['costoactual'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='read.php?id=". $row['id'] ."' title='Ver usuario' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='read.php?id=". $row['id'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
