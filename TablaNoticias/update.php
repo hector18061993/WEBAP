@@ -14,7 +14,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate name
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un apellido.";     
+        $nombre_err = "Favor de ingresar un nuevo nombre de la noticia.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -22,7 +22,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate lastname
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese un apellido.";     
+        $descripcion_err = "Favor de ingresar una nueva descripcion para la noticia.";     
     } else{
         $descripcion = $input_descripcion;
     }
@@ -31,7 +31,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate email
     $input_imagen = trim($_POST["imagen"]);
     if(empty($input_imagen)){
-        $imagen_err = "Por favor ingrese un usuario.";     
+        $imagen_err = "Favor de ingresar una nueva imagen para la noticia.";     
     } else{
         $imagen = $input_imagen;
     }
@@ -154,19 +154,19 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
                             <label>Descripcion de la noticia:</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <textarea name="descripcion" class="form-control"><?php echo $descripcion; ?></textarea>   
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
-                       <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
-                            <label>Imagen de la Noticia:</label>
-                            <input type="text" name="imagen" class="form-control" value="<?php echo $imagen; ?>">
-                            <span class="help-block"><?php echo $imagen_err;?></span>
+                        <div class="form-group  <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
+                        <label>Imagen de la Noticia:</label>
+                        <input type="file" name="imagen" value="<?php echo $imagen; ?>">
+                        <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar cambios">
+                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

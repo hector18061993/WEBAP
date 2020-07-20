@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h1 class="pull-left">Estaciones de Servicio Registradas</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar una nueva estacion</a></div>
+                        <br><a href="crearestacion.php" class="btn btn-warning pull-right">Agregar una nueva estacion</a></div>
                     </div>
                     <?php
                     // Include config file
@@ -78,9 +78,9 @@
                                         echo "<td>" . $row['activo'] . "</td>";
                                         echo "<td>" . $row['enservicio'] . "</td>";
                                         echo "<td>";
-                                        echo "<a href='read.php?id=". $row['id'] ."' title='Ver estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                        echo "<a href='verestacion.php?id=". $row['id'] ."' title='Ver estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarestacion.php?id=". $row['id'] ."' title='Actualizar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarestacion.php?id=". $row['id'] ."' title='Eliminar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
@@ -89,10 +89,10 @@
                             // Free result set
                             mysqli_free_result($result);
                         } else{
-                            echo "<p class='lead'><em>No records were found.</em></p>";
+                            echo "<p class='lead'><em>No hay ningun registro.</em></p>";
                         }
                     } else{
-                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                        echo "ERROR: No se pudo ejecutar el SQL " . mysqli_error($link);
                     }
  
                     // Close connection

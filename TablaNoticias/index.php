@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h1 class="pull-left">Usuarios en Sistema AP</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo usuario</a></div>
+                        <br><a href="create.php" class="btn btn-warning pull-right">Agregar nueva noticia</a></div>
                     </div>
                     <?php
                     // Include config file

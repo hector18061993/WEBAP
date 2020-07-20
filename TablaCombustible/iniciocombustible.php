@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Pantalla Principal Combustible</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -28,25 +28,25 @@
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-18">
                     <div class="page-header clearfix">
-                        <h1 class="pull-left">Informacion AP</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nueva Informacion</a></div>
+                        <h1 class="pull-left">Tipo de Combustibles Registrados en Sistema</h1><br><br>
+                        <br><a href="crearcombustible.php" class="btn btn-warning pull-right">Agregar un Nuevo tipo de Combustible</a></div>
                     </div>
                     <?php
                     // Include config file
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM t_informacionempresa";
+                    $sql = "SELECT * FROM t_combustible";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>Nombre de la Informacion</th>";
-                                        echo "<th>Descripcion de la Informacion</th>";
-                                        echo "<th>Subdescripcion</th>";
+                                        echo "<th>Nombre</th>";
+                                        echo "<th>Descripcion</th>";
+                                        echo "<th>Costo actual</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -55,11 +55,11 @@
                                     echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
                                         echo "<td>" . $row['descripcion'] . "</td>";
-                                        echo "<td>" . $row['subdescripcion'] . "</td>";
+                                        echo "<td>" . $row['costoactual'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='read.php?id=". $row['id'] ."' title='Ver Informacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='vercombustible.php?id=". $row['id'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarcombustible.php?id=". $row['id'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarcombustible.php?id=". $row['id'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

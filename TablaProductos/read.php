@@ -28,11 +28,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $descripcion = $row["descripcion"];
                 $categoria = $row["categoria"];
                 $costo = $row["costo"];
+                $imagen = $row["imagen"];
                 $descuento = $row["descuento"];
                                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorpagina.php");
                 exit();
             }
             
@@ -48,7 +49,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorpagina.php");
     exit();
 }
 ?>
@@ -89,11 +90,15 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label>Precio del Producto:</label>
                         <p class="form-control-static"><?php echo $row["costo"]; ?></p>
                     </div>
+                     <div class="form-group">
+                        <label>Imagen del Producto:</label>
+                        <p class="form-control-static"><?php echo $row["imagen"]; ?></p>
+                    </div>
                     <div class="form-group">
                         <label>Descuento del Producto:</label>
                         <p class="form-control-static"><?php echo $row["descuento"]; ?></p>
                     </div>                  
-                    <p><a href="index.php" class="btn btn-primary">Volver</a></p>
+                    <p><a href="inicioestacion.php" class="btn btn-primary">Volver</a></p>
                 </div>
             </div>        
         </div>

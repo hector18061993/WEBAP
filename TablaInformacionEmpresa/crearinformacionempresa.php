@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Nombre(s) 
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un apellido.";     
+        $nombre_err = "Favor de ingresar el nombre de la informacion.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      // Validando el campo Nombre(s) 
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese un apellido.";     
+        $descripcion_err = "Favor de ingresar la descripcion de la informacion.";     
     } else{
         $descripcion = $input_descripcion;
     }
@@ -30,14 +30,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Email
     $input_subdescripcion = trim($_POST["subdescripcion"]);
     if(empty($input_subdescripcion)){
-        $subdescripcion_err = "Por favor ingrese un correo electronico.";     
+        $subdescripcion_err = "Favor de ingresar la subdescripcion de la informacion.";     
     } else{
         $subdescripcion = $input_subdescripcion;
     }
 
      
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($subdescripcion_err)){
+    if(empty($nombre_err) && empty($descripcion_err) ){
         
         // Prepare an insert statement
         $sql = "INSERT INTO t_informacionempresa (nombre, descripcion, subdescripcion) VALUES (?, ?, ?)";
@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: inicioinformacionempresa.php");
                 exit();
             } else{
                 echo "Algo salio mal. Intentelo mas tarde.";
@@ -89,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Agregar Usuario</h2>
+                        <h2>Agregar Informacion sobre Nosotros</h2>
                     </div>
                     <p>Favor de llenar el siguiente formulario, para agregar el usuario.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -102,19 +102,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
                             <label>Descripcion de la informacion:</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <textarea name="descripcion" class="form-control"><?php echo $descripcion; ?></textarea>                            
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($subdescripcion_err)) ? 'has-error' : ''; ?>">
                             <label>Subdescripcion:</label>
-                            <p>Se agrega opcionalmente</p>
-                            <input type="text" name="subdescripcion" class="form-control" value="<?php echo $subdescripcion; ?>">
+                            <p>*Se agrega opcionalmente*</p>
+                            <textarea name="subdescripcion" class="form-control"><?php echo $subdescripcion; ?></textarea>
                             <span class="help-block"><?php echo $subdescripcion_err;?></span>
                         </div>
                        
-                        <input type="submit" class="btn btn-primary" value="Agregar" >
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar Informacion" >
+                        <a href="inicioinformacionempresa.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

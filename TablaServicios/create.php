@@ -98,9 +98,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Agregar Usuario</h2>
+                        <h2>Agregar Servicios</h2>
                     </div>
-                    <p>Favor de llenar el siguiente formulario, para agregar el usuario.</p>
+                    <p>Favor de llenar el siguiente formulario, para agregar el servicio.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
@@ -124,12 +124,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="form-group <?php echo (!empty($descuento_err)) ? 'has-error' : ''; ?>">
                             <label>Descuento del Producto:</label>
                             <p>Es opcional llenarlo</p>
-                            <input type="text" name="descuento" class="form-control" value="<?php echo $descuento; ?>">
+                            <textarea name="descuento" class="form-control"><?php echo $descuento; ?></textarea>   
                             <span class="help-block"><?php echo $descuento_err;?></span>
                         </div>
                        
-                        <input type="submit" class="btn btn-primary" value="Agregar" >
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar Servicios">
+                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

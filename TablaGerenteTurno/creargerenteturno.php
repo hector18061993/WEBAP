@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Nombre(s) 
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Favor de ingresar un nombre(s) del Gerente en Turno.";     
+        $nombre_err = "Favor de ingresar el nombre(s) del gerente en turno de la Estacion.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Nombre(s) 
     $input_apellidos = trim($_POST["apellidos"]);
     if(empty($input_apellidos)){
-        $apellidos_err = "Favor de ingresar los apellidos del Gerente en Turno.";     
+        $apellidos_err = "Favor de ingresar los apellidos del gerente en turno de la Estacion.";     
     } else{
         $apellidos = $input_apellidos;
     }
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Nombre(s) 
     $input_turno = trim($_POST["turno"]);
     if(empty($input_turno)){
-        $turno_err = "Favor de ingresar el turno del Gerente.";     
+        $turno_err = "Favor de ingresar el turno del gerente en turno de la Estacion.";     
     } else{
         $turno = $input_turno;
     }
@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Apellido(s)
     $input_direccion = trim($_POST["direccion"]);
     if(empty($input_direccion)){
-        $direccion_err = "Favor de ingresar la direccion del Gerente.";     
+        $direccion_err = "Favor de ingresar la direccion del gerente de la Estacion.";     
     } else{
         $direccion = $input_direccion;
     }
@@ -45,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Email
     $input_telefono = trim($_POST["telefono"]);
     if(empty($input_telefono)){
-        $telefono_err = "Favor de ingresar el telefono del Gerente.";     
+        $telefono_err = "Favor de ingresar el telefono del gerente de la Estacion.";     
     } else{
         $telefono = $input_telefono;
     }
@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Telefono
     $input_email = trim($_POST["email"]);
     if(empty($input_email)){
-        $email_err = "Favor de ingresar el correo del Gerente.";     
+        $email_err = "Favor de ingresar el correo del gerente de la Estacion.";     
     } else{
         $email = $input_email;
     }
@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Tipo de Usuario
     $input_usuariogerente = trim($_POST["usuariogerente"]);
     if(empty($input_usuariogerente)){
-        $usuariogerente_err = "Favor de ingresar el usuario del Gerente.";     
+        $usuariogerente_err = "Favor de ingresar el nombre de usuario del gerente de la Estacion.";     
     } else{
         $usuariogerente = $input_usuariogerente;
     }
@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validar el campo Usuario
     $input_clavegerente = trim($_POST["clavegerente"]);
     if(empty($input_clavegerente)){
-        $clavegerente_err = "Favor de ingresar una contraseña del Gerente.";     
+        $clavegerente_err = "Favor de ingresar la contraseña del gerente de la Estacion.";     
     } else{
         $clavegerente = $input_clavegerente;
     }
@@ -103,7 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: iniciogerenteturno.php");
                 exit();
             } else{
                 echo "Algo salio mal. Intentelo mas tarde.";
@@ -192,8 +192,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         
                        
-                        <input type="submit" class="btn btn-primary" value="Agregar" >
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar Gerente al Sistema" >
+                        <a href="iniciogerenteturno.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

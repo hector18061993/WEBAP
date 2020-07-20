@@ -30,7 +30,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorpagina.php");
                 exit();
             }
             
@@ -46,7 +46,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorpagina.php");
     exit();
 }
 ?>
@@ -85,7 +85,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <p class="form-control-static"><?php echo $row["costoactual"]; ?></p>
                     </div>
                     
-                    <p><a href="index.php" class="btn btn-primary">Regresar a la Pantalla Principal</a></p>
+                    <p><a href="iniciocombustible.php" class="btn btn-primary">Regresar a la Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>

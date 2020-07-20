@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Error en Sistema</title>
+    <title>Error</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -17,10 +17,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Requerimiento Invalido</h1>
+                        <h1>Requerimiento invalido</h1>
                     </div>
                     <div class="alert alert-danger fade in">
-                    <p>Porfavor; Vuelva a intentarlo mas tarde <a href="index.php" class="alert-link">Ir a anterior</a> Intentar de Nuevo.</p>
+                        <p>Por favor vuelva<a href="iniciogerenteturno.php" class="alert-link">a</a>intentarlo mas tarde.</p>
                     </div>
                 </div>
             </div>        

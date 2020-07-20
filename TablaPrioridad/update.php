@@ -150,8 +150,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar Prioridad">
+                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

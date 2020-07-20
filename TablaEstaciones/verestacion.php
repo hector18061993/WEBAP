@@ -42,7 +42,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorpagina.php");
                 exit();
             }
             
@@ -58,7 +58,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorpagina.php");
     exit();
 }
 ?>
@@ -139,7 +139,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label>En servicio:</label>
                         <p class="form-control-static"><?php echo $row["enservicio"]; ?></p>
                     </div>
-                    <p><a href="index.php" class="btn btn-primary">Volver</a></p>
+                    <p><a href="inicioestacion.php" class="btn btn-warning">Volver a la Pagina Principal</a></p>
                 </div>
             </div>        
         </div>

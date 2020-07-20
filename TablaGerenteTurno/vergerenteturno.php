@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM t_informacionempresa WHERE id = ?";
+    $sql = "SELECT * FROM t_gerenteturno WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -25,13 +25,15 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 
                 // Retrieve individual field value
                 $nombre = $row["nombre"];
-                $descripcion = $row["descripcion"];
-                $subdescripcion = $row["subdescripcion"];
-                
-                
+                $direccion = $row["direccion"];
+                $telefono = $row["telefono"];
+                $email = $row["email"];
+                $usuario = $row["usuario"];
+                $clave = $row["clave"];
+                                
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorpagina.php");
                 exit();
             }
             
@@ -47,7 +49,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorpagina.php");
     exit();
 }
 ?>
@@ -55,7 +57,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ver Empleado</title>
+    <title>Ver Productos  Registrados</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -70,24 +72,34 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Ver Informacion</h2>
+                        <h2>Ver Productos</h2>
                     </div>
                     <div class="form-group">
-                        <label>Nombre de la Informacion agregada:</label>
+                        <label>Nombre del Gerente en turno:</label>
                         <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
                     </div>
-
                     <div class="form-group">
-                        <label>Descripcion de la Informacion:</label>
-                        <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
+                        <label>Direccion del gerente en turno:</label>
+                        <p class="form-control-static"><?php echo $row["direccion"]; ?></p>
                     </div>
-
                     <div class="form-group">
-                        <label>Subdescripcion de la informacion:</label>
-                        <p class="form-control-static"><?php echo $row["subdescripcion"]; ?></p>
+                        <label>Telefono del Gerente en Turno:</label>
+                        <p class="form-control-static"><?php echo $row["telefono"]; ?></p>
                     </div>
-                  
-                    <p><a href="index.php" class="btn btn-primary">Volver</a></p>
+                    <div class="form-group">
+                        <label>Correo del Gerente en Turno:</label>
+                        <p class="form-control-static"><?php echo $row["email"]; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Usuario del Gerente en Turno:</label>
+                        <p class="form-control-static"><?php echo $row["usuario"]; ?></p>
+                    </div>  
+                    <div class="form-group">
+                        <label>Usuario del Gerente en Turno:</label>
+                        <p class="form-control-static"><?php echo $row["clave"]; ?></p>
+                    </div>   
+
+                    <p><a href="iniciogerenteturno.php" class="btn btn-primary">Volver</a></p>
                 </div>
             </div>        
         </div>

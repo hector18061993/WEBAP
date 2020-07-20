@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $category = $description = $price = $image = "";
-$name_err = $category_err = $description_err = $price_err = $image_err = "";
+$nombre = $descripcion = $costo = $descuento = "";
+$nombre_err = $descripcion_err = $costo_err = $descuento_err = "";
 
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -12,57 +12,48 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     $id = $_POST["id"];
     
     // Validando el registro de nmombre
-    $input_name = trim($_POST["name"]);
-    if(empty($input_name)){
-        $name_err = "Por favor ingrese un nombre de Producto.";     
+    $input_nombre = trim($_POST["nombre"]);
+    if(empty($input_nombre)){
+        $nombre_err = "Por favor ingrese un nombre de Producto.";     
     } else{
-        $name = $input_name;
+        $nombre = $input_nombre;
     }
 
     // Validando ubicacion
-    $input_category = trim($_POST["category"]);
-    if(empty($input_category)){
-        $category_err = "Por favor ingrese una ubicacion de la estacion.";     
+    $input_descripcion = trim($_POST["descripcion"]);
+    if(empty($input_descripcion)){
+        $descripcion_err = "Por favor ingrese una ubicacion de la estacion.";     
     } else{
-        $category = $input_category;
+        $descripcion = $input_descripcion;
     }
 
      
     // Validando gerente en turno
-    $input_description = trim($_POST["description"]);
-    if(empty($input_description)){
-        $description_err = "Por favor ingrese una descripcion del Producto.";     
+    $input_costo = trim($_POST["costo"]);
+    if(empty($input_costo)){
+        $costo_err = "Por favor ingrese una descripcion del Producto.";     
     } else{
-        $description = $input_description;
+        $costo = $input_costo;
     }
 
     // Validando estado actual de la estacion
-    $input_price = trim($_POST["price"]);
-    if(empty($input_price)){
-        $price_err = "Por favor ingrese un estado actual de la estacion.";     
+    $input_descuento = trim($_POST["descuento"]);
+    if(empty($input_descuento)){
+        $descuento_err = "Por favor ingrese un estado actual de la estacion.";     
     } else{
-        $price = $input_price;
-    }
-
-    // Validando precio gasolina magna 
-    $input_image = trim($_POST["image"]);
-    if(empty($input_image)){
-        $image_err = "Por favor ingrese un precio del producto.";     
-    } else{
-        $image = $input_image;
+        $descuento = $input_descuento;
     }
 
         
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($category_err) && empty($description_err) && empty($price_err) 
-                         && empty($image_err)){
+    if(empty($nombre_err) && empty($descripcion_err) && empty($costo_err) && empty($descuento_err)){
         // Prepare an update statement
-        $sql = "UPDATE products SET name=?, category=?, descripcion=?, price=?, image=? WHERE id=?";
+        $sql = "UPDATE products SET nombre=?, descripcion=?, costo=?, descuento=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssssi", $param_name, $param_category, $param_description, 
-                $param_price, $param_image, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssssi", $param_nombre, $param_description, 
+                $param_costo, $param_descuento, $param_id);
             
             // Set parameters
             $param_name = $name;
@@ -147,7 +138,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Actualizar Datos de los Productos Registrados</title>
+    <title>Actualizar Datos de los Servicios Registrados</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -197,8 +188,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $image_err;?></span>
                         </div>                       
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar Servicios">
+                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

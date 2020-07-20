@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$nombre = $descripcion = $subdescripcion = "";
-$nombre_err = $descripcion_err = $subdescripcion_err = "";
+$nombre = $descripcion = $costoactual = "";
+$nombre_err = $descripcion_err = $costoactual_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -14,7 +14,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate name
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un apellido.";     
+        $nombre_err = "Favor de ingresar el nuevo nombre del Combustible.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -22,41 +22,41 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate lastname
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese un apellido.";     
+        $descripcion_err = "Favor de ingresar la nueva descripcion del Combustible.";     
     } else{
         $descripcion = $input_descripcion;
     }
 
      
     // Validate email
-    $input_subdescripcion = trim($_POST["subdescripcion"]);
-    if(empty($input_subdescripcion)){
-        $subdescripcion_err = "Por favor ingrese un usuario.";     
+    $input_costoactual = trim($_POST["costoactual"]);
+    if(empty($input_costoactual)){
+        $costoactual_err = "Favor de ingresar el nuevo costo del Combustible.";     
     } else{
-        $subdescripcion = $input_subdescripcion;
+        $costoactual = $input_costoactual;
     }
-    
+
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($subdescripcion_err)){
+    if(empty($nombre_err) && empty($descripcion_err) && empty($costoactual_err)){
 
         // Prepare an update statement
-        $sql = "UPDATE t_informacionempresa SET nombre=?, descripcion=?, subdescripcion=? WHERE id=?";
+        $sql = "UPDATE t_combustible SET nombre=?, descripcion=?, costoactual=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "sssi", $param_nombre, $param_descripcion, 
-                $param_subdescripcion, $param_id);
+                $param_costoactual, $param_id);
             
             // Set parameters
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
-            $param_subdescripcion = $subdescripcion;
+            $param_costoactual = $costoactual;
             $param_id = $id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: iniciocombustible.php");
                 exit();
             } else{
                 echo "Ocurrio un error. Intentelo mas tarde.";
@@ -76,7 +76,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM t_informacionempresa WHERE id = ?";
+        $sql = "SELECT * FROM t_combustible WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -96,11 +96,11 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     // Retrieve individual field value
                     $nombre = $row["nombre"];
                     $descripcion = $row["descripcion"];
-                    $subdescripcion = $row["subdescripcion"];
+                    $costoactual = $row["costoactual"];
                     
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
+                    header("location: errorpagina.php");
                     exit();
                 }
                 
@@ -116,11 +116,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         mysqli_close($link);
     }  else{
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        header("location: errorpagina.php");
         exit();
     }
 }
 ?>
+
  
 <!DOCTYPE html>
 <html lang="en">
@@ -141,32 +142,32 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Actualizar Datos</h2>
+                        <h2>Actualizar Datos de Combustibles</h2>
                     </div>
                     <p>Edite los datos de entrada y envíe para actualizar el registro de usuarios.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
-                            <label>Nombre de la Informacion:</label>
-                            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
+                            <label>Nuevo nombre del Tipo de Combustible:</label>
+                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion de la Informacion:</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <label>Nueva descripcion del tipo de Combustible:</label>
+                            <input placeholder="NUEVO DESCRIPCION ACERCA DEL COMBUSTIBLE" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
-                       <div class="form-group <?php echo (!empty($subdescripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Subdescripcion de la Informacion:</label>
-                            <input type="text" name="subdescripcion" class="form-control" value="<?php echo $subdescripcion; ?>">
-                            <span class="help-block"><?php echo $subdescripcion_err;?></span>
+                       <div class="form-group <?php echo (!empty($costoactual_err)) ? 'has-error' : ''; ?>">
+                            <label>Nuevo costo Actual del tipo de Combustible:</label>
+                            <input placeholder="NUEVO COSTO ACTUAL DEL COMBUSTIBLE" type="text" name="costoactual" class="form-control" value="<?php echo $costoactual; ?>">
+                            <span class="help-block"><?php echo $costoactual_err;?></span>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Actualizar los datos del registro">
+                        <a href="iniciocombustible.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

@@ -3,9 +3,9 @@
 require_once "config.php";
  
 // Definimos las variables a utilizar 
-$nombre = $descripcion = $categoria = $costo = $descuento = "";
+$nombre = $descripcion = $categoria = $costo = $imagen = $descuento = "";
 
-$nombre_err = $descripcion_err = $categoria_err  = $costo_err = $descuento_err ="";
+$nombre_err = $descripcion_err = $categoria_err  = $costo_err =  $imagen_err = $descuento_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -42,7 +42,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $costo = $input_costo;
     }
+    
+    $input_imagen = trim($_POST["imagen"]);
+    if(empty($input_imagen)){
+        $imagen_err = "Por favor ingrese una imagen del Producto.";     
+    } else{
+        $imagen = $input_imagen;
+    }
+    
 
+     
     // Validando el campo Email
     $input_descuento = trim($_POST["descuento"]);
     if(empty($input_descuento)){
@@ -52,21 +61,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($categoria_err) && empty($costo_err) && empty($descuento_err)){
+    if(empty($nombre_err) && empty($descripcion_err) && empty($categoria_err) && empty($costo_err) && empty($imagen_err) && empty($descuento_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO t_producto (nombre, descripcion, categoria, costo, descuento) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO t_producto (nombre, descripcion, categoria, costo, imagen, descuento) VALUES (?, ?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssss", $param_nombre, $param_descripcion, 
-                                  $param_categoria, $param_costo, $param_descuento);
+            mysqli_stmt_bind_param($stmt, "ssssss", $param_nombre, $param_descripcion, 
+                                  $param_categoria, $param_costo, $param_imagen, $param_descuento);
              
             // Set parameters
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
             $param_categoria = $categoria;
             $param_costo = $costo;
+            $param_imagen = $imagen;
             $param_descuento = $descuento;          
             
             // Attempt to execute the prepared statement
@@ -92,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Empleado</title>
+    <title>Agregar Productos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -132,10 +142,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         <div class="form-group <?php echo (!empty($costo_err)) ? 'has-error' : ''; ?>">
                             <label>Costo del Producto:</label>
-                            <input type="text" name="costo" class="form-control" value="<?php echo $costo; ?>">
+                            <form class="form-inline">
+                            <div class="form-group">
+                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                            <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" name="costo" class="form-control" id="exampleInputAmount" placeholder="COSTO DEL PRODUCTO" value="<?php echo $costo; ?>">
+                            <div class="input-group-addon">.00</div>
+                            </div>
                             <span class="help-block"><?php echo $costo_err;?></span>
+                            </div>                     
+                       
+                        <div class="form-group  <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
+                        <label>Imagen del Producto:</label>
+                        <input type="file" name="imagen" value="<?php echo $imagen; ?>">
+                        <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
-
+                        
                         <div class="form-group <?php echo (!empty($descuento_err)) ? 'has-error' : ''; ?>">
                             <label>Descuento del Producto:</label>
                             <p>Es opcional llenarlo</p>
@@ -143,8 +166,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $descuento_err;?></span>
                         </div>
                        
-                        <input type="submit" class="btn btn-primary" value="Agregar" >
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar cambios en producto" >
+                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

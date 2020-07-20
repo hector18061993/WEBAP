@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Apellido(s)
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Favor de ingresar una descripcion de la Estacion.";     
+        $descripcion_err = "Favor de ingresar la descripcion de la Estacion.";     
     } else{
         $descripcion = $input_descripcion;
     }
@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      // Validar el campo Usuario
     $input_activo = trim($_POST["activo"]);
     if(empty($input_activo)){
-        $activo_err = "Favor de ingresar la informacion de operacion actual de la Estacion.";     
+        $activo_err = "Favor de ingresar el estatus actual de la estacion.";     
     } else{
         $activo = $input_activo;
     }
@@ -119,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      // Validar el campo Usuario
     $input_enservicio = trim($_POST["enservicio"]);
     if(empty($input_enservicio)){
-        $enservicio_err = "Favor de ingresar la informacion de operacion actual de la Estacion.";     
+        $enservicio_err = "Favor de ingresar el estado actual de la Estacion.";     
     } else{
         $enservicio = $input_enservicio;
     }
@@ -161,7 +161,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
                 
-                header("location: index.php");
+                header("location: inicioestacion.php");
                 exit();
             } else{
                 echo "Algo salio mal. Intentelo mas tarde.";
@@ -178,7 +178,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
  
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -237,31 +238,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="page-header">
                         <h2>Agregar Estacion</h2>
                     </div>
-                    <p>Favor de llenar el siguiente formulario, para agregar el usuario.</p>
+                    <p>Favor de llenar el siguiente formulario, para agregar una nueva Estacion de Servicio.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" name="formulario" id="formulario">
                         
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre de la Estacion:</label>
-                            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
+                            <input placeholder="NOMBRE DE LA ESTACION" type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion:</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <label>Descripcion de la Estacion:</label>
+                            <input placeholder="DESCRIPCION DE LA ESTACION" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
                         <div class="form-mapa <?php echo (!empty($ubicacionlatitud_err)) ? 'has-error' : ''; ?>">
+                            <label>Ubicacion de la Estacion:</label>
+                            <p>Favor de seleccionar la ubicacion en el mapa</p>
                             <div id="mapa" > </div>
                                   <table>
                                     <tr>
-                                    <td>Coordenada X</td>
+                                    <td></td>
                                     <td>
-                                    <input type="text" class="form-control" readonly  name="cx" id="cx" autocomplete="off"/></td>
-                                    <td>Coordenada Y</td>
+                                    <input type="text" style="display:none" class="form-control" readonly  name="cx" id="cx" autocomplete="off"/></td>
+                                    <td></td>
                                     <td>
-                                    <input type="text" class="form-control"  readonly name="cy" id="cy" autocomplete="off"/></td>           
+                                    <input type="text" style="display:none" class="form-control"  readonly name="cy" id="cy" autocomplete="off"/></td>           
                                     </tr>
                                   </table>   
                                   <?php 
@@ -271,68 +274,78 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         <div class="form-group <?php echo (!empty($razonsocial_err)) ? 'has-error' : ''; ?>">
                             <label>Razon Social de la Estacion:</label>
-                            <input type="text" name="razonsocial" class="form-control" value="<?php echo $razonsocial; ?>">
+                            <input placeholder="RAZON SOCIAL DE LA ESTACION" type="text" name="razonsocial" class="form-control" value="<?php echo $razonsocial; ?>">
                             <span class="help-block"><?php echo $razonsocial_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($rfc_err)) ? 'has-error' : ''; ?>">
                             <label>RFC de la Estacion:</label>
-                            <input type="text" name="rfc" class="form-control" value="<?php echo $rfc; ?>">
+                            <input placeholder="RFC DE LA ESTACION" type="text" name="rfc" class="form-control" value="<?php echo $rfc; ?>">
                             <span class="help-block"><?php echo $rfc_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($zona_err)) ? 'has-error' : ''; ?>">
                             <label>Zona de la Estacion:</label>
-                            <input type="text" name="zona" class="form-control" value="<?php echo $zona; ?>">
+                            <input placeholder="ZONA DE LA ESTACION" type="text" name="zona" class="form-control" value="<?php echo $zona; ?>">
                             <span class="help-block"><?php echo $zona_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($supervisor_err)) ? 'has-error' : ''; ?>">
                             <label>Supervisor de la Estacion:</label>
-                            <input type="text" name="supervisor" class="form-control" value="<?php echo $supervisor; ?>">
+                           <select class="form-control" name="supervisor" value="<?php echo $supervisor; ?>">
+                                <option>SI</option>
+                                <option>NO</option>                            
+                            </select>
                             <span class="help-block"><?php echo $supervisor_err;?></span>
-                        </div>
+                        </div>    
+
 
                         <div class="form-group <?php echo (!empty($prioridad_err)) ? 'has-error' : ''; ?>">
                             <label>Prioridad de la Estacion:</label>
-                            <input type="text" name="prioridad" class="form-control" value="<?php echo $prioridad; ?>">
+                            <input placeholder="PRIORIDAD DE LA ESTACION" type="text" name="prioridad" class="form-control" value="<?php echo $prioridad; ?>">
                             <span class="help-block"><?php echo $prioridad_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($direccion_err)) ? 'has-error' : ''; ?>">
                             <label>Direccion de la Estacion:</label>
-                            <input type="text" name="direccion" class="form-control" value="<?php echo $direccion; ?>">
+                            <input placeholder="DIRECCION DE LA ESTACION" type="text" name="direccion" class="form-control" value="<?php echo $direccion; ?>">
                             <span class="help-block"><?php echo $direccion_err;?></span>
                         </div>
 
                          <div class="form-group <?php echo (!empty($telefono_err)) ? 'has-error' : ''; ?>">
                             <label>Telefono de la Estacion:</label>
-                            <input type="text" name="telefono" class="form-control" value="<?php echo $telefono; ?>">
+                            <input placeholder="TELEFONO DE LA ESTACION" type="text" name="telefono" class="form-control" value="<?php echo $telefono; ?>">
                             <span class="help-block"><?php echo $telefono_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($correo_err)) ? 'has-error' : ''; ?>">
                             <label>Correo de la Estacion:</label>
-                            <input type="text" name="correo" class="form-control" value="<?php echo $correo; ?>">
+                            <input placeholder="CORREO DE LA ESTACION" type="text" name="correo" class="form-control" value="<?php echo $correo; ?>">
                             <span class="help-block"><?php echo $correo_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($activo_err)) ? 'has-error' : ''; ?>">
                             <label>Estado actual de la Estacion:</label>
                             <p>Favor de colocar si esta activa o inactiva la estacion de servicio</p>
-                            <input type="text" name="activo" class="form-control" value="<?php echo $activo; ?>">
+                             <select class="form-control" name="activo" value="<?php echo $activo; ?>">
+                                <option>SI</option>
+                                <option>NO</option>                            
+                            </select>
                             <span class="help-block"><?php echo $activo_err;?></span>
-                        </div>
+                        </div>    
 
                         <div class="form-group <?php echo (!empty($enservicio_err)) ? 'has-error' : ''; ?>">
                             <label>Se encuentra en servicio la Estacion:</label>
                             <p>Favor de colocar si se encuentra en servicio o no se encuentra en servicio</p>
-                            <input type="text" name="enservicio" class="form-control" value="<?php echo $enservicio; ?>">
+                            <select class="form-control" name="enservicio" value="<?php echo $enservicio; ?>">
+                                <option>SI</option>
+                                <option>NO</option>                            
+                            </select>
                             <span class="help-block"><?php echo $enservicio_err;?></span>
                         </div>                     
                        
-                        <input type="submit" class="btn btn-primary" value="Agregar" >
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar Nueva Estacion" >
+                        <a href="inicioestacion.php" class="btn btn-success">Regresar a la Pantalla Principal</a>
                     </form>
                 </div>
             </div>        
@@ -629,3 +642,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //PLANTILLA AJAX
      -->
 </script>
+

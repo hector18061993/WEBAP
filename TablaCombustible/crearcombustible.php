@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: iniciocombustible.php");
                 exit();
             } else{
                 echo "Algo salio mal. Intentelo mas tarde.";
@@ -113,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                        
                         <input type="submit" class="btn btn-primary" value="Agregar Nuevos Datos de Registro" >
-                        <a href="index.php" class="btn btn-default">Regresar a Pantalla Principal</a>
+                        <a href="iniciocombustible.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

@@ -17,7 +17,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records deleted successfully. Redirect to landing page
-            header("location: index.php");
+            header("location: inicioestacion.php");
             exit();
         } else{
             echo "Oops! A ocurrido un error. Intentelo de nuevo mas tarde.";
@@ -33,7 +33,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check existence of id parameter
     if(empty(trim($_GET["id"]))){
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        header("location: errorpagina.php");
         exit();
     }
 }
@@ -65,7 +65,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <p>Está seguro que deseas borrar el registro</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="index.php" class="btn btn-default">No</a>
+                                <a href="inicioestacion.php" class="btn btn-default">No</a>
                             </p>
                         </div>
                     </form>

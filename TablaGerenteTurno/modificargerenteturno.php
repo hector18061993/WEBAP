@@ -15,7 +15,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validando el campo Nombre(s) 
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un apellido.";     
+        $nombre_err = "Favor de ingresar el nuevo nombre(s) del gerente en turno de la Estacion.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -23,7 +23,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validando el campo Nombre(s) 
     $input_apellidos = trim($_POST["apellidos"]);
     if(empty($input_apellidos)){
-        $apellidos_err = "Por favor ingrese un apellido.";     
+        $apellidos_err = "Favor de ingresar los nuevos apellidos del gerente en turno de la Estacion.";     
     } else{
         $apellidos = $input_apellidos;
     }
@@ -31,7 +31,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validando el campo Nombre(s) 
     $input_turno = trim($_POST["turno"]);
     if(empty($input_turno)){
-        $turno_err = "Por favor ingrese un apellido.";     
+        $turno_err = "Favor de ingresar el nuevo turno del gerente en turno de la Estacion..";     
     } else{
         $turno = $input_turno;
     }
@@ -39,7 +39,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validando el campo Apellido(s)
     $input_direccion = trim($_POST["direccion"]);
     if(empty($input_direccion)){
-        $direccion_err = "Por favor ingrese un apellido.";     
+        $direccion_err = "Favor de ingresar la nueva direccion del gerente de la Estacion.";     
     } else{
         $direccion = $input_direccion;
     }
@@ -47,7 +47,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validando el campo Email
     $input_telefono = trim($_POST["telefono"]);
     if(empty($input_telefono)){
-        $telefono_err = "Por favor ingrese un correo electronico.";     
+        $telefono_err = "Favor de ingresar el nuevo telefono del gerente de la Estacion.";     
     } else{
         $telefono = $input_telefono;
     }
@@ -55,7 +55,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validando el campo Telefono
     $input_email = trim($_POST["email"]);
     if(empty($input_email)){
-        $email_err = "Por favor ingrese un numero telefonico.";     
+        $email_err = "Favor de ingresar el nuevo correo del gerente de la Estacion.";     
     } else{
         $email = $input_email;
     }
@@ -63,7 +63,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validando el campo Tipo de Usuario
     $input_usuariogerente = trim($_POST["usuariogerente"]);
     if(empty($input_usuariogerente)){
-        $usuariogerente_err = "Por favor ingrese un tipo de usuario.";     
+        $usuariogerente_err = "Favor de ingresar el nuevo nombre de usuario del gerente de la Estacion.";     
     } else{
         $usuariogerente = $input_usuariogerente;
     }
@@ -72,7 +72,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validar el campo Usuario
     $input_clavegerente = trim($_POST["clavegerente"]);
     if(empty($input_clavegerente)){
-        $clavegerente_err = "Por favor ingrese un usuario.";     
+        $clavegerente_err = "Favor de ingresar la nueva contraseña del gerente de la Estacion.";     
     } else{
         $clavegerente = $input_clavegerente;
     }
@@ -105,7 +105,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: iniciogerenteturno.php");
                 exit();
             } else{
                 echo "Ocurrio un error. Intentelo mas tarde.";
@@ -153,7 +153,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $clavegerente = $row["clavegerente"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
+                    header("location: errorpagina.php");
                     exit();
                 }
                 
@@ -169,7 +169,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         mysqli_close($link);
     }  else{
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        header("location: errorpagina.php");
         exit();
     }
 }
@@ -201,55 +201,55 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre del Gerente en turno:</label>
-                            <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
+                            <input placeholder="NUEVO NOMBRE(S)" type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($apellidos_err)) ? 'has-error' : ''; ?>">
                             <label>Apellidos del gerente en turno:</label>
-                            <input type="text" name="apellidos" class="form-control" value="<?php echo $apellidos; ?>">
+                            <input placeholder="NUEVO APELLIDO(S)" type="text" name="apellidos" class="form-control" value="<?php echo $apellidos; ?>">
                             <span class="help-block"><?php echo $apellidos_err;?></span>
                         </div>
 
                        <div class="form-group <?php echo (!empty($turno_err)) ? 'has-error' : ''; ?>">
                             <label>Nuevo Turno del Gerente:</label>
-                            <input type="text" name="turno" class="form-control" value="<?php echo $turno; ?>">
+                            <input placeholder="NUEVO TURNO" type="text" name="turno" class="form-control" value="<?php echo $turno; ?>">
                             <span class="help-block"><?php echo $turno_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($direccion_err)) ? 'has-error' : ''; ?>">
                             <label>Direccion del Gerente en turno:</label>
-                            <input type="text" name="direccion" class="form-control" value="<?php echo $direccion; ?>">
+                            <input placeholder="NUEVA DIRECCION" type="text" name="direccion" class="form-control" value="<?php echo $direccion; ?>">
                             <span class="help-block"><?php echo $direccion_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($telefono_err)) ? 'has-error' : ''; ?>">
                             <label>Telefono del gerente en turno:</label>
-                            <input type="text" name="telefono" class="form-control" value="<?php echo $telefono; ?>">
+                            <input placeholder="NUEVO TELEFONO" type="text" name="telefono" class="form-control" value="<?php echo $telefono; ?>">
                             <span class="help-block"><?php echo $telefono_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                             <label>Correo del gerente en turno:</label>
-                            <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
+                            <input placeholder="NUEVO CORREO" type="text" name="email" class="form-control" value="<?php echo $email; ?>">
                             <span class="help-block"><?php echo $email_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($usuariogerente_err)) ? 'has-error' : ''; ?>">
                             <label>Usuario del gerente en turno:</label>
-                            <input type="text" name="usuariogerente" class="form-control" value="<?php echo $usuariogerente; ?>">
+                            <input placeholder="NUEVO USUARIO" type="text" name="usuariogerente" class="form-control" value="<?php echo $usuariogerente; ?>">
                             <span class="help-block"><?php echo $usuariogerente_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($clavegerente_err)) ? 'has-error' : ''; ?>">
                             <label>Clave del gerente en turno:</label>
-                            <input type="text" name="clavegerente" class="form-control" value="<?php echo $clavegerente; ?>">
+                            <input placeholder="NUEVA CONTRASEÑA" type="text" name="clavegerente" class="form-control" value="<?php echo $clavegerente; ?>">
                             <span class="help-block"><?php echo $clavegerente_err;?></span>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar cambios">
+                        <a href="iniciogerenteturno.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

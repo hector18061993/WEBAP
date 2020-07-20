@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h1 class="pull-left">Productos en Sistema AP</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo Producto</a></div>
+                        <br><a href="create.php" class="btn btn-warning pull-right">Agregar nuevo Producto</a></div>
                     </div>
                     <?php
                     // Include config file
@@ -48,6 +48,7 @@
                                         echo "<th>Descripcion del Producto</th>";
                                         echo "<th>Categoria del Producto</th>";
                                         echo "<th>Precio del Producto</th>";
+                                        echo "<th>Imagen del producto</th>";
                                         echo "<th>Descuento del Producto</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
@@ -59,6 +60,7 @@
                                         echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>" . $row['categoria'] . "</td>";
                                         echo "<td>" . $row['costo'] . "</td>";
+                                        echo "<td>" . $row['imagen'] . "</td>";
                                         echo "<td>" . $row['descuento'] . "</td>";
                                         echo "<td>";
                                             echo "<a href='read.php?id=". $row['id'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";

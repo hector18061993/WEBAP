@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$nombre = $descripcion = $categoria = $costo = $descuento = "";
-$nombre_err = $descripcion_err = $categoria_err = $costo_err = $descuento_err = "";
+$nombre = $descripcion = $categoria = $costo = $imagen  = $descuento = "";
+$nombre_err = $descripcion_err = $categoria_err = $costo_err  =  $imagen_err = $descuento_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -44,6 +44,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $costo = $input_costo;
     }
     
+   
+     // Validate email
+    $input_imagen = trim($_POST["imagen"]);
+    if(empty($input_imagen)){
+        $imagen_err = "Por favor ingrese una imagen.";     
+    } else{
+        $imagen = $input_imagen;
+    }
+
     // Validate email
     $input_descuento = trim($_POST["descuento"]);
     if(empty($input_descuento)){
@@ -53,22 +62,23 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
     
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($categoria_err) && empty($costo_err) 
+    if(empty($nombre_err) && empty($descripcion_err) && empty($categoria_err) && empty($costo_err)  && empty($imagen_err)
                          && empty($descuento_err)){
 
         // Prepare an update statement
-        $sql = "UPDATE t_producto SET nombre=?, descripcion=?, categoria=?, costo=?, descuento=?  WHERE id=?";
+        $sql = "UPDATE t_producto SET nombre=?, descripcion=?, categoria=?, costo=?, imagen=?,descuento=?  WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssssi", $param_nombre, $param_descripcion, 
-                $param_categoria, $param_costo, $param_descuento, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssssssi", $param_nombre, $param_descripcion, 
+                $param_categoria, $param_costo, $param_imagen, $param_descuento, $param_id);
             
             // Set parameters
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
             $param_categoria = $categoria;
             $param_costo = $costo;
+            $param_imagen = $imagen;
             $param_descuento = $descuento;
             $param_id = $id;
             
@@ -117,11 +127,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $descripcion = $row["descripcion"];
                     $categoria = $row["categoria"];
                     $costo = $row["costo"];
+                    $imagen = $row["imagen"];
                     $descuento = $row["descuento"];
                     
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
+                    header("location: errorpagina.php");
                     exit();
                 }
                 
@@ -137,7 +148,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         mysqli_close($link);
     }  else{
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        header("location: errorpagina.php");
         exit();
     }
 }
@@ -191,6 +202,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $costo_err;?></span>
                         </div>
 
+                        <div class="form-group  <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
+                        <label>Imagen del Producto:</label>
+                        <input type="file" name="imagen" value="<?php echo $imagen; ?>">
+                        <span class="help-block"><?php echo $imagen_err;?></span>
+                        </div>
+
                         <div class="form-group <?php echo (!empty($descuento_err)) ? 'has-error' : ''; ?>">
                             <label>Descuento del Producto:</label>
                             <input type="text" name="descuento" class="form-control" value="<?php echo $descuento; ?>">
@@ -198,8 +215,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Enviar">
-                        <a href="index.php" class="btn btn-default">Cancelar</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar Producto">
+                        <a href="inicioestacion.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

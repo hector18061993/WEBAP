@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Listado de Gerentes en Sistema  </title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
@@ -30,28 +30,23 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h1 class="pull-left">Gerentes en Sistema</h1><br><br>
-                        <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo Gerente</a></div>
+                        <h1 class="pull-left">Informacion AP</h1><br><br>
+                        <br><a href="crearinformacionempresa.php" class="btn btn-warning pull-right">Agregar nueva Informacion</a></div>
                     </div>
                     <?php
                     // Include config file
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM t_gerenteturno";
+                    $sql = "SELECT * FROM t_informacionempresa";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>Nombre</th>";
-                                        echo "<th>Apellidos</th>";
-                                        echo "<th>Turno Actual</th>";
-                                        echo "<th>Direccion</th>";
-                                        echo "<th>Telefono</th>";
-                                        echo "<th>Correo</th>";
-                                        echo "<th>Nombre de Usuario</th>";
-                                        echo "<th>Clave de Usuario</th>";
+                                        echo "<th>Nombre de la Informacion</th>";
+                                        echo "<th>Descripcion de la Informacion</th>";
+                                        echo "<th>Subdescripcion</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -59,17 +54,12 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
-                                        echo "<td>" . $row['apellidos'] . "</td>";
-                                        echo "<td>" . $row['turno'] . "</td>";
-                                        echo "<td>" . $row['direccion'] . "</td>";
-                                        echo "<td>" . $row['telefono'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['usuariogerente'] . "</td>";
-                                        echo "<td>" . $row['clavegerente'] . "</td>";
+                                        echo "<td>" . $row['descripcion'] . "</td>";
+                                        echo "<td>" . $row['subdescripcion'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='read.php?id=". $row['id'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='verinformacionempresa.php?id=". $row['id'] ."' title='Ver Informacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarinformacionempresa.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarinformacionempresa.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
