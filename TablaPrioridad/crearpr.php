@@ -3,9 +3,9 @@
 require_once "config.php";
  
 // Definimos las variables a utilizar 
-$nombre = $descripcion = $costo = $descuento = "";
+$nombre =  $descripcion = "";
 
-$nombre_err = $descripcion_err = $costo_err = $descuento_err ="";
+$nombre_err = $descripcion_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -18,47 +18,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre = $input_nombre;
     }
 
-     // Validando el campo Nombre(s) 
+    // Validando el campo Nombre(s) 
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
         $descripcion_err = "Por favor ingrese un apellido.";     
     } else{
         $descripcion = $input_descripcion;
     }
-
-
-    // Validando el campo Email
-    $input_costo = trim($_POST["costo"]);
-    if(empty($input_costo)){
-        $costo_err = "Por favor ingrese un correo electronico.";     
-    } else{
-        $costo = $input_costo;
-    }
-
-    // Validando el campo Email
-    $input_descuento = trim($_POST["descuento"]);
-    if(empty($input_descuento)){
-        $descuento_err = "Por favor ingrese un correo electronico.";     
-    } else{
-        $descuento = $input_descuento;
-    }
-
+ 
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($costo_err)){
+    if(empty($nombre_err) && empty($descripcion_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO t_servicio (nombre, descripcion, costo, descuento) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO t_prioridad (nombre, descripcion) 
+                    VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssss", $param_nombre, $param_descripcion, 
-                                  $param_costo, $param_descuento);
-             
+            mysqli_stmt_bind_param($stmt, "ss", $param_nombre, $param_descripcion);
+            
             // Set parameters
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
-            $param_costo = $costo;
-            $param_descuento = $descuento;          
+                      
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -98,38 +80,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Agregar Servicios</h2>
+                        <h2>Agregar Usuario</h2>
                     </div>
-                    <p>Favor de llenar el siguiente formulario, para agregar el servicio.</p>
+                    <p>Favor de llenar el siguiente formulario, para agregar el usuario.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
-                            <label>Nombre del Producto:</label>
+                            <label>Agregar Prioridad para la estacion:</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion del Producto:</label>
+                            <label>Agregar descripcion de la prioridad:</label>
                             <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($costo_err)) ? 'has-error' : ''; ?>">
-                            <label>Costo del Producto:</label>
-                            <input type="text" name="costo" class="form-control" value="<?php echo $costo; ?>">
-                            <span class="help-block"><?php echo $costo_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($descuento_err)) ? 'has-error' : ''; ?>">
-                            <label>Descuento del Producto:</label>
-                            <p>Es opcional llenarlo</p>
-                            <textarea name="descuento" class="form-control"><?php echo $descuento; ?></textarea>   
-                            <span class="help-block"><?php echo $descuento_err;?></span>
-                        </div>
+                        </div>                        
                        
-                        <input type="submit" class="btn btn-primary" value="Agregar Servicios">
-                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar" >
+                        <a href="iniciopr.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

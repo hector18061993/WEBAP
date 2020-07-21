@@ -3,69 +3,51 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$nombre = $descripcion = $costo = $descuento = "";
-$nombre_err = $descripcion_err = $costo_err = $descuento_err = "";
+$nombre =  $descripcion = "";
 
+$nombre_err = $descripcion_err = "";
+ 
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Get hidden input value
     $id = $_POST["id"];
-    
-    // Validando el registro de nmombre
+   
+
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un nombre de Producto.";     
+        $nombre_err = "Por favor ingrese un apellido.";     
     } else{
         $nombre = $input_nombre;
     }
 
-    // Validando ubicacion
+    // Validando el campo Nombre(s) 
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese una ubicacion de la estacion.";     
+        $descripcion_err = "Por favor ingrese un apellido.";     
     } else{
         $descripcion = $input_descripcion;
     }
-
-     
-    // Validando gerente en turno
-    $input_costo = trim($_POST["costo"]);
-    if(empty($input_costo)){
-        $costo_err = "Por favor ingrese una descripcion del Producto.";     
-    } else{
-        $costo = $input_costo;
-    }
-
-    // Validando estado actual de la estacion
-    $input_descuento = trim($_POST["descuento"]);
-    if(empty($input_descuento)){
-        $descuento_err = "Por favor ingrese un estado actual de la estacion.";     
-    } else{
-        $descuento = $input_descuento;
-    }
-
-        
+    
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($costo_err)){
+     if(empty($nombre_err) && empty($descripcion_err)){
+
         // Prepare an update statement
-        $sql = "UPDATE t_servicio SET nombre=?, descripcion=?, costo=?, descuento=? WHERE id=?";
+        $sql = "UPDATE t_prioridad SET nombre=?, descripcion=? 
+               WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssssi", $param_nombre, $param_descripcion, 
-                $param_costo, $param_descuento, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssi", $param_nombre, $param_descripcion, $param_id);
             
             // Set parameters
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
-            $param_costo = $costo;
-            $param_descuento = $descuento;
             $param_id = $id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records updated successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: iniciopr.php");
                 exit();
             } else{
                 echo "Ocurrio un error. Intentelo mas tarde.";
@@ -85,7 +67,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM t_servicio WHERE id = ?";
+        $sql = "SELECT * FROM t_prioridad WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -103,14 +85,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
                     // Retrieve individual field value
+                    $id = $row["id"];
                     $nombre = $row["nombre"];
                     $descripcion = $row["descripcion"];
-                    $costo = $row["costo"];
-                    $descuento = $row["descuento"];
-                                        
+                    
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
+                    header("location: errorpr.php");
                     exit();
                 }
                 
@@ -126,7 +107,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         mysqli_close($link);
     }  else{
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
+        header("location: errorpr.php");
         exit();
     }
 }
@@ -136,7 +117,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Actualizar Datos de los Servicios Registrados</title>
+    <title>Actualizar Prioridad</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -151,38 +132,26 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Actualizar Datos de los Productos</h2>
+                        <h2>Actualizar los Datos de la Prioridad</h2>
                     </div>
                     <p>Edite los datos de entrada y envíe para actualizar el registro de usuarios.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
-                            <label>Nuevo Nombre del Servicio:</label>
+                            <label>Agregar nuevo nombre a la Prioridad:</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
-                        
+
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Nueva Descripcion del Servicio:</label>
+                            <label>Agregar descripcion de la prioridad:</label>
                             <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
-                       
-                       <div class="form-group <?php echo (!empty($costo_err)) ? 'has-error' : ''; ?>">
-                            <label>Nuevo Costo del Servicio:</label>
-                            <input type="text" name="costo" class="form-control" value="<?php echo $costo; ?>">
-                            <span class="help-block"><?php echo $costo_err;?></span>
-                        </div>
-                       
-                        <div class="form-group <?php echo (!empty($descuento_err)) ? 'has-error' : ''; ?>">
-                            <label>Nuevo Descuento del Producto:</label>
-                            <textarea name="descuento" class="form-control"><?php echo $descuento; ?></textarea>
-                            <span class="help-block"><?php echo $descuento_err;?></span>
-                        </div>
-                                                                       
+
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
-                        <input type="submit" class="btn btn-primary" value="Guardar Servicios">
-                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
+                        <input type="submit" class="btn btn-primary" value="Guardar Prioridad">
+                        <a href="iniciopr.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

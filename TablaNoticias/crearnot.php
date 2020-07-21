@@ -3,9 +3,9 @@
 require_once "config.php";
  
 // Definimos las variables a utilizar 
-$nombre = $descripcion = $costo = $descuento = "";
+$nombre = $descripcion = $imagen = "";
 
-$nombre_err = $descripcion_err = $costo_err = $descuento_err ="";
+$nombre_err = $descripcion_err = $imagen_err  = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Nombre(s) 
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
-        $nombre_err = "Por favor ingrese un apellido.";     
+        $nombre_err = "Favor de ingresar un nombre para la noticia.";     
     } else{
         $nombre = $input_nombre;
     }
@@ -21,49 +21,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      // Validando el campo Nombre(s) 
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Por favor ingrese un apellido.";     
+        $descripcion_err = "Favor de ingresar una descripcion de la noticia.";     
     } else{
         $descripcion = $input_descripcion;
     }
 
 
     // Validando el campo Email
-    $input_costo = trim($_POST["costo"]);
-    if(empty($input_costo)){
-        $costo_err = "Por favor ingrese un correo electronico.";     
+    $input_imagen = trim($_POST["imagen"]);
+    if(empty($input_imagen)){
+        $imagen_err = "Favor de ingresar una imagen para la noticia.";     
     } else{
-        $costo = $input_costo;
+        $imagen = $input_imagen;
     }
 
-    // Validando el campo Email
-    $input_descuento = trim($_POST["descuento"]);
-    if(empty($input_descuento)){
-        $descuento_err = "Por favor ingrese un correo electronico.";     
-    } else{
-        $descuento = $input_descuento;
-    }
-
+     
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($costo_err)){
+    if(empty($nombre_err) && empty($descripcion_err) && empty($imagen_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO t_servicio (nombre, descripcion, costo, descuento) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO t_noticia (nombre, descripcion, imagen) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssss", $param_nombre, $param_descripcion, 
-                                  $param_costo, $param_descuento);
-             
+            mysqli_stmt_bind_param($stmt, "sss", $param_nombre, $param_descripcion, $param_imagen);
+            
             // Set parameters
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
-            $param_costo = $costo;
-            $param_descuento = $descuento;          
+            $param_imagen = $imagen;          
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: inicionot.php");
                 exit();
             } else{
                 echo "Algo salio mal. Intentelo mas tarde.";
@@ -98,38 +89,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Agregar Servicios</h2>
+                        <h2>Agregar Usuario</h2>
                     </div>
-                    <p>Favor de llenar el siguiente formulario, para agregar el servicio.</p>
+                    <p>Favor de llenar el siguiente formulario, para agregar el usuario.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
-                            <label>Nombre del Producto:</label>
+                            <label>Nombre de la Informacion:</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion del Producto:</label>
-                            <input type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <label>Descripcion de la informacion:</label>
+                            <textarea name="descripcion" class="form-control"><?php echo $descripcion; ?></textarea>   
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
-
-                        <div class="form-group <?php echo (!empty($costo_err)) ? 'has-error' : ''; ?>">
-                            <label>Costo del Producto:</label>
-                            <input type="text" name="costo" class="form-control" value="<?php echo $costo; ?>">
-                            <span class="help-block"><?php echo $costo_err;?></span>
+                      
+                        <div class="form-group  <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
+                        <label>Imagen de la Noticia:</label>
+                        <input type="file" name="imagen" value="<?php echo $imagen; ?>">
+                        <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($descuento_err)) ? 'has-error' : ''; ?>">
-                            <label>Descuento del Producto:</label>
-                            <p>Es opcional llenarlo</p>
-                            <textarea name="descuento" class="form-control"><?php echo $descuento; ?></textarea>   
-                            <span class="help-block"><?php echo $descuento_err;?></span>
-                        </div>
-                       
-                        <input type="submit" class="btn btn-primary" value="Agregar Servicios">
-                        <a href="index.php" class="btn btn-success">Regresar a Pantalla Principal</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar Noticias" >
+                        <a href="inicionot.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

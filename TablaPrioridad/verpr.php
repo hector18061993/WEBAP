@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM t_servicio WHERE id = ?";
+    $sql = "SELECT * FROM t_prioridad WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -26,8 +26,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 // Retrieve individual field value
                 $nombre = $row["nombre"];
                 $descripcion = $row["descripcion"];
-                $costo = $row["costo"];
-                $descuento = $row["descuento"];
+                
                                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
@@ -55,7 +54,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ver servicios registrados</title>
+    <title>Ver Prioridades Registradas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -70,25 +69,18 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Ver Productos</h2>
+                        <h2>Ver Prioridad</h2>
                     </div>
                     <div class="form-group">
-                        <label>Nombre del Producto:</label>
+                        <label>Nombre de la Prioridad:</label>
                         <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Descripcion del Producto:</label>
+                        <label>Descripcion de la Prioridad:</label>
                         <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
                     </div>
-                    <div class="form-group">
-                        <label>Precio del Producto:</label>
-                        <p class="form-control-static"><?php echo $row["costo"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Descuento del Producto:</label>
-                        <p class="form-control-static"><?php echo $row["descuento"]; ?></p>
-                    </div>                  
-                    <p><a href="index.php" class="btn btn-primary">Volver</a></p>
+                    
+                    <p><a href="iniciopr.php" class="btn btn-primary">Regresar a Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>

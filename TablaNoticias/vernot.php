@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM t_servicio WHERE id = ?";
+    $sql = "SELECT * FROM t_noticia WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -26,12 +26,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 // Retrieve individual field value
                 $nombre = $row["nombre"];
                 $descripcion = $row["descripcion"];
-                $costo = $row["costo"];
-                $descuento = $row["descuento"];
-                                
+                $imagen = $row["imagen"];
+                
+                
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorie.php");
                 exit();
             }
             
@@ -47,7 +47,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorpagina.php");
     exit();
 }
 ?>
@@ -55,7 +55,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ver servicios registrados</title>
+    <title>Ver Empleado</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -70,25 +70,24 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Ver Productos</h2>
+                        <h2>Ver Informacion de las Noticias</h2>
                     </div>
                     <div class="form-group">
-                        <label>Nombre del Producto:</label>
+                        <label>Nombre de la Noticia:</label>
                         <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
                     </div>
+
                     <div class="form-group">
-                        <label>Descripcion del Producto:</label>
+                        <label>Descripcion de la Noticia:</label>
                         <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
                     </div>
+
                     <div class="form-group">
-                        <label>Precio del Producto:</label>
-                        <p class="form-control-static"><?php echo $row["costo"]; ?></p>
+                        <label>Imagen de la Noticia:</label>
+                        <p class="form-control-static"><?php echo $row["imagen"]; ?></p>
                     </div>
-                    <div class="form-group">
-                        <label>Descuento del Producto:</label>
-                        <p class="form-control-static"><?php echo $row["descuento"]; ?></p>
-                    </div>                  
-                    <p><a href="index.php" class="btn btn-primary">Volver</a></p>
+                  
+                    <p><a href="inicionot.php" class="btn btn-primary">Regresar a Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>
