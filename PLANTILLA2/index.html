@@ -1,9 +1,5 @@
 <!DOCTYPE HTML>
-<!--
-	Landed by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
 		<title>CORPORATIVO AP</title>
@@ -19,15 +15,20 @@
 				<header id="header">
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html"><b>Facturacion</b></a></li>
+							<li><a href="index.html"><b>Inicio</b></a></li>
 							<li>
-								<li><a href="contactanos.html"><b>Contactanos</b></a></li>
+								<li><a href="facturacion.html"><b>Facturacion</b></a></li>
 							<li>
-								<li><a href="index.html"><b>Nustras Estaciones</b></a></li>
+								<li><a href="index.html"><b>Nosotros</b></a></li>
 							<li>
-								<li><a href="index.html"><b>Quejas y Sugerencias</b></a></li>
+								<li><a href="productos.html"><b>Productos y Servicios</b></a></li>
 							<li>
-								
+								<li><a href="index.html"><b>Noticias</b></a></li>
+							<li>
+								<li><a href="quejas.html"><b>Quejas y Sugerencias</b></a></li>
+							<li>
+								<li><a href="index.html"><b>Contactanos</b></a></li>
+							<li>
 					</nav>
 				</header>
 
@@ -39,7 +40,7 @@
 							<h3>"Nuestros clientes nuestro</h3>
 							    <h3>mejor activo"</h3>
 						</header>
-						<span class="image"><img src="images/pic11.jpg" alt="" /></span>
+						<span class="image"><img src="images/pic01.jpg" alt="" /></span>
 					</div>
 					<a href="#one" class="goto-next scrolly">Next</a>
 				</section>
@@ -51,17 +52,18 @@
 					<div class="content">
 						<div class="container">
 							<div class="row">
-								<div class="col-8 col-12-medium">
+								<div class="col-md-6">
 									<header>
 										<h2>Nosotros:</h2>
 									</header>
-								</div>
-								<div class="col-8 col-12-right">
+									</div>
+								
+								<div class="col-md-6">
 									<p>Somos un grupo de mepresas gasolineras mexicanas con 15 años de experiencia y en crecimiento constante.</p>
 									<p>Consideramos a nuestros clientes nuestro mejor activo.Estamos dedicados a Satisfacer sus necesidades, invirtiendo en tecnologia y brindando rapidez y eficiencia en el servicio</p>
 									<li><a href="#" class="button">Saber mas...</a></li>
 								</div>
-								<div class="col-8 col-12-right">
+								<div class="col-6 col-12-right">
 								</div>
 							</div>
 						</div>
@@ -76,14 +78,26 @@
 						<header>
 							<h2>Nuestras Estaciones</h2>
 							<p><form>
-                            <div class="form-group">
+                            <div class="form-selected1">
                                 <label for="exampleInputEmail1">Selecciona tu Estado:</label>
-                                <input type="text" class="form-control" id="" >
+                                <select class="formulario-seleccion">
+                                <option>Valle de Bravo</option>
+                                <option>Toluca</option>
+                                <option>Zitacuaro</option>
+                                <option>San Juan de las Huertas</option>
+                                <option>Metepec</option>
+                              </select>
                             </div>
-                            <div class="form-group">
-                            <label for="exampleInputPassword1">Busca tu Estacion</label>
-                            <input type="text" class="form-control" id="">
-                            </div></p>
+                            <div class="form-selected2">
+                                <label for="exampleInputEmail1">Selecciona tu Estacion:</label>
+                                <select class="formulario-seleccion">
+                                <option>Valle de Bravo</option>
+                                <option>Toluca</option>
+                                <option>Zitacuaro</option>
+                                <option>San Juan de las Huertas</option>
+                                <option>Metepec</option>
+                              </select>
+                            </div>
 						</header>
 					</div>
 					<a href="#three" class="goto-next scrolly">Next</a>
@@ -106,7 +120,7 @@
 
 			<!-- Four -->
 				<section id="two" class="spotlight style2 right">
-					<span class="image fit main"><img src="images/pic09.jpg" alt="" /></span>
+					<span class="image fit main"><img src="images/pic20.jpg" alt="" /></span>
 					<div class="content">
 						<header>
 							<h2>Blog de Noticias</h2>
@@ -117,55 +131,35 @@
 						</header>
 						
 					</div>
-					<a href="#three" class="goto-next scrolly">Next</a>
+					<a href="noticia1.html" class="goto-next scrolly">Next</a>
 				</section> 
-
-
-
-
-
 			<!-- Five -->
-				<section id="five" class="wrapper ">
-					<div class="container">
-						<header>
+			    
+			     <section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="images/contacto2.jpg" alt="" /></span>
+					<div class="content">
 							<h2>Contactanos</h2>
-						</header>
-						<form method="post" action="#" class="cta">
-						<div class="form-group">
-                        <label>Nombre:</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
-                        </div>
-                        <label>Correo:</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Correo">
-                        <label>Dejanos tu mensaje</label>
-                        <textarea class="form-control" rows="3"></textarea>
-                        </form>
-                        </div>
-                        </div>								
-					<input type="submit" value="Enviar datos de contacto" class="fit primary" /></div>
-							
-						</form>
+							<div class="form-group">
+                            <label type="text">Nombre:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="NOMBRE">
+                            <label type="text">Correo:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="CORREO">
+                            <label type="text">Mensaje:</label>
+                            <p>Dejanos tu mensaje, te atenderemos a la brevedad posible</p>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="MENSAJE">
+                            <button>ENVIAR DATOS</button>
+                            </div>
+                            
 					</div>
+					<a href="" class="goto-next scrolly">Next</a>
 				</section>
 
-			<!-- Footer -->
 
 
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
+				
 
-		</div>
+			
+			
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

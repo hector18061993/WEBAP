@@ -3454,7 +3454,7 @@ input, select, textarea {
 	#banner {
 		background-attachment: fixed;
 		background-color: #091358;
-		background-image: url("../../images/.jpg");
+		background-image: url("");
 		background-position: center center;
 		background-size: cover;
 		box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
@@ -3513,16 +3513,16 @@ input, select, textarea {
 				}
 
 			#banner .content .image {
-				border-radius: 100%;
+				border-radius: 6%;
 				display: inline-block;
-				height: 18em;
+				height: 22em;
 				margin-left: 3em;
 				vertical-align: middle;
-				width: 18em;
+				width: 35em;
 			}
 
 				#banner .content .image img {
-					border-radius: 100%;
+					border-radius: 0%;
 					display: block;
 					width: 100%;
 				}
@@ -3854,8 +3854,8 @@ input, select, textarea {
 					}
 
 					#banner .content .image {
-						height: 9em;
-						width: 9em;
+						height: em;
+						width: em;
 					}
 
 		/* Nav */
