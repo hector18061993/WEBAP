@@ -98,9 +98,32 @@ input, select, textarea {
 		
 	}
 
-	body, input, select, textarea {
+	body {
 		color: rgba(255 255 255);
-		font-family: "Roboto", Helvetica, sans-serif;
+		font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+		font-size: 0pt;
+		font-weight: 100;
+		line-height: 1.75em;
+	}
+	input {
+		color: rgba(1, 1, 1);
+		font-family:  Helvetica Neue,Helvetica,Arial,sans-serif; 
+		font-size: 0pt;
+		font-weight: 100;
+		line-height: 1.75em;
+	}
+
+	textarea  {
+		color: rgba(255 255 255);
+		font-family:  Helvetica Neue,Helvetica,Arial,sans-serif; 
+		font-size: 0pt;
+		font-weight: 100;
+		line-height: 1.75em;
+	}
+
+	select {
+		color: rgba(1, 1, 1);
+		font-family:  Helvetica Neue,Helvetica,Arial,sans-serif; 
 		font-size: 0pt;
 		font-weight: 100;
 		line-height: 1.75em;
@@ -112,13 +135,13 @@ input, select, textarea {
 		-ms-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: ##1E90FF	;
+		color: #f9f9f9;
 		text-decoration: none;
 	}
 
 		a:hover {
-			color: ##1E90FF	 !important;
-			border-bottom-color: transparent;
+			color: #fdfdfd	 !important;
+			border-bottom-color: #f9f9f9;
 		}
 
 	strong, b {
@@ -3085,7 +3108,7 @@ input, select, textarea {
 			-webkit-transition: -webkit-transform 1s ease, opacity 1s ease;
 			-ms-transition: -ms-transform 1s ease, opacity 1s ease;
 			transition: transform 1s ease, opacity 1s ease;
-			background: #091358;;
+			background: rgb(11 21 136 / 72%);
 			border-style: solid;
 			opacity: 1;
 			position: absolute;
@@ -3145,7 +3168,7 @@ input, select, textarea {
 		}
 
 		.spotlight.style2 .content {
-			border-color: #0b23fb;
+			border-color: #6eb3f7;
 		}
 
 		.spotlight.style3 .content {
@@ -3513,13 +3536,23 @@ input, select, textarea {
 				}
 
 			#banner .content .image {
-				border-radius: 6%;
+				border-radius: 100%;
 				display: inline-block;
-				height: 22em;
+				height: 26em;
 				margin-left: 3em;
 				vertical-align: middle;
-				width: 35em;
+				width: 26em;
 			}
+            
+            #two .spotlight .image .content .image {
+				border-radius: 100%;
+				display: inline-block;
+				height: 10em;
+				margin-left: 3em;
+				vertical-align: middle;
+				width: 10em;
+			}
+
 
 				#banner .content .image img {
 					border-radius: 0%;
@@ -3658,7 +3691,7 @@ input, select, textarea {
 		/* Basic */
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 15pt;
 			}
 
 		/* Spotlight */
