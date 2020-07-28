@@ -47,7 +47,7 @@ h3{
 input, button, select, textarea {
     border-radius: 10px !important;
 }
-.timetable{background: #f3f3f3;;padding: 5px 23px;}
+.timetable{background: #d1dbff;; padding: 5px 23px;}
 .timetable hr{
 	color:#fff;
 	padding-top: 29px;
@@ -411,7 +411,7 @@ margin-bottom:50px;
 .c2{background:#24c4db;}
 .c3{}
 .c4{background:#609cec;}
-.skill-home .icons {padding: 38px;width: 94px;height: 94px;color: #fff;font-size: 42px;font-size: 38px;text-align: center;-ms-border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;border-radius: 0;display: inline-table;color: #fbfbfb;background: #113290;border-radius: 50%;}
+.skill-home .icons {padding: 38px;width: 120px;height: 120px;color: #fff;font-size: 42px;font-size: 38px;text-align: center;-ms-border-radius: 50%;-moz-border-radius: 50%;-webkit-border-radius: 50%;border-radius: 0;display: inline-table;color: #fbfbfb;background: #113290;border-radius: 50%;}
 .skill-home h2 {
 padding-top: 20px;
 font-size: 36px;
@@ -1694,8 +1694,8 @@ header  .navbar-nav > li > a{
 
 }
 input.form-control, textarea.form-control {
-    background: #6563ef80;
-    border-color: #001742;
+    background: #acc0f780;
+    border-color: #ffffff;
 }
 .help-block ul li {
     color: red;
