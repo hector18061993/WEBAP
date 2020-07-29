@@ -3,9 +3,9 @@
 require_once "config.php";
  
 // Definimos las variables a utilizar 
-$nombre = $descripcion = $costoactual = "";
+$nombre =  $costoactual =  $imagen = "";
 
-$nombre_err = $descripcion_err = $costoactual_err  = "";
+$nombre_err = $costoactual_err = $imagen_err  = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -18,15 +18,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre = $input_nombre;
     }
 
-     // Validando el campo Nombre(s) 
-    $input_descripcion = trim($_POST["descripcion"]);
-    if(empty($input_descripcion)){
-        $descripcion_err = "Favor de ingresar la descripcion del Combustible.";     
-    } else{
-        $descripcion = $input_descripcion;
-    }
-
-
     // Validando el campo Email
     $input_costoactual = trim($_POST["costoactual"]);
     if(empty($input_costoactual)){
@@ -35,26 +26,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $costoactual = $input_costoactual;
     }
 
+    $input_imagen = trim($_POST["imagen"]);
+    if(empty($input_imagen)){
+        $imagen_err = "Favor de ingresar la imagen del Combustible.";     
+    } else{
+        $imagen = $input_imagen;
+    }
+
      
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($costoactual_err)){
+    if(empty($nombre_err) && empty($costoactual_err) && empty($imagen_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO t_combustible (nombre, descripcion, costoactual) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO t_combustible (nombre, costoactual, imagen) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_nombre, $param_descripcion, $param_costoactual);
+            mysqli_stmt_bind_param($stmt, "sss", $param_nombre, $param_costoactual, $param_imagen);
             
             // Set parameters
             $param_nombre = $nombre;
-            $param_descripcion = $descripcion;
             $param_costoactual = $costoactual;          
-            
+            $param_imagen = $imagen;
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: inicioc.php");
+                header("location: iniciocombustible.php");
                 exit();
             } else{
                 echo "Algo salio mal. Intentelo mas tarde.";
@@ -100,12 +97,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         
-                        <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion del tipo de Combustible:</label>
-                            <textarea name="descripcion" class="form-control"><?php echo $descripcion; ?></textarea>
-                            <span class="help-block"><?php echo $descripcion_err;?></span>
-                        </div>
-
                         <div class="form-group <?php echo (!empty($costoactual_err)) ? 'has-error' : ''; ?>">
                             <label>Costo Actual del tipo de Combustible:</label>
                             <form class="form-inline">
@@ -116,9 +107,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <input type="text" name="costoactual" class="form-control" id="exampleInputAmount" placeholder="COSTO DEL COMBUSTIBLE" value="<?php echo $costoactual; ?>">
                             <span class="help-block"><?php echo $costoactual_err;?></span>
                             </div>
-                       
+                            <br>
+
+                        <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
+                        <form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
+                        <label>Agregar imagen del combustible:</label>
+                        <p>Solo se aceptan formatos de imagen</p>
+                        <input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif" value="<?php echo $imagen; ?>">
+                        </p></form>
+                        <span class="help-block"><?php echo $imagen_err;?></span>
+                        </div>
+
+
                         <input type="submit" class="btn btn-primary" value="Agregar Nuevos Datos de Registro" >
-                        <a href="inicioc.php" class="btn btn-success">Regresar a Pantalla Principal</a>
+                        <a href="iniciocombustible.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

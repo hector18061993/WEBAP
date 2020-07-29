@@ -25,24 +25,19 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 
                 // Retrieve individual field value
                 $nombre = $row["nombre"];
-                $descripcion = $row["descripcion"];
                 $cx = $row["cx"];
                 $cy = $row["cy"];
-                $razonsocial = $row["razonsocial"];
-                $rfc = $row["rfc"];
-                $zona = $row["zona"];
-                $supervisor = $row["supervisor"];
-                $prioridad = $row["prioridad"];
                 $direccion = $row["direccion"];
                 $telefono = $row["telefono"];
                 $correo = $row["correo"];
                 $activo = $row["activo"];
                 $enservicio = $row["enservicio"];
+                $imagen = $row["imagen"];
 
                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: errore.php");
+                header("location: errorestacion.php");
                 exit();
             }
             
@@ -58,7 +53,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: errore.php");
+    header("location: errorestacion.php");
     exit();
 }
 ?>
@@ -88,36 +83,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Descripcion:</label>
-                        <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
-                    </div>
-                    <div class="form-group">
                         <label>Ubicacion Latitud:</label>
                         <p class="form-control-static"><?php echo $row["cx"]; ?></p>
                     </div>
                     <div class="form-group">
                         <label>Ubicacion Longitud:</label>
                         <p class="form-control-static"><?php echo $row["cy"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Razon Social:</label>
-                        <p class="form-control-static"><?php echo $row["razonsocial"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>RFC:</label>
-                        <p class="form-control-static"><?php echo $row["rfc"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Zona:</label>
-                        <p class="form-control-static"><?php echo $row["zona"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Supervisor:</label>
-                        <p class="form-control-static"><?php echo $row["supervisor"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Prioridad:</label>
-                        <p class="form-control-static"><?php echo $row["prioridad"]; ?></p>
                     </div>
                     <div class="form-group">
                         <label>Direccion:</label>
@@ -139,7 +110,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label>En servicio:</label>
                         <p class="form-control-static"><?php echo $row["enservicio"]; ?></p>
                     </div>
-                    <p><a href="inicioe.php" class="btn btn-warning">Volver a la Pagina Principal</a></p>
+                    <p><a href="inicioestacion.php" class="btn btn-warning">Volver a la Pagina Principal</a></p>
                 </div>
             </div>        
         </div>

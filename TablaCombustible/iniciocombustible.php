@@ -31,7 +31,7 @@
                 <div class="col-md-18">
                     <div class="page-header clearfix">
                         <h1 class="pull-left">Tipo de Combustibles Registrados en Sistema</h1><br><br>
-                        <br><a href="crearc.php" class="btn btn-warning pull-right">Agregar un Nuevo tipo de Combustible</a></div>
+                        <br><a href="crearcombustible.php" class="btn btn-warning pull-right">Agregar un Nuevo tipo de Combustible</a></div>
                     </div>
                     <?php
                     // Include config file
@@ -45,8 +45,8 @@
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>Nombre</th>";
-                                        echo "<th>Descripcion</th>";
                                         echo "<th>Costo actual</th>";
+                                        echo "<th>Imagen del Combustible</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -54,12 +54,12 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
-                                        echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>" . $row['costoactual'] . "</td>";
+                                        echo "<td>" . $row['imagen'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='verc.php?id=". $row['id'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificarc.php?id=". $row['id'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminarc.php?id=". $row['id'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='vercombustible.php?id=". $row['id'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarcombustible.php?id=". $row['id'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarcombustible.php?id=". $row['id'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

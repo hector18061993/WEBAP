@@ -20,7 +20,7 @@
                         <h1>Requerimiento invalido</h1>
                     </div>
                     <div class="alert alert-danger fade in">
-                        <p>Lo sentimos, por favor intentelo mas tarde <a href="inicioe.php" class="alert-link">Ir a</a> Regresar.</p>
+                        <p>Lo sentimos, por favor intentelo mas tarde <a href="inicioestacion.php" class="alert-link">Ir a</a> Regresar.</p>
                     </div>
                 </div>
             </div>        

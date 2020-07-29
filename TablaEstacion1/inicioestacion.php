@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h1 class="pull-left">Estaciones de Servicio Registradas</h1><br><br>
-                        <br><a href="creare.php" class="btn btn-warning pull-right">Agregar una nueva estacion</a></div>
+                        <br><a href="crearestacion.php" class="btn btn-warning pull-right">Agregar una nueva estacion</a></div>
                     </div>
                     <?php
                     // Include config file
@@ -45,13 +45,7 @@
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>Nombre</th>";
-                                        echo "<th>Descripcion</th>";
                                         echo "<th>Ubicacion</th>";
-                                        echo "<th>Razon Social</th>";
-                                        echo "<th>RFC</th>";
-                                        echo "<th>Zona</th>";
-                                        echo "<th>Supervisor</th>";
-                                        echo "<th>Prioridad</th>";
                                         echo "<th>Direccion</th>";
                                         echo "<th>Telefono</th>";
                                         echo "<th>Correo</th>";
@@ -64,23 +58,17 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
-                                        echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>" . $row['cx'],  
                                                       $row['cy'] . "</td>";
-                                        echo "<td>" . $row['razonsocial'] . "</td>";
-                                        echo "<td>" . $row['rfc'] . "</td>";
-                                        echo "<td>" . $row['zona'] . "</td>";
-                                        echo "<td>" . $row['supervisor'] . "</td>";
-                                        echo "<td>" . $row['prioridad'] . "</td>";
                                         echo "<td>" . $row['direccion'] . "</td>";
                                         echo "<td>" . $row['telefono'] . "</td>";
                                         echo "<td>" . $row['correo'] . "</td>";
                                         echo "<td>" . $row['activo'] . "</td>";
                                         echo "<td>" . $row['enservicio'] . "</td>";
                                         echo "<td>";
-                                        echo "<a href='vere.php?id=". $row['id'] ."' title='Ver estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificare.php?id=". $row['id'] ."' title='Actualizar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminare.php?id=". $row['id'] ."' title='Eliminar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                        echo "<a href='verestacion.php?id=". $row['id'] ."' title='Ver estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarestacion.php?id=". $row['id'] ."' title='Actualizar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarestacion.php?id=". $row['id'] ."' title='Eliminar estacion' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

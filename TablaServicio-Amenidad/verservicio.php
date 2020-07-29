@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM t_combustible WHERE id = ?";
+    $sql = "SELECT * FROM t_servicio WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -24,13 +24,13 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
+                $imagen = $row["imagen"];
                 $nombre = $row["nombre"];
                 $descripcion = $row["descripcion"];
-                $costoactual = $row["costoactual"];
                                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: errorpagina.php");
+                header("location: errorservicioamenidad.php");
                 exit();
             }
             
@@ -46,7 +46,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: errorpagina.php");
+    header("location: errorservicio.php");
     exit();
 }
 ?>
@@ -55,7 +55,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ver los Datos del Combustible</title>
+    <title>Ver los Horarios de las Estaciones</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -70,22 +70,24 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Ver los Datos del Combustible</h2>
+                        <h2>Ver los Servicios y/o Amenidades</h2>
                     </div>
                     <div class="form-group">
-                        <label>Nombre del tipo de Combustible:</label>
-                        <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Descripcion del tipo de Combustible:</label>
-                        <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Costo actual del Combustible:</label>
-                        <p class="form-control-static"><?php echo $row["costoactual"]; ?></p>
+                        <label>Imagen del Servicio y/o Amenidad:</label>
+                        <p class="form-control-static"><?php echo $row["imagen"]; ?></p>
                     </div>
                     
-                    <p><a href="inicioc.php" class="btn btn-info">Regresar a la Pantalla Principal</a></p>
+                    <div class="form-group">
+                        <label>Nombre del Servicio y/o Amenidad:</label>
+                        <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
+                    </div>
+
+                     <div class="form-group">
+                        <label>Descripcion del Servicio y/o Amenidad:</label>
+                        <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
+                    </div>
+                    
+                    <p><a href="inicioservicio.php" class="btn btn-info">Regresar a la Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>

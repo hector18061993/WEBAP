@@ -20,7 +20,7 @@
                         <h1>Requerimiento Invalido</h1>
                     </div>
                     <div class="alert alert-danger fade in">
-                    <p>Porfavor; Vuelva a intentarlo mas tarde <a href="inicioc.php" class="alert-link">Ir a anterior</a> Intentar de Nuevo.</p>
+                    <p>Porfavor; Vuelva a intentarlo mas tarde <a href="iniciocombustible.php" class="alert-link">Ir a anterior</a> Intentar de Nuevo.</p>
                     </div>
                 </div>
             </div>        
