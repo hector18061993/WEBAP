@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Shoppy an Admin Panel Category Flat Bootstrap Responsive Website Template | Portlet :: w3layouts</title>
+<title>Pantalla Combustibles | Sistema: Administrador AP </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -24,6 +24,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
 <!--//skycons-icons-->
+<!--pop up strat here-->
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+ <script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+																						
+						});
+				</script>
+<!--pop up end here-->
 </head>
 <body>	
 <div class="page-container">	
@@ -33,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Shoppy</h1> 
+									 <a href="index.html"> <h1>Combustibles</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
@@ -225,103 +244,197 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 
 		});
 		</script>
-		<!-- /script-for sticky-nav -->
+<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 <div class="inner-block">
-    <div class="portlet-grid-page">  
-    	<h2>Portlets</h2>	
-    	<div class="portlet-grid panel-primary"> 
-    		 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 1</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
-    		  </div> 
-    	</div>  	
-		<div class="portlet-grid panel-success">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 2</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
-    		  </div>
-		</div>
-		<div class="portlet-grid panel-info">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 3</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
-    		  </div>
-		</div>
-		<div class="portlet-grid panel-warning">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 4</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
-    		  </div>
-		</div>
-		<div class="portlet-grid panel-danger">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 5</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
-    		  </div>
-		</div>
-		<div class="portlet-grid panel-default">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Portlet 6</h3>
-		  </div>
-		  <div class="panel-body">
-		          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
-		  </div>
-		</div>
-		<div class="portlet-grid panel-primary"> 
-    		 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 7</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
-    		  </div> 
-    	</div>  	
-		<div class="portlet-grid panel-success">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 9</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
-    		  </div>
-		</div>
-		<div class="portlet-grid panel-info">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 10</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
-    		  </div>
-		</div>
-		<div class="portlet-grid panel-warning">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 11</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
-    		  </div>
-		</div>
-		<div class="portlet-grid panel-danger">
-			 <div class="panel-heading">
-    		      <h3 class="panel-title">Portlet 12</h3>
-    		  </div> 
-    		  <div class="panel-body">
-    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
-    		  </div>
-		</div>
-		<div class="clearfix"> </div>
-  </div>
+    <div class="price-block-main">
+    	<div class="prices-head">
+    		<h2>Prices</h2>
+    	</div>
+    	<div class="price-tables">
+	    		<div class="col-md-4 price-grid">
+	    		   <div class="price-block">
+		    			<div class="price-gd-top pric-clr1">
+		    				<h4>Basic</h4>
+		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 15days</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>1Gb Disk</li>
+			    					<li>10Gb Bandwidth Monthly</li>
+			    					<li>2 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr1">		    			   
+		    			   	  <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr2">
+		    				<h4>Professional</h4>
+		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 2 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>3Gb Disk</li>
+			    					<li>25Gb Bandwidth Monthly</li>
+			    					<li>5 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr2">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr3">
+		    				<h4>Premium</h4>
+		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 9 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>5Gb Disk</li>
+			    					<li>50Gb Bandwidth Monthly</li>
+			    					<li>10 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr3">
+		    			   	<a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+    	       </div>
+    	       
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr1">
+		    				<h4>Basic</h4>
+		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 15days</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>1Gb Disk</li>
+			    					<li>10Gb Bandwidth Monthly</li>
+			    					<li>2 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr1">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr2">
+		    				<h4>Professional</h4>
+		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 2 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>5Gb Disk</li>
+			    					<li>50Gb Bandwidth Monthly</li>
+			    					<li>5 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr2">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr3">
+		    				<h4>Premium</h4>
+		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 9 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>5Gb Disk</li>
+			    					<li>50Gb Bandwidth Monthly</li>
+			    					<li>10 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr3">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+    	  <div class="clearfix"> </div>
+    	  </div>
+   </div>
 </div>
 <!--inner block end here-->
+<!--pop-up-grid-->
+				                 <div id="popup">
+								 <div id="small-dialog" class="mfp-hide">
+									<div class="pop_up">
+									 	<div class="payment-online-form-left">
+											<form>
+												<h4><span class="shoppong-pay-1"> </span>Shipping Details</h4>
+												<ul>
+													<li><input class="text-box-dark" type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}"></li>
+													<li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
+												</ul>
+												<ul>
+													<li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
+													<li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
+												</ul>
+												<ul>
+													<li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
+													<li><input class="text-box-dark" type="text" value="Pin Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Pin Code';}"></li>
+													
+												</ul>
+												<div class="clear"></div>
+												<h4 class="paymenthead"><span class="payment"></span>Payment Details</h4>
+												<div class="clear"></div>										
+												<ul>
+													<li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
+													<li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
+												
+												</ul>
+												<ul>
+													<li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
+													<li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
+												
+												</ul>
+												<ul class="payment-sendbtns">
+													<li><input type="reset" value="Reset"></li>
+													<li><a href="#" class="order">Process order</a></li>
+												</ul>
+												<div class="clear"></div>
+											</form>
+										</div>
+						  			</div>
+								</div>
+								</div>
+								
+<!--pop-up-grid-->
 <!--copy rights start here-->
 <div class="copyrights">
 	 <p>© 2016 Shoppy. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
@@ -336,31 +449,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="#"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
+		        <li><a href="gerenteturno.php"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
+		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
+		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="maps.html"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
-                <li><a href="#"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
+                <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
 		        </li>
 		        
-                <li><a href="#"><i class="fa fa-car"></i><span>Productos</span></span></a>
+                <li><a href="productos.php"><i class="fa fa-car"></i><span>Productos</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
+		        <li><a href="prioridades.php"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
+		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        </li>
+
+		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
 		        </li>
 		        		         
 		      </ul>

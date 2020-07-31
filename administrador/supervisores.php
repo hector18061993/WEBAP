@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Gerentes en Turno | Sistema AP</title>
+<title>Pantalla Supervisores | Sistema: Administrador AP </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Shoppy</h1> 
+									 <a href="index.html"> <h1>Supervisores</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
@@ -228,12 +228,98 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 <div class="inner-block">
-    <div class="blank">
-    	<h2>Blank Page</h2>
-    	<div class="blankpage-main">
-    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-    	</div>
-    </div>
+    <div class="portlet-grid-page">  
+    	<h2>Portlets</h2>	
+    	<div class="portlet-grid panel-primary"> 
+    		 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 1</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div> 
+    	</div>  	
+		<div class="portlet-grid panel-success">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 2</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-info">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 3</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-warning">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 4</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-danger">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 5</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Portlet 6</h3>
+		  </div>
+		  <div class="panel-body">
+		          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+		  </div>
+		</div>
+		<div class="portlet-grid panel-primary"> 
+    		 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 7</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div> 
+    	</div>  	
+		<div class="portlet-grid panel-success">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 9</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-info">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 10</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-warning">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 11</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-danger">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 12</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div>
+		</div>
+		<div class="clearfix"> </div>
+  </div>
 </div>
 <!--inner block end here-->
 <!--copy rights start here-->
@@ -244,40 +330,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 </div>
 <!--slider menu-->
-   <div class="sidebar-menu">
+    <div class="sidebar-menu">
 		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span> 
 			      <!--<img id="logo" src="" alt="Logo"/>--> 
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="#"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
+		        <li><a href="gerenteturno.php"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
+		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
+		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 
-		        <li><a href="maps.html"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
-                <li><a href="#"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
+                <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
 		        </li>
 		        
-                <li><a href="#"><i class="fa fa-car"></i><span>Productos</span></span></a>
+                <li><a href="productos.php"><i class="fa fa-car"></i><span>Productos</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
+		        <li><a href="prioridades.php"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
+		        <li><a href="combustibles.php"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
 		        </li>
 
-		        <li><a href="estadisticas.html"><i class="fa fa-area-chart"></i><span>Estadisticas</span></span></a>
+		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
 		        </li>
 		        		         
 		      </ul>

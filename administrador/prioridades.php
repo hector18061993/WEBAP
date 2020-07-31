@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Shoppy an Admin Panel Category Flat Bootstrap Responsive Website Template | Product :: w3layouts</title>
+<title>Pantalla Prioridades | Sistema: Administrador AP </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Shoppy</h1> 
+									 <a href="index.html"> <h1>Prioridades</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
@@ -402,31 +402,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="#"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
+		        <li><a href="gerenteturno.php"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
+		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
+		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="maps.html"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
-                <li><a href="#"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
+                <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
 		        </li>
 		        
-                <li><a href="#"><i class="fa fa-car"></i><span>Productos</span></span></a>
+                <li><a href="productos.php"><i class="fa fa-car"></i><span>Productos</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
+		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
+		        <li><a href="combustibles.php"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        </li>
+
+		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
 		        </li>
 		        		         
 		      </ul>

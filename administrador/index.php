@@ -1,12 +1,8 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Sistema AP | Bieenvenido : Administrador</title>
+<title>Pantalla Principal | Sistema: Administrador AP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -110,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Administrador</h1> 
+									 <a href="index.html"> <h1>Inicio</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
@@ -271,7 +267,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul class="dropdown-menu drp-mnu">
 											<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
 											<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-											<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+											<li> <a href="login.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -764,46 +760,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--inner block end here-->
 <!--copy rights start here-->
 <div class="copyrights">
-	 <p>© 2020 Corporativo AP. Derechos reservados | Diseñado por:  <a href="http://gob-ti.com/" target="_blank">Gob TI</a> </p>
+	 <p>© 2020 Corporativo AP Derechos reservados| Diseñado por: <a href="http://w3layouts.com/" target="_blank">Gob-TI</a> </p>
 </div>	
 <!--COPY rights end here-->
 </div>
 </div>
 <!--slider menu-->
-    <div class="sidebar-menu">
+     <div class="sidebar-menu">
 		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span> 
 			      <!--<img id="logo" src="" alt="Logo"/>--> 
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="gerenteturno.html"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
+		        <li><a href="gerenteturno.php"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
 		        </li>
 
-		        <li><a href="servicios.html"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
+		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
 		        </li>
 
-		        <li><a href="supervisores.html"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
+		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="estaciones.html"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
-                <li><a href="noticias.html"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
+                <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
 		        </li>
 		        
-                <li><a href="productos.html"><i class="fa fa-car"></i><span>Productos</span></span></a>
+                <li><a href="productos.php"><i class="fa fa-car"></i><span>Productos</span></span></a>
 		        </li>
 
-		        <li><a href="prioridades.html"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
+		        <li><a href="prioridades.php"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
 		        </li>
 
-		        <li><a href="combustibles.html"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
+		        <li><a href="combustibles.php"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
 		        </li>
 
-		        <li><a href="horarios.html"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
 		        </li>
 
-		        <li><a href="estadisticas.html"><i class="fa fa-area-chart"></i><span>Estadisticas</span></span></a>
+		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
 		        </li>
 		        		         
 		      </ul>
@@ -812,6 +808,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="clearfix"> </div>
 </div>
 <!--slide bar menu end here-->
+
 <script>
 var toggle = true;
             

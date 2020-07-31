@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Estaciones | Sistema AP</title>
+<title>Pantalla Noticias | Sistema: Administrador AP </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -23,12 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-<!--mapcss-->
- <link rel="stylesheet" type="text/css" href="css/examples.css" />
-<!--js-->
-<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="js/gmaps.js"></script>
-<!--map-->
+<!--//skycons-icons-->
 </head>
 <body>	
 <div class="page-container">	
@@ -38,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Shoppy</h1> 
+									 <a href="index.html"> <h1>Noticias</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
@@ -233,178 +228,99 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 <div class="inner-block">
-<!--market updates updates-->
-	<div class="map-main-page">  	
-    	<h2>Maps</h2>
-    	    <div class="map-grid">
-			  <div class="map-system">
-		 		<div class="col-md-6 map-1">
-			    <div class="span11">
-			      <div id="map3"></div>
-			    </div>
-			
-				</div>
-				 <script type="text/javascript">
-			    var map;
-			    $(document).ready(function(){
-			      map = new GMaps({
-			        el: '#map3',
-			        lat: -12.043333,
-			        lng: -77.028333,
-			        mapTypeControlOptions: {
-			          mapTypeIds : ["hybrid", "roadmap", "satellite", "terrain", "osm", "cloudmade"]
-			        }
-			      });
-			      map.addMapType("osm", {
-			        getTileUrl: function(coord, zoom) {
-			          return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-			        },
-			        tileSize: new google.maps.Size(256, 256),
-			        name: "OpenStreetMap",
-			        maxZoom: 18
-			      });
-			      map.addMapType("cloudmade", {
-			        getTileUrl: function(coord, zoom) {
-			          return "http://b.tile.cloudmade.com/8ee2a50541944fb9bcedded5165f09d9/1/256/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-			        },
-			        tileSize: new google.maps.Size(256, 256),
-			        name: "CloudMade",
-			        maxZoom: 18
-			      });
-			      map.setMapTypeId("osm");
-			    });
-			  </script>
-			  	<div class="col-md-6 map-2">
-					
-			     <div class="span11">
-			      <div id="map"></div>
-			    </div>
-				   <script type="text/javascript">
-			    var map;
-			
-			    var getTile = function(coord, zoom, ownerDocument) {
-			      var div = ownerDocument.createElement('div');
-			      div.innerHTML = coord;
-			      div.style.width = this.tileSize.width + 'px';
-			      div.style.height = this.tileSize.height + 'px';
-			      div.style.background = 'rgba(250, 250, 250, 0.55)';
-			      div.style.fontFamily = 'Monaco, Andale Mono, Courier New, monospace';
-			      div.style.fontSize = '10';
-			      div.style.fontWeight = 'bolder';
-			      div.style.border = 'dotted 1px #aaa';
-			      div.style.textAlign = 'center';
-			      div.style.lineHeight = this.tileSize.height + 'px';
-			      return div;
-			    };
-			
-			    $(document).ready(function(){
-			      map = new GMaps({
-			        el: '#map',
-			        lat: -12.043333,
-			        lng: -77.028333
-			      });
-			      map.addOverlayMapType({
-			        index: 0,
-			        tileSize: new google.maps.Size(256, 256),
-			        getTile: getTile
-			      });
-			    });
-			   </script>
-					</div>
-			 		<div class="clearfix"> </div>
-			 		
-				</div>
-		 <div class="map-system">
-	 		<div class="col-md-6 map-1">
-	    <div class="span11">
-	      <div id="map2"></div>
+    <div class="portlet-grid-page">  
+    	<h2>Portlets</h2>	
+    	<div class="portlet-grid panel-primary"> 
+    		 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 1</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div> 
+    	</div>  	
+		<div class="portlet-grid panel-success">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 2</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
 		</div>
-		 <script type="text/javascript">
-	    var map;
-	    $(document).ready(function(){
-	      map = new GMaps({
-	        el: '#map2',
-	        lat: -12.043333,
-	        lng: -77.028333,
-	        zoomControl : true,
-	        zoomControlOpt: {
-	            style : 'SMALL',
-	            position: 'TOP_LEFT'
-	        },
-	        panControl : false,
-	        streetViewControl : false,
-	        mapTypeControl: false,
-	        overviewMapControl: false
-	      });
-	    });
-	  </script>
-	 		</div>
-	 		<div class="col-md-6 map-2">
-			
-	      <div class="span11">
-	        <div id="map1"></div>
-	      
+		<div class="portlet-grid panel-info">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 3</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-warning">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 4</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-danger">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 5</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Portlet 6</h3>
 		  </div>
-		    <script>
-	        $(function () {
-	          var map = new GMaps({
-	          el: "#map1",
-	          lat: 41.895465,
-	          lng: 12.482324,
-	          zoom: 5, 
-	          zoomControl : true,
-	          zoomControlOpt: {
-	            style : "SMALL",
-	            position: "TOP_LEFT"
-	          },
-	          panControl : true,
-	          streetViewControl : false,
-	          mapTypeControl: false,
-	          overviewMapControl: false
-	        });
-	        
-	        var styles = [
-	            {
-	              stylers: [
-	                { hue: "#00ffe6" },
-	                { saturation: -20 }
-	              ]
-	            }, {
-	                featureType: "road",
-	                elementType: "geometry",
-	                stylers: [
-	                    { lightness: 100 },
-	                    { visibility: "simplified" }
-	              ]
-	            }, {
-	                featureType: "road",
-	                elementType: "labels",
-	                stylers: [
-	                    { visibility: "off" }
-	              ]
-	            }
-	        ];
-	        
-	        map.addStyle({
-	            styledMapName:"Styled Map",
-	            styles: styles,
-	            mapTypeId: "map_style"  
-	        });
-	        
-	        map.setStyle("map_style");
-	      });
-	    </script>
-		
-			</div>
-	 		<div class="clearfix"> </div> 		
+		  <div class="panel-body">
+		          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+		  </div>
 		</div>
-	</div>
- 	<!--//grid-->
-       </div>  	
-
+		<div class="portlet-grid panel-primary"> 
+    		 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 7</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div> 
+    	</div>  	
+		<div class="portlet-grid panel-success">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 9</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-info">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 10</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-warning">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 11</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.
+    		  </div>
+		</div>
+		<div class="portlet-grid panel-danger">
+			 <div class="panel-heading">
+    		      <h3 class="panel-title">Portlet 12</h3>
+    		  </div> 
+    		  <div class="panel-body">
+    		  	  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam. 
+    		  </div>
+		</div>
+		<div class="clearfix"> </div>
+  </div>
 </div>
-<!--climate end here-->
-
 <!--inner block end here-->
 <!--copy rights start here-->
 <div class="copyrights">
@@ -420,31 +336,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="#"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
+		        <li><a href="gerenteturno.php"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
+		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
+		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="maps.html"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
-                <li><a href="#"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
+                <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 		        
-                <li><a href="#"><i class="fa fa-car"></i><span>Productos</span></span></a>
+                <li><a href="productos.php"><i class="fa fa-car"></i><span>Productos</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
+		        <li><a href="prioridades.php"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
+		        <li><a href="combustibles"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
 		        </li>
 
-		        <li><a href="#"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        </li>
+
+		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
 		        </li>
 		        		         
 		      </ul>
@@ -479,7 +398,8 @@ $(".sidebar-icon").click(function() {
 <script src="js/bootstrap.js"> </script>
 <!-- mother grid end here-->
 </body>
-</html>        
+</html>
 
-     
-                              
+
+                      
+						
