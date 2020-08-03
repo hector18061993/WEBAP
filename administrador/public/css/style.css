@@ -31,11 +31,6 @@ a:hover {
 	z-index: 1;
 	background:#fff;
 }
-
-.card{
-  width:40%;
-
-}
 /*--header main start here--*/
 .page-container {
   min-width: 1260px;
@@ -85,8 +80,8 @@ a:hover {
 
 .page-container.sidebar-collapsed .sidebar-icon {
    transition: all 300ms ease-in-out;
-	   color: #fff;
-    background:#68AE00;
+	   color: #000;
+    background:#f9f9f9;
 
 }
 .page-container.sidebar-collapsed .logo {
@@ -135,7 +130,7 @@ a:hover {
   top: 0px;
   left:0px;
   bottom: 0;
-  background-color:#202121;
+  background-color:#001e48;
   color: #aaabae;
   z-index: 999;
 }
@@ -237,12 +232,12 @@ a:hover {
     -webkit-border-radius: 3px;
     -moz-border-radius:3px;
     -o-border-radius:3px;
-    color: #FFF;
+    color: #000;
     background-clip: padding-box;
-    background:#68AE00;
+    background:#fbfbfb;
 }
 .sidebar-icon:hover{
-	 color: #FFF;
+	 color: #000;
 }
 .fa-html5 {
   color: #fff;
@@ -250,7 +245,7 @@ a:hover {
 }
 /*--nav strip start here--*/
 .header-main {
-    background:#fff;
+    background:#004fff3d;
     padding: 1em 2em;
     box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
@@ -269,7 +264,7 @@ a:hover {
 }
 .logo-name h1 {
     font-size: 2.5em;
-    color: #FC8213;
+    color: #002b56;
     margin: 0em;
     font-weight: 700;
     text-decoration: none;

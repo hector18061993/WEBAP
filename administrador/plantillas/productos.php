@@ -1,7 +1,12 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Sistema Web Administrador | Usuario Administrador: Estaciones</title>
+<title>Pantalla Productos de Estacion | Sistema: Administrador AP </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -18,12 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-<!--mapcss-->
- <link rel="stylesheet" type="text/css" href="css/examples.css" />
-<!--js-->
-<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="js/gmaps.js"></script>
-<!--map-->
+<!--//skycons-icons-->
 </head>
 <body>	
 <div class="page-container">	
@@ -33,11 +33,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Estaciones</h1> 
+									 <a href="index.html"> <h1>Productos</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
-							
+							<!--search-box-->
+								<div class="search-box">
+									<form>
+										<input type="text" placeholder="Search..." required="">	
+										<input type="submit" value="">					
+									</form>
+								</div><!--//end-search-box-->
 							<div class="clearfix"> </div>
 						 </div>
 						 <div class="header-right">
@@ -219,173 +225,169 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 
 		});
 		</script>
-		<!-- /script-for sticky-nav -->
+<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 <div class="inner-block">
-<!--market updates updates-->
-	<div class="map-main-page">  	
-    	<h2>Estaciones Registradas</h2>
-    	    <div class="map-grid">
-
-			  <div class="map-system">
-
-		 		<div class="col-md-6 map-1">
-			    <div class="span11">	    			    	 
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-      var customLabel = {
-        restaurant: {
-          label: 'R'
-        },
-        bar: {
-          label: 'B'
-        }
-      };
-
-        function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(19.250070, -99.580970),
-          zoom: 8
-        });
-        var infoWindow = new google.maps.InfoWindow;
-
-          // Change this depending on the name of your PHP or XML file
-          downloadUrl('resultado.php', function(data) {
-            var xml = data.responseXML;
-            var markers = xml.documentElement.getElementsByTagName('marker');
-            Array.prototype.forEach.call(markers, function(markerElem) {
-              var name = markerElem.getAttribute('name');
-              var address = markerElem.getAttribute('address');
-              var type = markerElem.getAttribute('type');
-              var point = new google.maps.LatLng(
-                  parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
-
-              var infowincontent = document.createElement('div');
-              var strong = document.createElement('strong');
-              strong.textContent = name
-              infowincontent.appendChild(strong);
-              infowincontent.appendChild(document.createElement('br'));
-
-              var text = document.createElement('text');
-              text.textContent = address
-              infowincontent.appendChild(text);
-              var icon = customLabel[type] || {};
-              var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                label: icon.label
-              });
-              //funcion a modificar para que aparezca la informacion del lado derecho
-              marker.addListener('click', function() {
-                infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
-              });
-            });
-          });
-        }
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-          }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
-      }
-
-      function doNothing() {}
-
-                    </script>
-                <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1aE0WtuiVtGobAxmOxnlDFAT_c1DM0ZE&callback=initMap">
-                </script>
-            </body>
-	  </div>
-	</div>
-               
-
-				 <script type="text/javascript">
-			    var map;
-			    $(document).ready(function(){
-			      map = new GMaps({
-			        el: '#map3',
-			        lat: -12.043333,
-			        lng: -77.028333,
-			        mapTypeControlOptions: {
-			          mapTypeIds : ["hybrid", "roadmap", "satellite", "terrain", "osm", "cloudmade"]
-			        }
-			      });
-			      map.addMapType("osm", {
-			        getTileUrl: function(coord, zoom) {
-			          return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-			        },
-			        tileSize: new google.maps.Size(256, 256),
-			        name: "OpenStreetMap",
-			        maxZoom: 18
-			      });
-			      map.addMapType("cloudmade", {
-			        getTileUrl: function(coord, zoom) {
-			          return "http://b.tile.cloudmade.com/8ee2a50541944fb9bcedded5165f09d9/1/256/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-			        },
-			        tileSize: new google.maps.Size(256, 256),
-			        name: "CloudMade",
-			        maxZoom: 18
-			      });
-			      map.setMapTypeId("osm");
-			    });
-			  </script>
-			  	<div class="col-md-6 map-2">
-					
-			     <div class="span11">
-			     	<h2>Informacion de la Estacion</h2>
-			     	<div class="card" style="width: 18rem;">
-
-			     		<div class="card" style="width: 18rem;">
-
-
-  <div class="card mb-3">
-  	<div class="img-fluid">
-  <img class="card-img-top" src="" alt="Card image cap">
-  </div>
-  <div class="card-body">
-    <h2 class="card-title">Informacion de la Estacion</h2>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-</div>
-</div>
-	</div>
-			</div>
-			<div class="clearfix"> </div>
-			 		
+    <div class="product-block">
+    	<div class="pro-head">
+    		<h2>Products</h2>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		    <div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro1.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro1.jpg" alt="">
+					</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>256 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		   <div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro2.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro2.jpg" alt="">
+					</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>156 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		<div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro3.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro3.jpg" alt="">
 				</div>
-		 <div class="map-system">
-	 		<div class="col-md-6 map-1">
-	 		</div>
-	 		<div class="col-md-6 map-2">
-			</div>
-	 		<div class="clearfix"> </div> 		
-		</div>
-	</div>
- 	<!--//grid-->
-       </div>  	
-
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>500 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		  <div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro4.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro4.jpg" alt="">
+					</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>188 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		 <div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro5.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro5.jpg" alt="">
+					</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>220 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		  <div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro6.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro6.jpg" alt="">
+					</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>160 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		<div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro7.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro7.jpg" alt="">
+				</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>350 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		<div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro8.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro8.jpg" alt="">
+				</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>500 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		<div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro9.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro9.jpg" alt="">
+				</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>256 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		<div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro10.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro10.jpg" alt="">
+				</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>548 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		<div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro3.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro3.jpg" alt="">
+				</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>390 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="col-md-3 product-grid">
+    		<div class="product-items">
+	    		<div class="project-eff">
+						<div id="nivo-lightbox-demo"> <p> <a href="images/pro12.jpg"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>     
+							<img class="img-responsive" src="images/pro12.jpg" alt="">
+				</div>
+	    		<div class="produ-cost">
+	    			<h4>Temporibus autem</h4>
+	    			<h5>150 $</h5>
+	    		</div>
+    		</div>
+    	</div>
+      <div class="clearfix"> </div>
+    </div>
 </div>
-<!--climate end here-->
-
 <!--inner block end here-->
+<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+			<script type="text/javascript" src="js/nivo-lightbox.min.js"></script>
+				<script type="text/javascript">
+				$(document).ready(function(){
+				    $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+				});
+				</script>
+
 <!--copy rights start here-->
 <div class="copyrights">
 	 <p>© 2016 Shoppy. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
@@ -394,7 +396,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 </div>
 <!--slider menu-->
-    <div class="sidebar-menu">
+     <div class="sidebar-menu">
 		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span> 
 			      <!--<img id="logo" src="" alt="Logo"/>--> 
 			  </a> </div>		  
@@ -409,14 +411,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
-		        </li>
+		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
                 <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
 		        </li>
 		        
-                <li><a href="productos.php"><i class="fa fa-car"></i><span>Productos</span></span></a>
+                <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 
 		        <li><a href="prioridades.php"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
@@ -463,7 +464,8 @@ $(".sidebar-icon").click(function() {
 <script src="js/bootstrap.js"> </script>
 <!-- mother grid end here-->
 </body>
-</html>        
+</html>
 
-     
-                              
+
+                      
+						

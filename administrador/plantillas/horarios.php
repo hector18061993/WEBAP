@@ -1,7 +1,12 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Sistema Web Administrador | Usuario Administrador: Estaciones</title>
+<title>Pantalla Horarios | Sistema: Administrador AP </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -18,12 +23,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-<!--mapcss-->
- <link rel="stylesheet" type="text/css" href="css/examples.css" />
-<!--js-->
-<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="js/gmaps.js"></script>
-<!--map-->
+<!--//skycons-icons-->
+<!--pop up strat here-->
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+ <script>
+						$(document).ready(function() {
+						$('.popup-with-zoom-anim').magnificPopup({
+							type: 'inline',
+							fixedContentPos: false,
+							fixedBgPos: true,
+							overflowY: 'auto',
+							closeBtnInside: true,
+							preloader: false,
+							midClick: true,
+							removalDelay: 300,
+							mainClass: 'my-mfp-zoom-in'
+						});
+																						
+						});
+				</script>
+<!--pop up end here-->
 </head>
 <body>	
 <div class="page-container">	
@@ -33,11 +52,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Estaciones</h1> 
+									 <a href="index.html"> <h1>Horarios</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
-							
+							<!--search-box-->
+								<div class="search-box">
+									<form>
+										<input type="text" placeholder="Search..." required="">	
+										<input type="submit" value="">					
+									</form>
+								</div><!--//end-search-box-->
 							<div class="clearfix"> </div>
 						 </div>
 						 <div class="header-right">
@@ -219,173 +244,197 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 
 		});
 		</script>
-		<!-- /script-for sticky-nav -->
+<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 <div class="inner-block">
-<!--market updates updates-->
-	<div class="map-main-page">  	
-    	<h2>Estaciones Registradas</h2>
-    	    <div class="map-grid">
-
-			  <div class="map-system">
-
-		 		<div class="col-md-6 map-1">
-			    <div class="span11">	    			    	 
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-      var customLabel = {
-        restaurant: {
-          label: 'R'
-        },
-        bar: {
-          label: 'B'
-        }
-      };
-
-        function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(19.250070, -99.580970),
-          zoom: 8
-        });
-        var infoWindow = new google.maps.InfoWindow;
-
-          // Change this depending on the name of your PHP or XML file
-          downloadUrl('resultado.php', function(data) {
-            var xml = data.responseXML;
-            var markers = xml.documentElement.getElementsByTagName('marker');
-            Array.prototype.forEach.call(markers, function(markerElem) {
-              var name = markerElem.getAttribute('name');
-              var address = markerElem.getAttribute('address');
-              var type = markerElem.getAttribute('type');
-              var point = new google.maps.LatLng(
-                  parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
-
-              var infowincontent = document.createElement('div');
-              var strong = document.createElement('strong');
-              strong.textContent = name
-              infowincontent.appendChild(strong);
-              infowincontent.appendChild(document.createElement('br'));
-
-              var text = document.createElement('text');
-              text.textContent = address
-              infowincontent.appendChild(text);
-              var icon = customLabel[type] || {};
-              var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                label: icon.label
-              });
-              //funcion a modificar para que aparezca la informacion del lado derecho
-              marker.addListener('click', function() {
-                infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
-              });
-            });
-          });
-        }
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-          }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
-      }
-
-      function doNothing() {}
-
-                    </script>
-                <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1aE0WtuiVtGobAxmOxnlDFAT_c1DM0ZE&callback=initMap">
-                </script>
-            </body>
-	  </div>
-	</div>
-               
-
-				 <script type="text/javascript">
-			    var map;
-			    $(document).ready(function(){
-			      map = new GMaps({
-			        el: '#map3',
-			        lat: -12.043333,
-			        lng: -77.028333,
-			        mapTypeControlOptions: {
-			          mapTypeIds : ["hybrid", "roadmap", "satellite", "terrain", "osm", "cloudmade"]
-			        }
-			      });
-			      map.addMapType("osm", {
-			        getTileUrl: function(coord, zoom) {
-			          return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-			        },
-			        tileSize: new google.maps.Size(256, 256),
-			        name: "OpenStreetMap",
-			        maxZoom: 18
-			      });
-			      map.addMapType("cloudmade", {
-			        getTileUrl: function(coord, zoom) {
-			          return "http://b.tile.cloudmade.com/8ee2a50541944fb9bcedded5165f09d9/1/256/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-			        },
-			        tileSize: new google.maps.Size(256, 256),
-			        name: "CloudMade",
-			        maxZoom: 18
-			      });
-			      map.setMapTypeId("osm");
-			    });
-			  </script>
-			  	<div class="col-md-6 map-2">
-					
-			     <div class="span11">
-			     	<h2>Informacion de la Estacion</h2>
-			     	<div class="card" style="width: 18rem;">
-
-			     		<div class="card" style="width: 18rem;">
-
-
-  <div class="card mb-3">
-  	<div class="img-fluid">
-  <img class="card-img-top" src="" alt="Card image cap">
-  </div>
-  <div class="card-body">
-    <h2 class="card-title">Informacion de la Estacion</h2>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
+    <div class="price-block-main">
+    	<div class="prices-head">
+    		<h2>Prices</h2>
+    	</div>
+    	<div class="price-tables">
+	    		<div class="col-md-4 price-grid">
+	    		   <div class="price-block">
+		    			<div class="price-gd-top pric-clr1">
+		    				<h4>Basic</h4>
+		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 15days</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>1Gb Disk</li>
+			    					<li>10Gb Bandwidth Monthly</li>
+			    					<li>2 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr1">		    			   
+		    			   	  <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr2">
+		    				<h4>Professional</h4>
+		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 2 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>3Gb Disk</li>
+			    					<li>25Gb Bandwidth Monthly</li>
+			    					<li>5 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr2">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr3">
+		    				<h4>Premium</h4>
+		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 9 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>5Gb Disk</li>
+			    					<li>50Gb Bandwidth Monthly</li>
+			    					<li>10 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr3">
+		    			   	<a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+    	       </div>
+    	       
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr1">
+		    				<h4>Basic</h4>
+		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 15days</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>1Gb Disk</li>
+			    					<li>10Gb Bandwidth Monthly</li>
+			    					<li>2 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr1">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr2">
+		    				<h4>Professional</h4>
+		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 2 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>5Gb Disk</li>
+			    					<li>50Gb Bandwidth Monthly</li>
+			    					<li>5 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr2">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="col-md-4 price-grid">
+	    			<div class="price-block">
+		    			<div class="price-gd-top pric-clr3">
+		    				<h4>Premium</h4>
+		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
+		    				<h5>Free for 9 months</h5>
+		    			</div>
+		    			<div class="price-gd-bottom">
+		    				<div class="price-list">
+			    				<ul>
+			    					<li>5Gb Disk</li>
+			    					<li>50Gb Bandwidth Monthly</li>
+			    					<li>10 Email Account</li>
+			    					<li>Unlimited Sub Domains</li>
+			    				</ul>
+		    				</div>
+		    			</div>
+		    		    <div class="price-selet pric-clr3">
+		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    			</div>
+		    		</div>
+	    		</div>
+    	  <div class="clearfix"> </div>
+    	  </div>
+   </div>
 </div>
-</div>
-</div>
-	</div>
-			</div>
-			<div class="clearfix"> </div>
-			 		
-				</div>
-		 <div class="map-system">
-	 		<div class="col-md-6 map-1">
-	 		</div>
-	 		<div class="col-md-6 map-2">
-			</div>
-	 		<div class="clearfix"> </div> 		
-		</div>
-	</div>
- 	<!--//grid-->
-       </div>  	
-
-</div>
-<!--climate end here-->
-
 <!--inner block end here-->
+<!--pop-up-grid-->
+				                 <div id="popup">
+								 <div id="small-dialog" class="mfp-hide">
+									<div class="pop_up">
+									 	<div class="payment-online-form-left">
+											<form>
+												<h4><span class="shoppong-pay-1"> </span>Shipping Details</h4>
+												<ul>
+													<li><input class="text-box-dark" type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}"></li>
+													<li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
+												</ul>
+												<ul>
+													<li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
+													<li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
+												</ul>
+												<ul>
+													<li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
+													<li><input class="text-box-dark" type="text" value="Pin Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Pin Code';}"></li>
+													
+												</ul>
+												<div class="clear"></div>
+												<h4 class="paymenthead"><span class="payment"></span>Payment Details</h4>
+												<div class="clear"></div>										
+												<ul>
+													<li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
+													<li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
+												
+												</ul>
+												<ul>
+													<li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
+													<li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
+												
+												</ul>
+												<ul class="payment-sendbtns">
+													<li><input type="reset" value="Reset"></li>
+													<li><a href="#" class="order">Process order</a></li>
+												</ul>
+												<div class="clear"></div>
+											</form>
+										</div>
+						  			</div>
+								</div>
+								</div>
+								
+<!--pop-up-grid-->
 <!--copy rights start here-->
 <div class="copyrights">
 	 <p>© 2016 Shoppy. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
@@ -409,8 +458,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
-		        </li>
+		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
                 <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
@@ -425,7 +473,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <li><a href="combustibles.php"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
 		        </li>
 
-		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 
 		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
@@ -463,7 +511,8 @@ $(".sidebar-icon").click(function() {
 <script src="js/bootstrap.js"> </script>
 <!-- mother grid end here-->
 </body>
-</html>        
+</html>
 
-     
-                              
+
+                      
+						

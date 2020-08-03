@@ -1,3 +1,8 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -279,7 +284,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 position: point,
                 label: icon.label
               });
-              //funcion a modificar para que aparezca la informacion del lado derecho
               marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);
                 infoWindow.open(map, marker);
@@ -348,33 +352,125 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  	<div class="col-md-6 map-2">
 					
 			     <div class="span11">
-			     	<h2>Informacion de la Estacion</h2>
-			     	<div class="card" style="width: 18rem;">
-
-			     		<div class="card" style="width: 18rem;">
-
-
-  <div class="card mb-3">
-  	<div class="img-fluid">
-  <img class="card-img-top" src="" alt="Card image cap">
-  </div>
-  <div class="card-body">
-    <h2 class="card-title">Informacion de la Estacion</h2>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-</div>
-</div>
-	</div>
-			</div>
-			<div class="clearfix"> </div>
+			      <div id="map"></div>
+			      
+			    </div>
+				   <script type="text/javascript">
+			    var map;
+			
+			    var getTile = function(coord, zoom, ownerDocument) {
+			      var div = ownerDocument.createElement('div');
+			      div.innerHTML = coord;
+			      div.style.width = this.tileSize.width + 'px';
+			      div.style.height = this.tileSize.height + 'px';
+			      div.style.background = 'rgba(250, 250, 250, 0.55)';
+			      div.style.fontFamily = 'Monaco, Andale Mono, Courier New, monospace';
+			      div.style.fontSize = '10';
+			      div.style.fontWeight = 'bolder';
+			      div.style.border = 'dotted 1px #aaa';
+			      div.style.textAlign = 'center';
+			      div.style.lineHeight = this.tileSize.height + 'px';
+			      return div;
+			    };
+			
+			    $(document).ready(function(){
+			      map = new GMaps({
+			        el: '#map',
+			        lat: -12.043333,
+			        lng: -77.028333
+			      });
+			      map.addOverlayMapType({
+			        index: 0,
+			        tileSize: new google.maps.Size(256, 256),
+			        getTile: getTile
+			      });
+			    });
+			   </script>
+					</div>
+			 		<div class="clearfix"> </div>
 			 		
 				</div>
 		 <div class="map-system">
 	 		<div class="col-md-6 map-1">
+	    <div class="span11">
+	      <div id="map2"></div>
+		</div>
+		 <script type="text/javascript">
+	    var map;
+	    $(document).ready(function(){
+	      map = new GMaps({
+	        el: '#map2',
+	        lat: -12.043333,
+	        lng: -77.028333,
+	        zoomControl : true,
+	        zoomControlOpt: {
+	            style : 'SMALL',
+	            position: 'TOP_LEFT'
+	        },
+	        panControl : false,
+	        streetViewControl : false,
+	        mapTypeControl: false,
+	        overviewMapControl: false
+	      });
+	    });
+	  </script>
 	 		</div>
 	 		<div class="col-md-6 map-2">
+			
+	      <div class="span11">
+	        <div id="map1"></div>
+	      
+		  </div>
+		    <script>
+	        $(function () {
+	          var map = new GMaps({
+	          el: "#map1",
+	          lat: 41.895465,
+	          lng: 12.482324,
+	          zoom: 5, 
+	          zoomControl : true,
+	          zoomControlOpt: {
+	            style : "SMALL",
+	            position: "TOP_LEFT"
+	          },
+	          panControl : true,
+	          streetViewControl : false,
+	          mapTypeControl: false,
+	          overviewMapControl: false
+	        });
+	        
+	        var styles = [
+	            {
+	              stylers: [
+	                { hue: "#00ffe6" },
+	                { saturation: -20 }
+	              ]
+	            }, {
+	                featureType: "road",
+	                elementType: "geometry",
+	                stylers: [
+	                    { lightness: 100 },
+	                    { visibility: "simplified" }
+	              ]
+	            }, {
+	                featureType: "road",
+	                elementType: "labels",
+	                stylers: [
+	                    { visibility: "off" }
+	              ]
+	            }
+	        ];
+	        
+	        map.addStyle({
+	            styledMapName:"Styled Map",
+	            styles: styles,
+	            mapTypeId: "map_style"  
+	        });
+	        
+	        map.setStyle("map_style");
+	      });
+	    </script>
+		
 			</div>
 	 		<div class="clearfix"> </div> 		
 		</div>
