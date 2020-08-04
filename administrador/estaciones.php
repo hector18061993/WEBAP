@@ -248,7 +248,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: new google.maps.LatLng(19.250070, -99.580970),
-          zoom: 8
+          zoom: 6
         });
         var infoWindow = new google.maps.InfoWindow;
 
@@ -256,6 +256,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           downloadUrl('resultado.php', function(data) {
             var xml = data.responseXML;
             var markers = xml.documentElement.getElementsByTagName('marker');
+
             Array.prototype.forEach.call(markers, function(markerElem) {
               var name = markerElem.getAttribute('name');
               var address = markerElem.getAttribute('address');
@@ -279,6 +280,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 position: point,
                 label: icon.label
               });
+
               //funcion a modificar para que aparezca la informacion del lado derecho
               marker.addListener('click', function() {
                 infoWindow.setContent(infowincontent);
@@ -347,28 +349,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  </script>
 			  	<div class="col-md-6 map-2">
 					
-			     <div class="span11">
-			     	<h2>Informacion de la Estacion</h2>
-			     	<div class="card" style="width: 18rem;">
+			     <div class="span11">			     	
 
-			     		<div class="card" style="width: 18rem;">
+			     		<div class="panel panel-info">
+                        <div class="panel-heading">
+                        <h3 class="panel-title">Informacion de las Estaciones</h3>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">Nombre de la Estacion:</li>
+                            <li class="list-group-item">Direccion de la Estacion:</li>
+                            <li class="list-group-item">Servicios de la Estacion:</li>
+                            <li class="list-group-item">Gerente de la Estacion:</li>
+                            <li class="list-group-item">Horarios de la Estaciuon</li>
+                        <div class="panel-body">
+                                            
+                        </div>
 
-
-  <div class="card mb-3">
-  	<div class="img-fluid">
-  <img class="card-img-top" src="" alt="Card image cap">
-  </div>
-  <div class="card-body">
-    <h2 class="card-title">Informacion de la Estacion</h2>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </div>
-	</div>
-			</div>
-			<div class="clearfix"> </div>
+   	<div class="clearfix"> </div>
 			 		
 				</div>
 		 <div class="map-system">
