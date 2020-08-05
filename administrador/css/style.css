@@ -8,11 +8,24 @@ h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
-html, body{
+html{
   font-family: 'Work Sans', sans-serif;
    font-size: 100%;
    background:#fff; 
 }
+
+hr {
+  height: 5px;
+  background-color: #ff0b0b;
+}
+
+body{
+  font-family: 'Work Sans', sans-serif;
+   font-size: 100%;
+   background:#fff; 
+}
+
+
 a {
   text-decoration: none;
 }
@@ -269,7 +282,7 @@ a:hover {
 }
 .logo-name h1 {
     font-size: 2.5em;
-    color: #FC8213;
+    color: #e63131;
     margin: 0em;
     font-weight: 700;
     text-decoration: none;
@@ -815,8 +828,8 @@ ul.dropdown-menu.drp-mnu li {
 /*--header strip end here-*/
 /*inner-block--*/
 .inner-block {
-    padding: 8em 2em 4em 2em;
-    background: #fafafa;
+    padding: 4em 2em 4em 2em;
+    background: #03065a;
 }
 .market-update-block {
     padding: 2em 2em;

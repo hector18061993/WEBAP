@@ -14,11 +14,10 @@ class puntosDao
         $titulo = mysqli_real_escape_string($con,$titulo);
         $cx = mysqli_real_escape_string($con,$cx);
         $cy = mysqli_real_escape_string($con,$cy);
-        $direccion = mysqli_real_escape_string($con,$direccion);
-        $telefono = mysqli_real_escape_string($con,$telefono);
+        
 
-        $q = "insert into puntos (Titulo, cx, cy, direccion, telefono)".
-             "values ('".addslashes($titulo)."','".addslashes($cx)."','".addslashes($cy)."','".addslashes($direccion)."','".addslashes($telefono)."')";
+        $q = "insert into estaciones (Titulo, cx, cy)".
+             "values ('".addslashes($titulo)."','".addslashes($cx)."','".addslashes($cy)."')";
         $rpta = mysqli_query($con, $q);
         mysqli_close($con);
         if($rpta==1)
@@ -32,7 +31,7 @@ class puntosDao
     }
     public function listar_todo()
     {
-        $q = "select * from puntos";
+        $q = "select * from estaciones";
         $con = conex::con();
         $rpta = mysqli_query($con, $q);
         mysqli_close($con);
@@ -46,7 +45,7 @@ class puntosDao
     {
         $con = conex::con();
         $idPunto = mysqli_real_escape_string($con,$idPunto);
-        $q = "delete from puntos where IdPunto = ".(int)$idPunto;
+        $q = "delete from estaciones where IdPunto = ".(int)$idPunto;
         $rpta = mysqli_query($con, $q);
         mysqli_close($con);
         if($rpta==1)
@@ -65,7 +64,8 @@ class puntosDao
         $titulo = mysqli_real_escape_string($con,$titulo);
         $cx = mysqli_real_escape_string($con,$cx);
         $cy = mysqli_real_escape_string($con,$cy);
-        $q = "update puntos set Titulo='".$titulo."', cx='".$cx."' , cy ='".$cy."' where IdPunto =".$Id;
+        
+        $q = "update estaciones set Titulo='".$titulo."', cx='".$cx."' , cy ='".$cy."' where IdPunto =".$Id;
         $rpta = mysqli_query($con, $q);
         mysqli_close($con);
         if($rpta==1)
@@ -84,7 +84,7 @@ class puntosDao
         //SEGURIDAD
         $p = mysqli_real_escape_string($con,$p);
         
-        $q = "select * from puntos WHERE Titulo LIKE '%".$p."%'";
+        $q = "select * from estaciones WHERE Titulo LIKE '%".$p."%'";
         
         $rpta = mysqli_query($con, $q);
         mysqli_close($con);
