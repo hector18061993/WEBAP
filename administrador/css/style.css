@@ -14,6 +14,13 @@ html{
    background:#fff; 
 }
 
+.verticalLine { 
+  border-left: thick solid #ff0000; 
+
+}
+
+
+
 hr {
   height: 5px;
   background-color: #ff0b0b;
