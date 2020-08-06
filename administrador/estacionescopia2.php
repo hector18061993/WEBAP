@@ -60,7 +60,7 @@ if(isset($_POST["IdPunto"]) && !empty($_POST["IdPunto"])){
             
             if(mysqli_stmt_execute($stmt)){
                 
-                header("location: inicioestacion.php");
+                header("location: 404.php");
                 exit();
             } else{
                 echo "Ocurrio un error. Intentelo mas tarde.";
