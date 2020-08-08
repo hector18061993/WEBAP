@@ -1,8 +1,3 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -27,21 +22,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--pop up strat here-->
 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
  <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>
+					
+</script>
 <!--pop up end here-->
 </head>
 <body>	
@@ -52,111 +34,91 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Combustibles</h1> 
+									 <a href="index.html"> <h2>Combustibles</h2> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
 							<!--search-box-->
-								<div class="search-box">
-									<form>
-										<input type="text" placeholder="Search..." required="">	
-										<input type="submit" value="">					
-									</form>
-								</div><!--//end-search-box-->
+								
+								<!--//end-search-box-->
 							<div class="clearfix"> </div>
 						 </div>
 						 <div class="header-right">
-							<div class="profile_details_left"><!--notifications of menu start -->
+							<div class="profile_details_left">
+								<!--fFUNCIONALIDADES EXCLUIDAS DEL ADMINISTRADOR-->
 								<ul class="nofitications-dropdown">
 									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
 										<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
-													<h3>You have 3 new messages</h3>
+													<h3></h3>
 												</div>
 											</li>
 											<li><a href="#">
 											   <div class="user_img"><img src="images/p4.png" alt=""></div>
 											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
+											</div>
 											   <div class="clearfix"></div>	
 											</a></li>
 											<li class="odd"><a href="#">
 												<div class="user_img"><img src="images/p2.png" alt=""></div>
 											   <div class="notification_desc">
-												<p>Lorem ipsum dolor </p>
-												<p><span>1 hour ago</span></p>
-												</div>
+											</div>
 											  <div class="clearfix"></div>	
 											</a></li>
 											<li><a href="#">
 											   <div class="user_img"><img src="images/p3.png" alt=""></div>
 											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
-												</div>
+										 	</div>
 											   <div class="clearfix"></div>	
 											</a></li>
 											<li>
 												<div class="notification_bottom">
-													<a href="#">See all messages</a>
+													<a href="#"></a>
 												</div> 
 											</li>
 										</ul>
 									</li>
 									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
 										<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
-													<h3>You have 3 new notification</h3>
+													<h3></h3>
 												</div>
 											</li>
 											<li><a href="#">
 												<div class="user_img"><img src="images/p5.png" alt=""></div>
 											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
 												</div>
 											  <div class="clearfix"></div>	
 											 </a></li>
 											 <li class="odd"><a href="#">
 												<div class="user_img"><img src="images/p6.png" alt=""></div>
 											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
 												</div>
 											   <div class="clearfix"></div>	
 											 </a></li>
 											 <li><a href="#">
 												<div class="user_img"><img src="images/p7.png" alt=""></div>
 											   <div class="notification_desc">
-												<p>Lorem ipsum dolor</p>
-												<p><span>1 hour ago</span></p>
 												</div>
 											   <div class="clearfix"></div>	
 											 </a></li>
 											 <li>
 												<div class="notification_bottom">
-													<a href="#">See all notifications</a>
+													<a href="#"></a>
 												</div> 
 											</li>
 										</ul>
 									</li>	
 									<li class="dropdown head-dpdn">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">9</span></a>
 										<ul class="dropdown-menu">
 											<li>
 												<div class="notification_header">
-													<h3>You have 8 pending task</h3>
 												</div>
 											</li>
 											<li><a href="#">
 												<div class="task-info">
-													<span class="task-desc">Database update</span><span class="percentage">40%</span>
 													<div class="clearfix"></div>	
 												</div>
 												<div class="progress progress-striped active">
@@ -165,7 +127,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</a></li>
 											<li><a href="#">
 												<div class="task-info">
-													<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
 												   <div class="clearfix"></div>	
 												</div>
 												<div class="progress progress-striped active">
@@ -174,7 +135,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</a></li>
 											<li><a href="#">
 												<div class="task-info">
-													<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
 													<div class="clearfix"></div>	
 												</div>
 											   <div class="progress progress-striped active">
@@ -183,7 +143,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</a></li>
 											<li><a href="#">
 												<div class="task-info">
-													<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
 												   <div class="clearfix"></div>	
 												</div>
 												<div class="progress progress-striped active">
@@ -192,7 +151,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</a></li>
 											<li>
 												<div class="notification_bottom">
-													<a href="#">See all pending tasks</a>
+													<a href="#"></a>
 												</div> 
 											</li>
 										</ul>
@@ -200,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</ul>
 								<div class="clearfix"> </div>
 							</div>
-							<!--notification menu end -->
+							<!--FUNCIONALIDADES EXCLUIDAS DEL ADMINISTRADOR -->
 							<div class="profile_details">		
 								<ul>
 									<li class="dropdown profile_details_drop">
@@ -208,7 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="profile_img">	
 												<span class="prfil-img"><img src="images/p1.png" alt=""> </span> 
 												<div class="user-name">
-													<p>Malorum</p>
+													<p>
 													<span>Administrator</span>
 												</div>
 												<i class="fa fa-angle-down lnr"></i>
@@ -217,9 +176,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>	
 										</a>
 										<ul class="dropdown-menu drp-mnu">
-											<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-											<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-											<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+											
+											<li> <a href="#"><i class="fa fa-sign-out"></i>SALIR</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -248,140 +206,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--inner block start here-->
 <div class="inner-block">
     <div class="price-block-main">
-    	<div class="prices-head">
-    		<h2>Prices</h2>
+    	<div class="text-head">
+    		<h2>lISTADO DE COMBUSTIBLES</h2>
     	</div>
-    	<div class="price-tables">
-	    		<div class="col-md-4 price-grid">
-	    		   <div class="price-block">
-		    			<div class="price-gd-top pric-clr1">
-		    				<h4>Basic</h4>
-		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 15days</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>1Gb Disk</li>
-			    					<li>10Gb Bandwidth Monthly</li>
-			    					<li>2 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr1">		    			   
-		    			   	  <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr2">
-		    				<h4>Professional</h4>
-		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 2 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>3Gb Disk</li>
-			    					<li>25Gb Bandwidth Monthly</li>
-			    					<li>5 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr2">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr3">
-		    				<h4>Premium</h4>
-		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 9 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>5Gb Disk</li>
-			    					<li>50Gb Bandwidth Monthly</li>
-			    					<li>10 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
+    			
 		    		    <div class="price-selet pric-clr3">
-		    			   	<a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-    	       </div>
-    	       
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr1">
-		    				<h4>Basic</h4>
-		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 15days</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>1Gb Disk</li>
-			    					<li>10Gb Bandwidth Monthly</li>
-			    					<li>2 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr1">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr2">
-		    				<h4>Professional</h4>
-		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 2 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>5Gb Disk</li>
-			    					<li>50Gb Bandwidth Monthly</li>
-			    					<li>5 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr2">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr3">
-		    				<h4>Premium</h4>
-		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 9 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>5Gb Disk</li>
-			    					<li>50Gb Bandwidth Monthly</li>
-			    					<li>10 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr3">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
+		    		    	<table class="egt">
+                                <tr>
+                                    <th scope="row">Día</th>
+                                    <th>Hoy</th>
+                                    <th>Mañana</th>
+                                    <th>Martes</th>
+                                </tr>
+                            <tr>
+                                <th>Condición</th>
+                                <td>Soleado</td>
+                                <td>Mayormente soleado</td>
+                                <td>Parcialmente nublado</td>
+                            </tr>
+                                <tr>
+                                <th>Temperatura</th>
+                                <td>19°C</td>
+                                <td>17°C</td>
+                                <td>12°C</td>
+                                </tr>
+                            <tr>
+                                <th>Vientos</th>
+                                <td>E 13 km/h</td>
+                                <td>E 11 km/h</td>
+                                <td>S 16 km/h</td>
+                            </tr>
+                        </table>
+	    			   	 
+
+
 		    			</div>
 		    		</div>
 	    		</div>
@@ -391,42 +249,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!--inner block end here-->
 <!--pop-up-grid-->
-				                 <div id="popup">
-								 <div id="small-dialog" class="mfp-hide">
-									<div class="pop_up">
-									 	<div class="payment-online-form-left">
-											<form>
-												<h4><span class="shoppong-pay-1"> </span>Shipping Details</h4>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}"></li>
-													<li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
-												</ul>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
-													<li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
-												</ul>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
-													<li><input class="text-box-dark" type="text" value="Pin Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Pin Code';}"></li>
-													
-												</ul>
-												<div class="clear"></div>
-												<h4 class="paymenthead"><span class="payment"></span>Payment Details</h4>
-												<div class="clear"></div>										
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
-													<li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
-												
-												</ul>
-												<ul>
-													<li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
-													<li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
-												
-												</ul>
-												<ul class="payment-sendbtns">
-													<li><input type="reset" value="Reset"></li>
-													<li><a href="#" class="order">Process order</a></li>
-												</ul>
 												<div class="clear"></div>
 											</form>
 										</div>
