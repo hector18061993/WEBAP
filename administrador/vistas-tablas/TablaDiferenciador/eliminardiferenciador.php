@@ -1,6 +1,6 @@
 <?php
 // Process delete operation after confirmation
-if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
+if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Include config file
     require_once "config.php";
     
@@ -9,10 +9,10 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "iddiferenciador", $param_iddiferenciador);
+        mysqli_stmt_bind_param($stmt, "i", $param_id);
         
         // Set parameters
-        $param_iddiferenciador = trim($_POST["iddiferenciador"]);
+        $param_id = trim($_POST["id"]);
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
@@ -31,7 +31,7 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
     mysqli_close($link);
 } else{
     // Check existence of id parameter
-    if(empty(trim($_GET["iddiferenciador"]))){
+    if(empty(trim($_GET["id"]))){
         // URL doesn't contain id parameter. Redirect to error page
         header("location: errordiferenciador.php");
         exit();
@@ -62,7 +62,7 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger fade in">
-                            <input type="hidden" name="id" value="<?php echo trim($_GET["iddiferenciador"]); ?>"/>
+                            <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
                             <p>¿Desea borrar este registro del sistema?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">

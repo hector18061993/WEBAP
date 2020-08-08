@@ -1,6 +1,6 @@
 <?php
 // Check existence of id parameter before processing further
-if(isset($_GET["iddiferenciador"]) && !empty(trim($_GET["iddiferenciador"]))){
+if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     // Include config file
     require_once "config.php";
     
@@ -12,7 +12,7 @@ if(isset($_GET["iddiferenciador"]) && !empty(trim($_GET["iddiferenciador"]))){
         mysqli_stmt_bind_param($stmt, "i", $param_id);
         
         // Set parameters
-        $param_iddioferenciador = trim($_GET["iddiferenciador"]);
+        $param_id = trim($_GET["id"]);
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
@@ -87,7 +87,7 @@ if(isset($_GET["iddiferenciador"]) && !empty(trim($_GET["iddiferenciador"]))){
                         <p class="form-control-static"><?php echo $row["liga"]; ?></p>
                     </div>
                     
-                    <p><a href="iniciocombustible.php" class="btn btn-info">Regresar a la Pantalla Principal</a></p>
+                    <p><a href="iniciodiferenciador.php" class="btn btn-info">Regresar a la Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>

@@ -7,9 +7,9 @@ $imagen =  $descripcion  =  $liga = "";
 $imagen_err = $descripcion_err = $liga_err = "";
  
 // Processing form data when form is submitted
-if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
+if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Get hidden input value
-    $id = $_POST["iddiferenciador"];
+    $id = $_POST["id"];
     
     // Validate name
     $input_imagen = trim($_POST["imagen"]);
@@ -49,7 +49,7 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
             $param_imagen = $imagen;
             $param_descripcion = $descripcion;
             $param_liga = $liga;
-            $param_iddiferenciador = $iddiferenciador;
+            $param_id = $id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -69,18 +69,18 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
     mysqli_close($link);
 } else{
     // Check existence of id parameter before processing further
-    if(isset($_GET["iddiferenciador"]) && !empty(trim($_GET["iddiferenciador"]))){
+    if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         // Get URL parameter
-        $iddiferenciador =  trim($_GET["iddiferenciador"]);
+        $id =  trim($_GET["id"]);
         
         // Prepare a select statement
         $sql = "SELECT * FROM diferenciador WHERE iddiferenciador = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "i", $param_iddiferenciador);
+            mysqli_stmt_bind_param($stmt, "i", $param_id);
             
             // Set parameters
-            $param_iddiferenciador = $iddiferenciador;
+            $param_id = $id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -94,11 +94,11 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
                     // Retrieve individual field value
                     $imagen = $row["imagen"];
                     $descripcion = $row["descripcion"];
-                    
+                    $liga = $row["liga"];
                     
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
-                    header("location: errorcombustible.php");
+                    header("location: errordiferenciador.php");
                     exit();
                 }
                 
@@ -114,7 +114,7 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
         mysqli_close($link);
     }  else{
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: errorcombustible.php");
+        header("location: errordiferenciador.php");
         exit();
     }
 }
@@ -145,40 +145,27 @@ if(isset($_POST["iddiferenciador"]) && !empty($_POST["iddiferenciador"])){
                     <p>Edite los campos que desee cambiar, posteriormente guarde los cambios.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
-                        <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
-                            <label>Nuevo nombre del Tipo de Combustible:</label>
-                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
-                            <span class="help-block"><?php echo $nombre_err;?></span>
-                        </div>
-
-                        
-                       <div class="form-group <?php echo (!empty($costoactual_err)) ? 'has-error' : ''; ?>">
-                            <label>Nuevo costo Actual del tipo de Combustible:</label>
-                            <form class="form-inline">
-                            <div class="form-group">
-                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                            <div class="input-group">
-                            <div class="input-group-addon">$</div>
-                            <input type="text" name="costoactual" class="form-control" id="exampleInputAmount" placeholder="NUEVO COSTO DEL COMBUSTIBLE" value="<?php echo $costoactual; ?>">
-                            <span class="help-block"><?php echo $costoactual_err;?></span>
-                            </div>
-
-                            <br>
-
                         <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
-                        <form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
-                        <label>Agregar imagen del combustible:</label>
-                        <p>Solo se aceptan formatos de imagen</p>
-                        <input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif" value="<?php echo $imagen; ?>">
-                        </p></form>
-                        <span class="help-block"><?php echo $imagen_err;?></span>
+                            <label>Imagen del diferenciador:</label>
+                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="imagen" class="form-control" value="<?php echo $imagen; ?>">
+                            <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
 
+                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
+                            <label>Descripcion del diferenciador:</label>
+                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <span class="help-block"><?php echo $descripcion_err;?></span>
+                        </div>
 
+                        <div class="form-group <?php echo (!empty($liga_err)) ? 'has-error' : ''; ?>">
+                            <label>Liga del diferenciador:</label>
+                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="liga" class="form-control" value="<?php echo $liga; ?>">
+                            <span class="help-block"><?php echo $liga_err;?></span>
+                        </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar los datos del registro">
-                        <a href="iniciocombustible.php" class="btn btn-success">Regresar a Pantalla Principal</a>
+                        <a href="iniciodiferenciador.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

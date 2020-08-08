@@ -110,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
 
                         <input type="submit" class="btn btn-primary" value="Agregar Nuevos Datos de Registro" >
-                        <a href="iniciocombustible.php" class="btn btn-success">Regresar a Pantalla Principal</a>
+                        <a href="iniciodiferenciador.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        
