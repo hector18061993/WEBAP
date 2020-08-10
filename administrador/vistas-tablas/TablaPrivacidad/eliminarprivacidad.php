@@ -5,7 +5,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     require_once "config.php";
     
     // Prepare a delete statement
-    $sql = "DELETE FROM combustible WHERE idcombustible = ?";
+    $sql = "DELETE FROM privacidad WHERE idprivacidad = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -17,7 +17,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records deleted successfully. Redirect to landing page
-            header("location: iniciocombustible.php");
+            header("location: inicioprivacidad.php");
             exit();
         } else{
             echo "Oops! A ocurrido un error. Intentelo de nuevo mas tarde.";
@@ -33,7 +33,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check existence of id parameter
     if(empty(trim($_GET["id"]))){
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: errorcombustible.php");
+        header("location: errorprivacidad.php");
         exit();
     }
 }
@@ -65,7 +65,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <p>¿Desea borrar este registro del sistema?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="iniciocombustible.php" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> No </a>
+                                <a href="inicioprivacidad.php" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> No </a>
                             </p>
                         </div>
                     </form>

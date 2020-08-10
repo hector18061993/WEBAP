@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$nombre =  $costoactual  =  $imagen = "";
-$nombre_err = $costoactual_err = $imagen_err = "";
+$nombre = $imagen = $costo = "";
+$nombre_err = $imagen_err = $costo_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -20,35 +20,35 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 
     // Validate email
-    $input_costoactual = trim($_POST["costoactual"]);
-    if(empty($input_costoactual)){
-        $costoactual_err = "Favor de ingresar el nuevo costo del Combustible.";     
-    } else{
-        $costoactual = $input_costoactual;
-    }
-
     $input_imagen = trim($_POST["imagen"]);
     if(empty($input_imagen)){
-        $imagen_err = "Favor de ingresar la imagen de la Estacion.";     
+        $imagen_err = "Favor de ingresar el nuevo costo del Combustible.";     
     } else{
         $imagen = $input_imagen;
     }
 
+    $input_costo = trim($_POST["costo"]);
+    if(empty($input_costo)){
+        $costo_err = "Favor de ingresar la imagen de la Estacion.";     
+    } else{
+        $costo = $input_costo;
+    }
+
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($costoactual_err)  && empty($imagen_err)){
+    if(empty($nombre_err) && empty($imagen_err) && empty($costo_err)){
 
         // Prepare an update statement
-        $sql = "UPDATE t_combustible SET nombre=?, costoactual=?, imagen=? WHERE id=?";
+        $sql = "UPDATE combustible SET nombre=?, imagen=?, costo=? WHERE idcombustible=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssi", $param_nombre, 
-                $param_costoactual, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssi", $param_nombre, $param_imagen, 
+                                                  $param_costo, $param_id);
             
             // Set parameters
             $param_nombre = $nombre;
-            $param_costoactual = $costoactual;
             $param_imagen = $imagen;
+            $param_costo = $costo;
             $param_id = $id;
             
             // Attempt to execute the prepared statement
@@ -74,7 +74,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM t_combustible WHERE id = ?";
+        $sql = "SELECT * FROM combustible WHERE idcombustible = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -93,7 +93,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     
                     // Retrieve individual field value
                     $nombre = $row["nombre"];
-                    $costoactual = $row["costoactual"];
+                    $imagen = $row["imagen"];
+                    $costo = $row["costo"];
                     
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
@@ -150,28 +151,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
 
-                        
-                       <div class="form-group <?php echo (!empty($costoactual_err)) ? 'has-error' : ''; ?>">
-                            <label>Nuevo costo Actual del tipo de Combustible:</label>
-                            <form class="form-inline">
-                            <div class="form-group">
-                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                            <div class="input-group">
-                            <div class="input-group-addon">$</div>
-                            <input type="text" name="costoactual" class="form-control" id="exampleInputAmount" placeholder="NUEVO COSTO DEL COMBUSTIBLE" value="<?php echo $costoactual; ?>">
-                            <span class="help-block"><?php echo $costoactual_err;?></span>
-                            </div>
-
-                            <br>
-
                         <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
-                        <form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
-                        <label>Agregar imagen del combustible:</label>
-                        <p>Solo se aceptan formatos de imagen</p>
-                        <input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif" value="<?php echo $imagen; ?>">
-                        </p></form>
-                        <span class="help-block"><?php echo $imagen_err;?></span>
+                            <label>Nuevo nombre del Tipo de Combustible:</label>
+                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="imagen" class="form-control" value="<?php echo $imagen; ?>">
+                            <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
+
+                        <div class="form-group <?php echo (!empty($costo_err)) ? 'has-error' : ''; ?>">
+                            <label>Nuevo nombre del Tipo de Combustible:</label>
+                            <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="costo" class="form-control" value="<?php echo $costo; ?>">
+                            <span class="help-block"><?php echo $costo_err;?></span>
+                        </div>                       
+                       
 
 
 

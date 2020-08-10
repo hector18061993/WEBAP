@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM diferenciador WHERE iddiferenciador = ?";
+    $sql = "SELECT * FROM privacidad WHERE idprivacidad = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -24,13 +24,13 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
-                $nombre = $row["imagen"];
-                $imagen = $row["descripcion"];
-                $costo = $row["liga"];
+                $titulo = $row["titulo"];
+                $descripcion = $row["descripcion"];
+                
                                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: errorcombustible.php");
+                header("location: errorprivgacidad.php");
                 exit();
             }
             
@@ -46,7 +46,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: errorcombustible.php");
+    header("location: errorprivacidad.php");
     exit();
 }
 ?>
@@ -72,21 +72,18 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 
                     <table class="table table-striped table-condensed">
                 <tr>
-                    <th width="20%">Imagen del Diferenciador:</th>
-                    <td><?php echo $row['imagen']; ?></td>
+                    <th width="20%">Titulo:</th>
+                    <td><?php echo $row['titulo']; ?></td>
                 </tr>
                 <tr>
-                    <th>Descripcion del Diferenciador:</th>
+                    <th>Descripcion:</th>
                     <td><?php echo $row['descripcion']; ?></td>
                 </tr>
-                <tr>
-                    <th>Liga del Diferenciador:</th>
-                    <td><?php echo $row['liga']; ?></td>
-                </tr>
+                
              </td>
         </tr>
     </table>
-            <a href="iniciodiferenciador.php" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Regresar</a>
+            <a href="inicioprivacidad.php" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Regresar</a>
 
         </div>
     </div>

@@ -5,7 +5,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     require_once "config.php";
     
     // Prepare a delete statement
-    $sql = "DELETE FROM t_informacionempresa WHERE id = ?";
+    $sql = "DELETE FROM preguntasfrecuentes WHERE idpreguntasfrecuentes = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -17,7 +17,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records deleted successfully. Redirect to landing page
-            header("location: inicioie.php");
+            header("location: iniciopf.php");
             exit();
         } else{
             echo "Oops! A ocurrido un error. Intentelo de nuevo mas tarde.";
@@ -33,7 +33,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check existence of id parameter
     if(empty(trim($_GET["id"]))){
         // URL doesn't contain id parameter. Redirect to error page
-        header("location: errorie.php");
+        header("location: errorpf.php");
         exit();
     }
 }
@@ -42,7 +42,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Borrar</title>
+    <title>Eliminar Registro</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -57,7 +57,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Borrar Registro</h1>
+                        <h1>Eliminar Registro</h1>
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger fade in">
@@ -65,7 +65,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <p>Está seguro que deseas borrar el registro</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="inicioie.php" class="btn btn-primary">No</a>
+                                <a href="iniciopf.php" class="btn btn-primary">No</a>
                             </p>
                         </div>
                     </form>

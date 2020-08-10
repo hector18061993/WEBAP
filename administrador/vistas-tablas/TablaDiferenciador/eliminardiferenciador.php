@@ -43,7 +43,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Eliminar Registros del Diferenciador</title>
+    <title>Eliminar Registros de Combustibles</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -56,17 +56,16 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h1>Eliminar el registro seleccionado</h1>
-                    </div>
+               <div class="content">
+                  <h2>Eliminar &raquo; Combustible</h2>
+                      <hr />
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger fade in">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
                             <p>¿Desea borrar este registro del sistema?</p><br>
                             <p>
                                 <input type="submit" value="Si" class="btn btn-danger">
-                                <a href="iniciodiferenciador.php" class="btn btn-primary">No</a>
+                                <a href="iniciodiferenciador.php" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> No </a>
                             </p>
                         </div>
                     </form>

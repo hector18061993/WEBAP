@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM t_usuario WHERE id = ?";
+    $sql = "SELECT * FROM preguntasfrecuentes WHERE idpreguntasfrecuentes = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -24,16 +24,13 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
-                $nombre = $row["nombre"];
-                $direccion = $row["direccion"];
-                $telefono = $row["telefono"];
-                $email = $row["email"];
-                $cargo = $row["cargo"];
-                $usuario = $row["usuario"];
-                $password = $row["password"];
+                $titulo = $row["titulo"];
+                $descripcion = $row["descripcion"];
+                                
+                
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
+                header("location: errorpf.php");
                 exit();
             }
             
@@ -49,7 +46,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
+    header("location: errorpf.php");
     exit();
 }
 ?>
@@ -72,44 +69,20 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Ver Usuarios</h2>
+                        <h2>Ver Informacion de las Preguntas</h2>
                     </div>
-                    
                     <div class="form-group">
-                        <label>Nombre:</label>
-                        <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
+                        <label>Titulo de la Pregunta:</label>
+                        <p class="form-control-static"><?php echo $row["titulo"]; ?></p>
                     </div>
 
                     <div class="form-group">
-                        <label>Direccion:</label>
-                        <p class="form-control-static"><?php echo $row["direccion"]; ?></p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Telefono:</label>
-                        <p class="form-control-static"><?php echo $row["telefono"]; ?></p>
+                        <label>Descripcion de la Pregunta:</label>
+                        <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
                     </div>
 
-                    <div class="form-group">
-                        <label>Email:</label>
-                        <p class="form-control-static"><?php echo $row["email"]; ?></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Cargo:</label>
-                        <p class="form-control-static"><?php echo $row["cargo"]; ?></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Usuario:</label>
-                        <p class="form-control-static"><?php echo $row["usuario"]; ?></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Contraseña:</label>
-                        <p class="form-control-static"><?php echo $row["password"]; ?></p>
-                    </div>
-                    <p><a href="index.php" class="btn btn-primary">Volver</a></p>
+                                     
+                    <p><a href="iniciopf.php" class="btn btn-primary">Regresar a Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>

@@ -8,19 +8,19 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="TablaCombustible/vistas-tablas/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="TablaCombustible/vistas-tablas/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
-<script src="js/jquery-2.1.1.min.js"></script> 
+<script src="TablaCombustible/vistas-tablas/js/jquery-2.1.1.min.js"></script> 
 <!--icons-css-->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="TablaCombustible/vistas-tablas/css/font-awesome.css" rel="stylesheet"> 
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
 <!--//skycons-icons-->
 <!--pop up strat here-->
-<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<script src="TablaCombustible/vistas-tablas/js/jquery.magnific-popup.js" type="text/javascript"></script>
  <script>
 					
 </script>
@@ -207,41 +207,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="inner-block">
     <div class="price-block-main">
     	<div class="text-head">
-    		<h2>lISTADO DE COMBUSTIBLES</h2>
+    		
     	</div>
-    			
-		    		    <div class="price-selet pric-clr3">
-		    		    	<table class="egt">
-                                <tr>
-                                    <th scope="row">Día</th>
-                                    <th>Hoy</th>
-                                    <th>Mañana</th>
-                                    <th>Martes</th>
-                                </tr>
-                            <tr>
-                                <th>Condición</th>
-                                <td>Soleado</td>
-                                <td>Mayormente soleado</td>
-                                <td>Parcialmente nublado</td>
-                            </tr>
-                                <tr>
-                                <th>Temperatura</th>
-                                <td>19°C</td>
-                                <td>17°C</td>
-                                <td>12°C</td>
-                                </tr>
-                            <tr>
-                                <th>Vientos</th>
-                                <td>E 13 km/h</td>
-                                <td>E 11 km/h</td>
-                                <td>S 16 km/h</td>
-                            </tr>
-                        </table>
-	    			   	 
+    			 <div class="col-md-18">
+                    <div class="page-header clearfix">
+                        <h2 class="pull-left">"Combustibles"</h2><br><br>
+                        <br><a href="crearcombustible.php" class="btn btn-success pull-right" >Agregar Combustible</span></a></div>
 
 
-		    			</div>
-		    		</div>
+
+                    </div>
+                    <?php
+                    // Include config file
+                    require_once "config.php";
+                    
+                    // Attempt select query execution
+                    $sql = "SELECT * FROM combustible";
+                    if($result = mysqli_query($link, $sql)){
+                        if(mysqli_num_rows($result) > 0){
+                            echo "<table class='table table-striped table-hover'>";
+                                echo "<thead>";
+                                    echo "<tr>";
+                                        echo "<th>Nombre</th>";
+                                        echo "<th>Imagen del Combustible</th>";
+                                        echo "<th>Costo actual</th>";
+                                       
+                                    echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<tr>";
+                                        echo "<td>" . $row['nombre'] . "</td>";
+                                        echo "<td>" . $row['imagen'] . "</td>";
+                                        echo "<td>" . $row['costo'] . "</td>";
+                                        echo '
+                                             </td>
+                                              <td>
+                                              <a href="vercombustible.php?id='.$row['idcombustible'].'" title="Ver Informacion del Combustible" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> 
+
+                                                 <a href="modificarcombustible.php?id='.$row['idcombustible'].'" title="Actualizar la informacion del Tipo de Combustible" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+
+                                                 <a href="eliminarcombustible.php?id='.$row['idcombustible'].'" title="Eliminar el registro del Combustible" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+                                                  </td>
+                                                </tr>
+                                                ';
+                                            
+                                        
+                                }
+                                echo "</tbody>";                            
+                            echo "</table>";
+                            // Free result set
+                            mysqli_free_result($result);
+                        } else{
+                            echo "<p class='lead'><em>No records were found.</em></p>";
+                        }
+                    } else{
+                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                    }
+ 
+                    // Close connection
+                    mysqli_close($link);
+                    ?>
+                </div>
+
 	    		</div>
     	  <div class="clearfix"> </div>
     	  </div>

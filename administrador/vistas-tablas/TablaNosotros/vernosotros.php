@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM t_informacionempresa WHERE id = ?";
+    $sql = "SELECT * FROM nosotros WHERE idnosotros = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -24,14 +24,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
-                $nombre = $row["nombre"];
+                $titulo = $row["titulo"];
                 $descripcion = $row["descripcion"];
-                $subdescripcion = $row["subdescripcion"];
-                
-                
+                                                
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: errorie.php");
+                header("location: errornosotros.php");
                 exit();
             }
             
@@ -47,15 +45,16 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: errorpagina.php");
+    header("location: errornosotros.php");
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ver Empleado</title>
+    <title>Ver los Datos del Combustible</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -65,32 +64,31 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h2>Ver Informacion</h2>
-                    </div>
-                    <div class="form-group">
-                        <label>Nombre de la Informacion agregada:</label>
-                        <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
-                    </div>
+    <div class="container">
+        <div class="content">
+            <h2>Datos &raquo; Combustible</h2>
+            <hr />
+                
+                    <table class="table table-striped table-condensed">
+                <tr>
+                    <th width="20%">Titulo:</th>
+                    <td><?php echo $row['titulo']; ?></td>
+                </tr>
+                <tr>
+                    <th>Descripcion:</th>
+                    <td><?php echo $row['descripcion']; ?></td>
+                </tr>
+             </td>
+        </tr>
+    </table>
+            <a href="inicionosotros.php" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Regresar</a>
 
-                    <div class="form-group">
-                        <label>Descripcion de la Informacion:</label>
-                        <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Subdescripcion de la informacion:</label>
-                        <p class="form-control-static"><?php echo $row["subdescripcion"]; ?></p>
-                    </div>
-                  
-                    <p><a href="inicioie.php" class="btn btn-primary">Regresar a Pantalla Principal</a></p>
+        </div>
+    </div>
                 </div>
             </div>        
         </div>
     </div>
 </body>
 </html>
+

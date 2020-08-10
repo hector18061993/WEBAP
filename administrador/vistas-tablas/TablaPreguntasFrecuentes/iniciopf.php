@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,36 +31,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <h1 class="pull-left">Informacion AP</h1><br><br>
-                        <br><a href="crearie.php" class="btn btn-warning pull-right">Agregar nueva Informacion</a></div>
+                        <h1 class="pull-left">Preguntas Frecuentes</h1><br><br>
+                        <br><a href="crearpf.php" class="btn btn-warning pull-right">Agregar nueva Pregunta</a></div>
                     </div>
                     <?php
                     // Include config file
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM t_informacionempresa";
+                    $sql = "SELECT * FROM preguntasfrecuentes";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>Nombre de la Informacion</th>";
-                                        echo "<th>Descripcion de la Informacion</th>";
-                                        echo "<th>Subdescripcion</th>";
+                                        echo "<th>Titulo</th>";
+                                        echo "<th>Descripcion</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['nombre'] . "</td>";
+                                        echo "<td>" . $row['titulo'] . "</td>";
                                         echo "<td>" . $row['descripcion'] . "</td>";
-                                        echo "<td>" . $row['subdescripcion'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='verie.php?id=". $row['id'] ."' title='Ver Informacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificarie.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminarie.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='verpf.php?id=". $row['idpreguntasfrecuentes'] ."' title='Ver usuario' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarpf.php?id=". $row['idpreguntasfrecuentes'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarpf.php?id=". $row['idpreguntasfrecuentes'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
@@ -71,7 +70,7 @@
                             echo "<p class='lead'><em>No records were found.</em></p>";
                         }
                     } else{
-                        echo "ERROR: Problema al ejecutar el SQL " . mysqli_error($link);
+                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
  
                     // Close connection

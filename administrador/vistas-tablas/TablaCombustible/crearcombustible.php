@@ -3,9 +3,9 @@
 require_once "config.php";
  
 // Definimos las variables a utilizar 
-$nombre =  $costoactual =  $imagen = "";
+$nombre = $imagen = $costo = $idestacion= "";
 
-$nombre_err = $costoactual_err = $imagen_err  = "";
+$nombre_err = $imagen_err = $costo_err = $idestacion_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -18,13 +18,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre = $input_nombre;
     }
 
-    // Validando el campo Email
-    $input_costoactual = trim($_POST["costoactual"]);
-    if(empty($input_costoactual)){
-        $costoactual_err = "Favor de ingresar el costo del Combustible.";     
-    } else{
-        $costoactual = $input_costoactual;
-    }
 
     $input_imagen = trim($_POST["imagen"]);
     if(empty($input_imagen)){
@@ -33,21 +26,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $imagen = $input_imagen;
     }
 
+
+    // Validando el campo Email
+    $input_costo = trim($_POST["costo"]);
+    if(empty($input_costo)){
+        $costo_err = "Favor de ingresar el costo del Combustible.";     
+    } else{
+        $costo = $input_costo;
+    }
+
+
+    $input_idestacion = trim($_POST["idestacion"]);
+    if(empty($input_idestacion)){
+        $idestacion_err = "Favor de ingresar el costo del Combustible.";     
+    } else{
+        $idestacion = $input_idestacion;
+    }
+
+    
+
      
     // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($costoactual_err) && empty($imagen_err)){
+    if(empty($nombre_err) && empty($imagen_err) && empty($costo_err) && empty($idestacion_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO t_combustible (nombre, costoactual, imagen) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO combustible (nombre, imagen, costo, idestacion) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_nombre, $param_costoactual, $param_imagen);
+            mysqli_stmt_bind_param($stmt, "ssss", $param_nombre, $param_imagen, $param_costo, $param_idestacion);
             
             // Set parameters
             $param_nombre = $nombre;
-            $param_costoactual = $costoactual;          
             $param_imagen = $imagen;
+            $param_costo = $costo; 
+            $param_idestacion = $idestacion; 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
@@ -97,30 +110,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         
-                        <div class="form-group <?php echo (!empty($costoactual_err)) ? 'has-error' : ''; ?>">
-                            <label>Costo Actual del tipo de Combustible:</label>
-                            <form class="form-inline">
-                            <div class="form-group">
-                            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                            <div class="input-group">
-                            <div class="input-group-addon">$</div>
-                            <input type="text" name="costoactual" class="form-control" id="exampleInputAmount" placeholder="COSTO DEL COMBUSTIBLE" value="<?php echo $costoactual; ?>">
-                            <span class="help-block"><?php echo $costoactual_err;?></span>
-                            </div>
-                            <br>
-
                         <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
-                        <form action="../../form-result.php" method="post" enctype="multipart/form-data" target="_blank">
-                        <label>Agregar imagen del combustible:</label>
-                        <p>Solo se aceptan formatos de imagen</p>
-                        <input type="file" name="imagen" accept="image/png, .jpeg, .jpg, image/gif" value="<?php echo $imagen; ?>">
-                        </p></form>
-                        <span class="help-block"><?php echo $imagen_err;?></span>
+                            <label>Imagen del Combustible:</label>
+                            <input placeholder="NOMBRE DEL COMBUSTIBLE" type="text" name="imagen" class="form-control" value="<?php echo $imagen; ?>">
+                            <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
 
+                        <div class="form-group <?php echo (!empty($costo_err)) ? 'has-error' : ''; ?>">
+                            <label>Costo del Combustible:</label>
+                            <input placeholder="NOMBRE DEL COMBUSTIBLE" type="text" name="costo" class="form-control" value="<?php echo $costo; ?>">
+                            <span class="help-block"><?php echo $costo_err;?></span>
+                        </div>
 
-                        <input type="submit" class="btn btn-primary" value="Agregar Nuevos Datos de Registro" >
-                        <a href="iniciocombustible.php" class="btn btn-success">Regresar a Pantalla Principal</a>
+                        <div class="form-group <?php echo (!empty($idestacion_err)) ? 'has-error' : ''; ?>">
+                            <label>Costo del Combustible:</label>
+                            <input placeholder="NOMBRE DEL COMBUSTIBLE" type="text" name="idestacion" class="form-control" value="<?php echo $idestacion; ?>">
+                            <span class="help-block"><?php echo $idestacion_err;?></span>
+                        </div>
+
+                     
+
+
+                        <input type="submit" class="btn btn-sm btn-primary" value="Agregar Nuevos Datos de Registro" >
+                        <a href="iniciocombustible.php" class="btn btn-sm btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

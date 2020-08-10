@@ -30,8 +30,8 @@
             <div class="row">
                 <div class="col-md-18">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">"Diferenciador"</h2><br><br>
-                        <br><a href="creardiferenciador.php" class="btn btn-success pull-right" >Agregar Diferenciador</span></a></div>
+                        <h2 class="pull-left">"Combustibles"</h2><br><br>
+                        <br><a href="crearprivacidad.php" class="btn btn-success pull-right" >Agregar Combustible</span></a></div>
 
 
 
@@ -41,38 +41,33 @@
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM diferenciador";
+                    $sql = "SELECT * FROM privacidad";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-striped table-hover'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>Imagen</th>";
+                                        echo "<th>Titulo</th>";
                                         echo "<th>Descripcion</th>";
-                                        echo "<th>Liga</th>";
-                                       
+                                                                               
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['imagen'] . "</td>";
+                                        echo "<td>" . $row['titulo'] . "</td>";
                                         echo "<td>" . $row['descripcion'] . "</td>";
-                                        echo "<td>" . $row['liga'] . "</td>";
                                         echo '
                                              </td>
                                               <td>
-                                              <a href="verdiferenciador.php?id='.$row['iddiferenciador'].'" title="Ver Informacion del Combustible" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> 
+                                              <a href="verprivacidad.php?id='.$row['idprivacidad'].'" title="Ver Informacion del Combustible" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> 
 
-                                                 <a href="modificardiferenciador.php?id='.$row['iddiferenciador'].'" title="Actualizar la informacion del Tipo de Combustible" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                                                 <a href="modificarprivacidad.php?id='.$row['idprivacidad'].'" title="Actualizar la informacion del Tipo de Combustible" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 
-                                                 <a href="eliminardiferenciador.php?id='.$row['iddiferenciador'].'" title="Eliminar el registro del Combustible" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-
+                                                 <a href="eliminarprivacidad.php?id='.$row['idprivacidad'].'" title="Eliminar el registro del Combustible" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                                                   </td>
                                                 </tr>
                                                 ';
-                                            
-                                        
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";

@@ -3,58 +3,47 @@
 require_once "config.php";
  
 // Definimos las variables a utilizar 
-$imagen = $descripcion = $liga = "";
+$titulo = $descripcion = "";
 
-$imagen_err = $descripcion_err = $liga_err = "";
+$titulo_err = $descripcion_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validando el campo Nombre(s) 
-    $input_imagen = trim($_POST["imagen"]);
-    if(empty($input_imagen)){
-        $imagen_err = "Favor de ingresar una imagen.";     
+    $input_titulo = trim($_POST["titulo"]);
+    if(empty($input_titulo)){
+        $titulo_err = "Favor de ingresar un titulo.";     
     } else{
-        $imagen = $input_imagen;
+        $titulo = $input_titulo;
     }
 
 
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Favor de ingresar una descripcion.";     
+        $descripcion_err = "Favor de ingresar la imagen del Combustible.";     
     } else{
         $descripcion = $input_descripcion;
     }
-
-
-    // Validando el campo Email
-    $input_liga = trim($_POST["liga"]);
-    if(empty($input_liga)){
-        $liga_err = "Favor de ingresar el costo del Combustible.";     
-    } else{
-        $liga = $input_liga;
-    }
-
-     
+ 
     // Check input errors before inserting in database
-    if(empty($imagen_err) && empty($descripcion_err) && empty($liga_err)){
+    if(empty($titulo_err) && empty($descripcion_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO diferenciador (imagen, descripcion, liga) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO privacidad (titulo, descripcion) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_imagen, $param_descripcion, $param_liga);
+            mysqli_stmt_bind_param($stmt, "ss", $param_titulo, $param_descripcion);
             
             // Set parameters
-            $param_imagen = $imagen;
+            $param_titulo = $titulo;
             $param_descripcion = $descripcion;
-            $param_liga = $liga; 
-             
+            
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: iniciodiferenciador.php");
+                header("location: inicioprivacidad.php");
                 exit();
             } else{
                 echo "Algo salio mal. Intentelo mas tarde.";
@@ -94,28 +83,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <p>Favor de ingresar los nuevos datos del Combustible .</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         
-                        <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
-                            <label>Imagen del Diferenciador:</label>
-                            <input placeholder="IMAGEN DEL DIFERENCIADOR" type="text" name="imagen" class="form-control" value="<?php echo $imagen; ?>">
-                            <span class="help-block"><?php echo $imagen_err;?></span>
+                        <div class="form-group <?php echo (!empty($titulo_err)) ? 'has-error' : ''; ?>">
+                            <label>Nombre del Tipo de Combustible:</label>
+                            <input placeholder="NOMBRE DEL COMBUSTIBLE" type="text" name="titulo" class="form-control" value="<?php echo $titulo; ?>">
+                            <span class="help-block"><?php echo $titulo_err;?></span>
                         </div>
                         
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion del Diferenciador:</label>
-                            <input placeholder="DESCRIPCION DEL DIFERENCIADOR" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <label>Imagen del Combustible:</label>
+                            <input placeholder="NOMBRE DEL COMBUSTIBLE" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($liga_err)) ? 'has-error' : ''; ?>">
-                            <label>Liga del diferenciador:</label>
-                            <input placeholder="LIGA DEL DIFERENCIADOR" type="text" name="liga" class="form-control" value="<?php echo $liga; ?>">
-                            <span class="help-block"><?php echo $liga_err;?></span>
-                        </div>
-                   
-
-
                         <input type="submit" class="btn btn-sm btn-primary" value="Agregar Nuevos Datos de Registro" >
-                        <a href="iniciodiferenciador.php" class="btn btn-sm btn-success">Regresar a Pantalla Principal</a>
+                        <a href="inicioprivacidad.php" class="btn btn-sm btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM t_combustible WHERE id = ?";
+    $sql = "SELECT * FROM combustible WHERE idcombustible = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -25,7 +25,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 
                 // Retrieve individual field value
                 $nombre = $row["nombre"];
-                $costoactual = $row["costoactual"];
+                $imagen = $row["imagen"];
+                $costo = $row["costo"];
                                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
@@ -64,29 +65,33 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <h2>Ver los Datos del Combustible</h2>
-                    </div>
-                    <div class="form-group">
-                        <label>Nombre del tipo de Combustible:</label>
-                        <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Costo actual del Combustible:</label>
-                        <p class="form-control-static"><?php echo $row["costoactual"]; ?></p>
-                    </div>
+    <div class="container">
+        <div class="content">
+            <h2>Datos &raquo; Combustible</h2>
+            <hr />
+                
+                    <table class="table table-striped table-condensed">
+                <tr>
+                    <th width="20%">Nombre del Combustible:</th>
+                    <td><?php echo $row['nombre']; ?></td>
+                </tr>
+                <tr>
+                    <th>Imagen Actual del Combustible:</th>
+                    <td><?php echo $row['imagen']; ?></td>
+                </tr>
+                <tr>
+                    <th>Costo del combustible:</th>
+                    <td><?php echo $row['costo']; ?></td>
+                </tr>
+             </td>
+        </tr>
+    </table>
+            <a href="iniciocombustible.php" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Regresar</a>
 
-                    <div class="form-group">
-                        <label>Imagen Actual:</label>
-                        <p class="form-control-static"><?php echo $row["imagen"]; ?></p>
-                    </div>
+        </div>
+    </div>
+                   
                     
-                    <p><a href="iniciocombustible.php" class="btn btn-info">Regresar a la Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>
