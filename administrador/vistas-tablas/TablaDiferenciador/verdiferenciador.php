@@ -24,13 +24,13 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
                 // Retrieve individual field value
-                $nombre = $row["imagen"];
-                $imagen = $row["descripcion"];
-                $costo = $row["liga"];
+                $imagen = $row["imagen"];
+                $descripcion = $row["descripcion"];
+                $liga = $row["liga"];
                                 
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: errorcombustible.php");
+                header("location: errordiferenciador.php");
                 exit();
             }
             
@@ -46,7 +46,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     mysqli_close($link);
 } else{
     // URL doesn't contain id parameter. Redirect to error page
-    header("location: errorcombustible.php");
+    header("location: errordiferenciador.php");
     exit();
 }
 ?>
@@ -65,33 +65,29 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <h2>Datos &raquo; Combustible</h2>
-            <hr />
-                
-                    <table class="table table-striped table-condensed">
-                <tr>
-                    <th width="20%">Imagen del Diferenciador:</th>
-                    <td><?php echo $row['imagen']; ?></td>
-                </tr>
-                <tr>
-                    <th>Descripcion del Diferenciador:</th>
-                    <td><?php echo $row['descripcion']; ?></td>
-                </tr>
-                <tr>
-                    <th>Liga del Diferenciador:</th>
-                    <td><?php echo $row['liga']; ?></td>
-                </tr>
-             </td>
-        </tr>
-    </table>
-            <a href="iniciodiferenciador.php" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Regresar</a>
-
-        </div>
-    </div>
-                   
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>Ver los Datos del Combustible</h2>
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen del Diferenciador:</label>
+                        <p class="form-control-static"><?php echo $row["imagen"]; ?></p>
+                    </div>
                     
+                    <div class="form-group">
+                        <label>Descripcion del Diferenciador:</label>
+                        <p class="form-control-static"><?php echo $row["descripcion"]; ?></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Liga del diferenciador</label>
+                        <p class="form-control-static"><?php echo $row["liga"]; ?></p>
+                    </div>
+                    
+                    <p><a href="iniciodiferenciador.php" class="btn btn-info">Regresar a la Pantalla Principal</a></p>
                 </div>
             </div>        
         </div>

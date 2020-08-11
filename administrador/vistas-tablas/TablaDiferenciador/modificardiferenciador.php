@@ -3,7 +3,7 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$imagen = $descripcion = $liga = "";
+$imagen =  $descripcion  =  $liga = "";
 $imagen_err = $descripcion_err = $liga_err = "";
  
 // Processing form data when form is submitted
@@ -14,7 +14,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate name
     $input_imagen = trim($_POST["imagen"]);
     if(empty($input_imagen)){
-        $imagen_err = "Favor de ingresar una imagen.";     
+        $imagen_err = "Favor de ingresar la imagen del diferenciador.";     
     } else{
         $imagen = $input_imagen;
     }
@@ -22,7 +22,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate email
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Favor de ingresar una descripcion.";     
+        $descripcion_err = "Favor de ingresar la descripcion del diferenciador.";     
     } else{
         $descripcion = $input_descripcion;
     }
@@ -35,15 +35,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 
     // Check input errors before inserting in database
-    if(empty($imagen_err) && empty($descripcion_err) && empty($liga_err)){
+    if(empty($imagen_err) && empty($descripcion_err)  && empty($liga_err)){
 
         // Prepare an update statement
         $sql = "UPDATE diferenciador SET imagen=?, descripcion=?, liga=? WHERE iddiferenciador=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_imagen, $param_descripcion, 
-                                                  $param_liga, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssi", $param_imagen, 
+                $param_descripcion, $param_liga, $param_id);
             
             // Set parameters
             $param_imagen = $imagen;
@@ -151,20 +151,17 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
+                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
                             <label>Descripcion del diferenciador:</label>
                             <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($liga_err)) ? 'has-error' : ''; ?>">
-                            <label>Liga del Diferenciador:</label>
+                            <label>Liga del diferenciador:</label>
                             <input placeholder="NUEVO NOMBRE DEL COMBUSTIBLE" type="text" name="liga" class="form-control" value="<?php echo $liga; ?>">
                             <span class="help-block"><?php echo $liga_err;?></span>
-                        </div>                       
-                       
-
-
+                        </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar los datos del registro">

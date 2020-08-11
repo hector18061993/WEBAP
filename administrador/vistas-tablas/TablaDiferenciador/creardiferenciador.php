@@ -3,9 +3,9 @@
 require_once "config.php";
  
 // Definimos las variables a utilizar 
-$imagen = $descripcion = $liga = "";
+$imagen =  $descripcion =  $liga = "";
 
-$imagen_err = $descripcion_err = $liga_err = "";
+$imagen_err = $descripcion_err = $liga_err  = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -13,24 +13,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validando el campo Nombre(s) 
     $input_imagen = trim($_POST["imagen"]);
     if(empty($input_imagen)){
-        $imagen_err = "Favor de ingresar una imagen.";     
+        $imagen_err = "Favor de ingresar la imagen del diferenciador.";     
     } else{
         $imagen = $input_imagen;
     }
 
-
+    // Validando el campo Email
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
-        $descripcion_err = "Favor de ingresar una descripcion.";     
+        $descripcion_err = "Favor de ingresar la descripcion del diferenciador.";     
     } else{
         $descripcion = $input_descripcion;
     }
 
-
-    // Validando el campo Email
     $input_liga = trim($_POST["liga"]);
     if(empty($input_liga)){
-        $liga_err = "Favor de ingresar el costo del Combustible.";     
+        $liga_err = "Favor de ingresar la liga del diferenciador.";     
     } else{
         $liga = $input_liga;
     }
@@ -48,9 +46,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Set parameters
             $param_imagen = $imagen;
-            $param_descripcion = $descripcion;
-            $param_liga = $liga; 
-             
+            $param_descripcion = $descripcion;          
+            $param_liga = $liga;
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
@@ -89,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Agregar Registros de Combustibles</h2>
+                        <h2>Registros de Diferenciadores</h2>
                     </div>
                     <p>Favor de ingresar los nuevos datos del Combustible .</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -101,21 +98,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         
                         <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
-                            <label>Descripcion del Diferenciador:</label>
+                            <label>Descripcion del diferenciador:</label>
                             <input placeholder="DESCRIPCION DEL DIFERENCIADOR" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($liga_err)) ? 'has-error' : ''; ?>">
+                         <div class="form-group <?php echo (!empty($liga_err)) ? 'has-error' : ''; ?>">
                             <label>Liga del diferenciador:</label>
                             <input placeholder="LIGA DEL DIFERENCIADOR" type="text" name="liga" class="form-control" value="<?php echo $liga; ?>">
                             <span class="help-block"><?php echo $liga_err;?></span>
                         </div>
-                   
 
-
-                        <input type="submit" class="btn btn-sm btn-primary" value="Agregar Nuevos Datos de Registro" >
-                        <a href="iniciodiferenciador.php" class="btn btn-sm btn-success">Regresar a Pantalla Principal</a>
+                        <input type="submit" class="btn btn-primary" value="Agregar Nuevos Datos de Registro" >
+                        <a href="iniciodiferenciador.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>
                 </div>
             </div>        

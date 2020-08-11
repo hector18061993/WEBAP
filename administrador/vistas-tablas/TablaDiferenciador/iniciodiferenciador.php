@@ -30,11 +30,8 @@
             <div class="row">
                 <div class="col-md-18">
                     <div class="page-header clearfix">
-                        <h2 class="pull-left">"Diferenciador"</h2><br><br>
-                        <br><a href="creardiferenciador.php" class="btn btn-success pull-right" >Agregar Diferenciador</span></a></div>
-
-
-
+                        <h1 class="pull-left">Diferenciadores en Sistema</h1><br><br>
+                        <br><a href="creardiferenciador.php" class="btn btn-warning pull-right">Agregar un Nuevo tipo de Diferenciador</a></div>
                     </div>
                     <?php
                     // Include config file
@@ -44,13 +41,13 @@
                     $sql = "SELECT * FROM diferenciador";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
-                            echo "<table class='table table-striped table-hover'>";
+                            echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>Imagen</th>";
                                         echo "<th>Descripcion</th>";
                                         echo "<th>Liga</th>";
-                                       
+                                        echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -59,20 +56,12 @@
                                         echo "<td>" . $row['imagen'] . "</td>";
                                         echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>" . $row['liga'] . "</td>";
-                                        echo '
-                                             </td>
-                                              <td>
-                                              <a href="verdiferenciador.php?id='.$row['iddiferenciador'].'" title="Ver Informacion del Combustible" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> 
-
-                                                 <a href="modificardiferenciador.php?id='.$row['iddiferenciador'].'" title="Actualizar la informacion del Tipo de Combustible" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-
-                                                 <a href="eliminardiferenciador.php?id='.$row['iddiferenciador'].'" title="Eliminar el registro del Combustible" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-
-                                                  </td>
-                                                </tr>
-                                                ';
-                                            
-                                        
+                                        echo "<td>";
+                                            echo "<a href='verdiferenciador.php?id=". $row['iddiferenciador'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificardiferenciador.php?id=". $row['iddiferenciador'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminardiferenciador.php?id=". $row['iddiferenciador'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                        echo "</td>";
+                                    echo "</tr>";
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
