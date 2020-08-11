@@ -18,6 +18,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1aE0WtuiVtGobAxmOxnlDFAT_c1DM0ZE"type="text/javascript"></script>
 <!--ARCHIVOS JAVASCRIPT DE BOOTSTRAP -->
 <script type="text/javascript" src="js/bootstrap.min.js" ></script>
 <script>
@@ -165,7 +167,7 @@
             $.ajax({
                type:"POST",
                url:"iajax.php",
-               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  //checar id aqui-----------------//
+               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  //checar el id de aqui -------//
                dataType:"JSON",
                success:function(data){
                    if(data.estado=="ok")
@@ -255,8 +257,8 @@
           {
             return false;//NO HACER NADA, AL NO TENER ITEMS
           }
-          var cx = $("#select_resultados option:selected").data("lat");
-          var cy = $("#select_resultados option:selected").data("lng");
+          var lat = $("#select_resultados option:selected").data("lat");
+          var lng = $("#select_resultados option:selected").data("lng");
           //Crear variable coordenada
           var myLatLng = new google.maps.LatLng(lat, lng);
           //VARIABLE MAPA
@@ -370,15 +372,15 @@
                         <table>
                             <tr>
                                 <td>Nombre</td>
-                                <td><input type="text" class="form-control"  name="nombre" autocomplete="off"/></td>
+                                <td><input type="text" class="form-control"  name="nombre" required="" autocomplete="off"/></td>
                             </tr>
                             <tr>
-                                <td>Lat:</td>
-                                <td><input type="text" class="form-control" readonly  name="lat" autocomplete="off"/></td>
+                                <td>Lat</td>
+                                <td><input type="text" class="form-control" readonly  name="lat" required="" autocomplete="off"/></td>
                             </tr>
                             <tr>
-                                <td>Long:</td>
-                                <td><input type="text" class="form-control"  readonly name="lng" autocomplete="off"/></td>
+                                <td>Lon</td>
+                                <td><input type="text" class="form-control"  readonly name="lng" required="" autocomplete="off"/></td>
                             </tr>
                             <!-- Aqui estar� se colocaran los mensajes para el usuario -->
                             <tr>
@@ -410,11 +412,11 @@
                                 <td><input type="text" class="form-control"  name="nombre" autocomplete="off"/></td>
                             </tr>
                             <tr>
-                                <td>Lat:</td>
+                                <td>Lat</td>
                                 <td><input type="text" class="form-control" readonly  name="lat" autocomplete="off"/></td>
                             </tr>
                             <tr>
-                                <td>Lon:</td>
+                                <td>Lon</td>
                                 <td><input type="text" class="form-control"  readonly name="lng" autocomplete="off"/></td>
                             </tr>
                             <!-- Aqui estar� se colocaran los mensajes para el usuario -->

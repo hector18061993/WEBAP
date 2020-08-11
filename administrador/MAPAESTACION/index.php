@@ -18,6 +18,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1aE0WtuiVtGobAxmOxnlDFAT_c1DM0ZE"type="text/javascript"></script>
 <!--ARCHIVOS JAVASCRIPT DE BOOTSTRAP -->
 <script type="text/javascript" src="js/bootstrap.min.js" ></script>
 <script>
@@ -165,7 +167,7 @@
             $.ajax({
                type:"POST",
                url:"iajax.php",
-               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  //checar el id de aqui -------//
+               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  //checar id aqui-----------------//
                dataType:"JSON",
                success:function(data){
                    if(data.estado=="ok")
@@ -255,8 +257,8 @@
           {
             return false;//NO HACER NADA, AL NO TENER ITEMS
           }
-          var lat = $("#select_resultados option:selected").data("lat");
-          var lng = $("#select_resultados option:selected").data("lng");
+          var cx = $("#select_resultados option:selected").data("lat");
+          var cy = $("#select_resultados option:selected").data("lng");
           //Crear variable coordenada
           var myLatLng = new google.maps.LatLng(lat, lng);
           //VARIABLE MAPA
@@ -356,51 +358,18 @@
     <div id="mapa">
         <h2>Aquí ira el mapa!</h2>
     </div>
+    
     <div id="infor">
         <div class="accordion" id="accordion2">
             <div class="accordion-group">
               <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  Agregar
-                </a>
-              </div>
-              <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                    <form id="formulario">
-                        <table>
-                            <tr>
-                                <td>Nombre</td>
-                                <td><input type="text" class="form-control"  name="nombre" required="" autocomplete="off"/></td>
-                            </tr>
-                            <tr>
-                                <td>Lat</td>
-                                <td><input type="text" class="form-control" readonly  name="lat" required="" autocomplete="off"/></td>
-                            </tr>
-                            <tr>
-                                <td>Lon</td>
-                                <td><input type="text" class="form-control"  readonly name="lng" required="" autocomplete="off"/></td>
-                            </tr>
-                            <!-- Aqui estar� se colocaran los mensajes para el usuario -->
-                            <tr>
-                                <td></td>
-                                <td><span id="loader_grabar" class=""></span></td>
-                            </tr>
-                            <tr>
-                                <td><button type="button" id="btn_grabar" class="btn btn-success btn-sm">Grabar</button></td>
-                                <td><button type="button" class="btn btn-danger btn-sm">Cancelar</button></td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
-              </div>
-            </div>
+               
             <div class="accordion-group">
               <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                  Eliminar
-                </a>
+                <h2>Ver Estacion</h2>
+                  
               </div>
-              <div id="collapseTwo" class="accordion-body collapse">
+             
                 <div class="accordion-inner">
                   <form id="formulario_eliminar">
                       <input type="hidden" class="form-control"  name="id"/>
@@ -410,11 +379,11 @@
                                 <td><input type="text" class="form-control"  name="nombre" autocomplete="off"/></td>
                             </tr>
                             <tr>
-                                <td>Lat</td>
+                                <td>Lat:</td>
                                 <td><input type="text" class="form-control" readonly  name="lat" autocomplete="off"/></td>
                             </tr>
                             <tr>
-                                <td>Lon</td>
+                                <td>Lon:</td>
                                 <td><input type="text" class="form-control"  readonly name="lng" autocomplete="off"/></td>
                             </tr>
                             <!-- Aqui estar� se colocaran los mensajes para el usuario -->
@@ -423,56 +392,15 @@
                                 <td><span id="loader_grabar" class=""></span></td>
                             </tr>
                             <tr>
-                                <td><button type="button" id="btn_actualizar" class="btn btn-success btn-sm">Actualizar</button></td>
-                                <td><button type="button" id="btn_borrar" class="btn btn-danger btn-sm">Borrar</button></td>
+                                
+                                <td><a href="estaciondetalle.php?id=2" title="Ver Informacion de la Estacion" class="btn btn-warning btn-sm"><span>Ver estacion</span></a> </td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td><label>
-                                    <input id="opc_edicion" type="checkbox"> Habilitar Edición
-                                  </label>
-                                </td>
-                            </tr>
+                            
                         </table>
                     </form>
                 </div>
               </div>
             </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                  Buscar
-                </a>
-              </div>
-              <div id="collapseThree" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  <form id="formulario_buscar">
-                    <table>
-                      <TR>
-                        <td>
-                          <input type="text" id="palabra_buscar"  class="form-control" autocomplete="off" />
-                        </td>
-                        <td>
-                          <button type="button" id="btn_buscar"  class="btn btn-success btn-sm" >Buscar</button>
-                        </td>
-                      </TR>
-
-                      <TR>
-                        <td>
-                          <select id="select_resultados">
-                            <option value="uno">uno</option>
-                          </select>
-                        </td>
-                        <td></td>
-                      </TR>
-
-                    </table>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
-    </div>
+            
 </body>
 </html>
