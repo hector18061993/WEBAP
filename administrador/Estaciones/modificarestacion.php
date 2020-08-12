@@ -507,6 +507,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $direccion_err;?></span>
                         </div>
                     </div>
+                       
+
 
 
 
@@ -542,16 +544,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     //FUNCION PARA QUITAR MARCADORES DE MAPA
     function limpiar_marcadores(lista)
     {
-        for(i in lista)
-        {
-            //QUITAR MARCADOR DEL MAPA
-            lista[i].setMap(null);
-        }
+      
     }
     $(document).on("ready", function(){
         
-        //VARIABLE DE FORMULARIO
-        var formulario = $("#formulario");
         
         var punto = new google.maps.LatLng(19.163622,-99.545926);
         var config = {
@@ -561,7 +557,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         };
         mapa = new google.maps.Map( $("#mapa")[0], config );
 
-        google.maps.event.addListener(mapa, "click", function(event){
+        google.maps.event.addListener(mapa, function(event){
            var coordenadas = event.latLng.toString();
            
            coordenadas = coordenadas.replace("(", "");
@@ -592,7 +588,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
            });
            
            //BORRAR MARCADORES NUEVOS
-           limpiar_marcadores(nuevos_marcadores);
+           //limpiar_marcadores(nuevos_marcadores);
            marcador.setMap(mapa);
         });
         
@@ -671,94 +667,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
            });
            return false;
         });
-        //BORRAR
-        $("#btn_borrar").on("click", function(){
-            var f_eliminar = $("#formulario_eliminar");
-            $.ajax({
-               type:"POST",
-               url:"iajax.php",
-               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  //checar id aqui-----------------//
-               dataType:"JSON",
-               success:function(data){
-                   if(data.estado=="ok")
-                    {
-                        limpiar_marcadores(nuevos_marcadores);
-                        alert(data.mensaje);
-                        f_eliminar[0].reset();
-                        listar();
-                    }
-                    else
-                    {
-                        alert(data.mensaje);
-                    }
-               },
-               beforeSend:function(){
-                   
-               },
-               complete:function(){
-                   
-               }
-            });
-        });
-
-        //ACTUALIZAR
-        $("#btn_actualizar").on("click", function(){
-            var f_eliminar = $("#formulario_eliminar");
-            $.ajax({
-               type:"POST",
-               url:"iajax.php",
-               data:f_eliminar.serialize()+"&tipo=actualizar",
-               dataType:"JSON",
-               success:function(data){
-                   if(data.estado=="ok")
-                    {
-                        limpiar_marcadores(nuevos_marcadores);
-                        alert(data.mensaje);
-                        f_eliminar[0].reset();
-                        listar();
-                    }
-                    else
-                    {
-                        alert(data.mensaje);
-                    }
-               },
-               beforeSend:function(){
-                   
-               },
-               complete:function(){
-                   
-               }
-            });
-        });
-
-        //BUSCAR
-        $("#btn_buscar").on("click", function(){
-          var palabra_buscar = $("#palabra_buscar").val();
-          var select_resultados = $("#select_resultados");
-          $.ajax({
-            type:"POST",
-            dataType:"JSON",
-            url:"iajax.php",
-            data:"palabra_buscar="+palabra_buscar+"&tipo=buscar",
-            success: function(data){
-              if(data.estado=="ok")
-              {
-                $.each(data.mensaje, function(i, item){
-                  $("<option data-lat='"+item.lat+"' data-lng='"+item.lng+"' value='"+item.idestacion+"'>"+item.nombre+"</option>")
-                  .appendTo(select_resultados);
-                });
-              }
-
-            },
-            beforeSend: function(){
-              select_resultados.empty();//limpiar ComboBox
-            },
-            complete: function(){
-
-            }
-          });
-          return false;
-        });
+        
 
         //CENTRAR EL MARCADOR AL SELECCIONARLO
         $("#select_resultados").on("click, change", function(){
@@ -796,7 +705,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         //alert("Hay puntos en la BD");
                         $.each(data.mensaje, function(i, item){
                             //OBTENER LAS COORDENADAS DEL PUNTO
-                            var posi = new google.maps.LatLng(item.lat, item.lng);//bien
+                            var posi = new google.maps.LatLng(item.<?php echo "lat"; ?>, item.<?php echo "lng"; ?>);//bien
                             //CARGAR LAS PROPIEDADES AL MARCADOR
                             var marca = new google.maps.Marker({
                                 idMarcador:item.idestacion,
@@ -815,7 +724,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                
                                {
                                     //HACER UN MARCADOR DRAGGABLE
-                                    marca.setOptions({draggable: true});
+                                    marca.setOptions({draggable: false});
 
                                     google.maps.event.addListener(marca, 'dragend', function(event) { 
                                         //AL FINAL DE MOVE EL MARCADOR
@@ -858,44 +767,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
            });
           }
         </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-                              
-
-
-
-
-
-
-
-
 
 
 

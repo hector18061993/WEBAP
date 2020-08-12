@@ -8,7 +8,9 @@ class puntosDao
     {
         $this->r = array();
     }
-    public function grabar($nombre, $lat,$lng)//METODO PARA GRABAR A LA BD
+
+
+public function grabar($nombre, $lat,$lng)//METODO PARA GRABAR A LA BD
     {
         $con = conex::con();
         $nombre = mysqli_real_escape_string($con,$nombre);

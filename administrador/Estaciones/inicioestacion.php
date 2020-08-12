@@ -328,7 +328,7 @@
         };
         mapa = new google.maps.Map( $("#mapa")[0], config );
 
-        google.maps.event.addListener(mapa, "click", function(event){
+        google.maps.event.addListener(mapa, function(event){
            var coordenadas = event.latLng.toString();
            
            coordenadas = coordenadas.replace("(", "");

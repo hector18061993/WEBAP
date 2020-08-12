@@ -2,33 +2,33 @@
 
 require_once "config.php";
  
-$titulo =  $cx = $cy = $direccion=  "";
+$nombre =  $lat = $lng = $direccion=  "";
 
-$titulo_err = $cx_err = $cy_err = $direccion_err = "";
+$nombre_err = $lat_err = $lng_err = $direccion_err = "";
  
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     
     $id = $_POST["id"];
     
-    $input_titulo = trim($_POST["titulo"]);
-    if(empty($input_titulo)){
-        $titulo_err = "favor de ingresar el nuevo nombre de la Estacion.";     
+    $input_nombre = trim($_POST["nombre"]);
+    if(empty($input_nombre)){
+        $nombre_err = "favor de ingresar el nuevo nombre de la Estacion.";     
     } else{
-        $titulo = $input_titulo;
+        $nombre = $input_nombre;
     }
 
-    $input_cx = trim($_POST["cx"]);
-    if(empty($input_cx)){
-        $cx_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
+    $input_lat = trim($_POST["lat"]);
+    if(empty($input_lat)){
+        $lat_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
     } else{
-        $cx = $input_cx;
+        $lat = $input_lat;
     }
 
-    $input_cy = trim($_POST["cy"]);
-    if(empty($input_cy)){
-        $cy_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
+    $input_lng = trim($_POST["lng"]);
+    if(empty($input_lng)){
+        $lng_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
     } else{
-        $cy = $input_cy;
+        $lng = $input_lng;
     }
 
     
@@ -40,20 +40,20 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
  
        
-    if(empty($nombre_err) && empty($cx_err) && empty($cy_err) && empty($direccion_err)){
+    if(empty($nombre_err) && empty($lat_err) && empty($lng_err) && empty($direccion_err)){
 
         // Prepare an update statement
-        $sql = "UPDATE estaciones SET titulo=?, cx=?, cy=?, direccion=? WHERE id=?";
+        $sql = "UPDATE estacion SET nombre=?, lat=?, lng=?, direccion=? WHERE idestacion=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssssi", $param_titulo, $param_cx, $param_cy, 
+            mysqli_stmt_bind_param($stmt, "ssssi", $param_nombre, $param_lat, $param_lng, 
                 $param_direccion, $param_id);
             
             // Set parameters
-            $param_titulo = $titulo;
-            $param_cx = $cx;
-            $param_cy = $cy;
+            $param_nombre = $nombre;
+            $param_lat = $lat;
+            $param_lng = $lng;
             $param_direccion = $direccion;
             $param_id = $id;
             
@@ -78,7 +78,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         
-        $sql = "SELECT * FROM estaciones WHERE id = ?";
+        $sql = "SELECT * FROM estacion WHERE idestacion = ?";
         if($stmt = mysqli_prepare($link, $sql)){
           
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -94,9 +94,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
-                    $titulo = $row["titulo"];
-                    $cx = $row["cx"];
-                    $cy = $row["cy"];
+                    $nombre = $row["nombre"];
+                    $lat = $row["lat"];
+                    $lng = $row["lng"];
                     $direccion = $row["direccion"];
                                                           
                    
@@ -457,7 +457,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <script type="text/javascript">
         (function() { // generacion de mapa
             window.onload = function()
-                {var sevilla = new google.maps.LatLng( <?php  echo $cx; ?>,<?php echo $cy;?>);
+                {var sevilla = new google.maps.LatLng( <?php  echo $lat; ?>,<?php echo $lng;?>);
                  var opciones = {
                     zoom : 17,
                     center: sevilla,
@@ -466,17 +466,17 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 var div = document.getElementById('mapa');              
                 var map = new google.maps.Map(div, opciones);   
                     var marcador = new google.maps.Marker({
-                    position: new google.maps.LatLng(<?php echo $cx; ?>,<?php echo $cy;?>),
+                    position: new google.maps.LatLng(<?php echo $lat; ?>,<?php echo $lng;?>),
                     draggable: false,
                     map: map,
                     title: 'algo'});
                 var markerLatLng = marcador.getPosition();
-                document.getElementById('cx').value = markerLatLng.lat();
-                document.getElementById('cy').value = markerLatLng.lng();   
+                document.getElementById('lat').value = markerLatLng.lat();
+                document.getElementById('lng').value = markerLatLng.lng();   
                 google.maps.event.addListener(
                 marcador, 'dragend', function(){ markerLatLng = marcador.getPosition();
-                document.getElementById('cx').value = markerLatLng.lat();
-                document.getElementById('cy').value = markerLatLng.lng(); });
+                document.getElementById('lat').value = markerLatLng.lat();
+                document.getElementById('lng').value = markerLatLng.lng(); });
             }
 
         })();

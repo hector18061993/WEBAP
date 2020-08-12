@@ -18,7 +18,7 @@ session_start();
 		
 			<?php
 			// Connection info. file
-			include 'conn.php';	
+			include 'conexion.php';	
 			
 			// Connection variables
 			$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
