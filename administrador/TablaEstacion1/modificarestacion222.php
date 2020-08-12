@@ -1,35 +1,34 @@
 <?php
 
-require ("php/conex.php");
+require_once "config.php";
  
-$nombre =  $lat = $lng = $direccion= $telefono = $email =$activo =$servicio =$razonsocial =$rfc =$imagen  "";
+$titulo =  $cx = $cy = $direccion=  "";
 
-$nombre_err = $lat_err = $lng_err = $direccion_err = $telefono_err = $email_err = $activo_err = $servicio = $razonsocial 
-            = $rfc = $imagen"";
+$titulo_err = $cx_err = $cy_err = $direccion_err = "";
  
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     
     $id = $_POST["id"];
     
-    $input_nombre = trim($_POST["nombre"]);
-    if(empty($input_nombre)){
-        $nombre_err = "favor de ingresar el nuevo nombre de la Estacion.";     
+    $input_titulo = trim($_POST["titulo"]);
+    if(empty($input_titulo)){
+        $titulo_err = "favor de ingresar el nuevo nombre de la Estacion.";     
     } else{
-        $nombre = $input_nombre;
+        $titulo = $input_titulo;
     }
 
-    $input_lat = trim($_POST["lat"]);
-    if(empty($input_lat)){
-        $lat_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
+    $input_cx = trim($_POST["cx"]);
+    if(empty($input_cx)){
+        $cx_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
     } else{
-        $lat = $input_lat;
+        $cx = $input_cx;
     }
 
-    $input_lng = trim($_POST["lng"]);
-    if(empty($input_lng)){
-        $lng_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
+    $input_cy = trim($_POST["cy"]);
+    if(empty($input_cy)){
+        $cy_err = "Favor de ingresar la nueva ubicacion de la Estacion.";     
     } else{
-        $lng = $input_lng;
+        $cy = $input_cy;
     }
 
     
@@ -39,60 +38,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     } else{
         $direccion = $input_direccion;
     }
-
-     $input_telefono = trim($_POST["telefono"]);
-    if(empty($input_telefono)){
-        $telefono_err = "Favor de ingresar la nueva direccion de la Estacion.";     
-    } else{
-        $telefono = $input_telefono;
-    }
-
-     $input_email = trim($_POST["email"]);
-    if(empty($input_email)){
-        $email_err = "Favor de ingresar la nueva direccion de la Estacion.";     
-    } else{
-        $email = $input_email;
-    }
-
-    $input_activo = trim($_POST["activo"]);
-    if(empty($input_activo)){
-        $activo_err = "Favor de ingresar la nueva direccion de la Estacion.";     
-    } else{
-        $activo = $input_activo;
-    }
-
-    $input_servicio = trim($_POST["servicio"]);
-    if(empty($input_servicio)){
-        $servicio_err = "Favor de ingresar la nueva direccion de la Estacion.";     
-    } else{
-        $servicio = $input_servicio;
-    }
-
-    $input_razonsocial = trim($_POST["razonsocial"]);
-    if(empty($input_razonsocial)){
-        $razonsocial_err = "Favor de ingresar la nueva direccion de la Estacion.";     
-    } else{
-        $razonsocial = $input_razonsocial;
-    }
-
-    $input_rfc = trim($_POST["rfc"]);
-    if(empty($input_rfc)){
-        $rfc_err = "Favor de ingresar la nueva direccion de la Estacion.";     
-    } else{
-        $rfc = $input_rfc;
-    }
-
-    $input_imagen = trim($_POST["imagen"]);
-    if(empty($input_imagen)){
-        $imagen_err = "Favor de ingresar la nueva direccion de la Estacion.";     
-    } else{
-        $imagen = $input_imagen;
-    }
  
        
-    if(empty($nombre_err) && empty($lat_err) && empty($lng_err) && empty($direccion_err) && empty($telefono_err) 
-        && empty($email_err) && empty($activo_err) && empty($servicio_err) && empty($razonsocial_err) 
-        && empty($rfc_err) && empty($imagen_err)){
+    if(empty($nombre_err) && empty($cx_err) && empty($cy_err) && empty($direccion_err)){
 
         // Prepare an update statement
         $sql = "UPDATE estaciones SET titulo=?, cx=?, cy=?, direccion=? WHERE id=?";

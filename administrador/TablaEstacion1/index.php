@@ -24,7 +24,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js" ></script>
 <script>
     //VARIABLES GENERALES
-    //declaras fuera del ready de jquery
+		//declaras fuera del ready de jquery
     var nuevos_marcadores = [];
     var marcadores_bd= [];
     var mapa = null; //VARIABLE GENERAL PARA EL MAPA
@@ -132,7 +132,7 @@
                dataType:"JSON",
                data:f.serialize()+"&tipo=grabar",
                success:function(data){
-          if(data.estado=="ok")
+					if(data.estado=="ok")
                     {
                         loader_grabar.removeClass("label-warning").addClass("label-success")
                         .text("Grabado OK").delay(4000).slideUp();
