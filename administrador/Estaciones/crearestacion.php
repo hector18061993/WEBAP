@@ -44,55 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $direccion = $input_direccion;
     }
 
-    $input_telefono = trim($_POST["telefono"]);
-    if(empty($input_telefono)){
-        $telefono_err = "Favor de ingresar la direccion de la Estacion.";     
-    } else{
-        $telefono = $input_telefono;
-    }
-
-    $input_email = trim($_POST["email"]);
-    if(empty($input_email)){
-        $email_err = "Favor de ingresar la direccion de la Estacion.";     
-    } else{
-        $email = $input_email;
-    }
-
-    $input_activo = trim($_POST["activo"]);
-    if(empty($input_activo)){
-        $activo_err = "Favor de ingresar la direccion de la Estacion.";     
-    } else{
-        $activo = $input_activo;
-    }
-
-    $input_servicio = trim($_POST["servicio"]);
-    if(empty($input_servicio)){
-        $servicio_err = "Favor de ingresar la direccion de la Estacion.";     
-    } else{
-        $servicio = $input_servicio;
-    }
-
-    $input_razonsocial = trim($_POST["razonsocial"]);
-    if(empty($input_razonsocial)){
-        $razonsocial_err = "Favor de ingresar la direccion de la Estacion.";     
-    } else{
-        $razonsocial = $input_razonsocial;
-    }
-
-    $input_rfc = trim($_POST["rfc"]);
-    if(empty($input_rfc)){
-        $rfc_err = "Favor de ingresar la direccion de la Estacion.";     
-    } else{
-        $rfc = $input_rfc;
-    }
-
-    $input_imagen = trim($_POST["imagen"]);
-    if(empty($input_imagen)){
-        $imagen_err = "Favor de ingresar la direccion de la Estacion.";     
-    } else{
-        $imagen = $input_imagen;
-    }
-
+    
 
     // Check input errors before inserting in database
     if(empty($nombre_err) && empty($lat_err) && empty($lng_err) && empty($direccion_err) && empty($telefono_err)
@@ -100,13 +52,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     && empty($imagen_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO estacion (nombre, lat, lng, direccion, telefono, email, activo, servicio, razonsocial, rfc, imagen) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO estacion (nombre, lat, lng, direccion) 
+      VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param( $stmt, "sssssssssss", $param_nombre, $param_lat, $param_lng, $param_direccion, 
-              $param_telefono, $param_email, $param_activo, $param_servicio, $param_razonsocial, $param_rfc, $param_imagen);
+            mysqli_stmt_bind_param( $stmt, "ssss", $param_nombre, $param_lat, $param_lng, $param_direccion);
 
             
             // Set parameters
@@ -114,13 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_lat = $lat;
             $param_lng = $lng;
             $param_direccion = $direccion;
-            $param_telefono = $telefono;
-            $param_email = $email;
-            $param_activo = $activo;
-            $param_servicio = $servicio;
-            $param_razonsocial = $razonsocial;
-            $param_rfc = $rfc;
-            $param_imagen = $imagen;
+            
             
                     
             // Attempt to execute the prepared statement
@@ -221,10 +166,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     <tr>
                                     <td></td>
                                     <td>
-                                    <input type="text" style="display:none" class="form-control" readonly  name="cx" id="cx" autocomplete="off"/></td>
+                                    <input type="text" style="display:none" class="form-control" readonly  name="lat" id="lat" autocomplete="off"/></td>
                                     <td></td>
                                     <td>
-                                    <input type="text" style="display:none" class="form-control"  readonly name="cy" id="cy" autocomplete="off"/></td>           
+                                    <input type="text" style="display:none" class="form-control"  readonly name="lng" id="lng" autocomplete="off"/></td>           
                                     </tr>
                                   </table>   
                                   <?php 
@@ -239,47 +184,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $direccion_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($telefono_err)) ? 'has-error' : ''; ?>">
-                            <label>Telefono de la Estacion:</label>
-                            <input placeholder="TELEFONO DE LA ESTACION" type="text" name="telefono" class="form-control" value="<?php echo $telefono; ?>">
-                            <span class="help-block"><?php echo $telefono_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                            <label>Email de la Estacion:</label>
-                            <input placeholder="EMAIL DE LA ESTACION" type="text" name="email" class="form-control" value="<?php echo $email; ?>">
-                            <span class="help-block"><?php echo $email_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($activo_err)) ? 'has-error' : ''; ?>">
-                            <label>Estado de la Estacion:</label>
-                            <input placeholder="Estado DE LA ESTACION" type="text" name="activo" class="form-control" value="<?php echo $activo; ?>">
-                            <span class="help-block"><?php echo $activo_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($servicio_err)) ? 'has-error' : ''; ?>">
-                            <label>Servicio de la Estacion:</label>
-                            <input placeholder="SERVICIO DE LA ESTACION" type="text" name="servicio" class="form-control" value="<?php echo $servicio; ?>">
-                            <span class="help-block"><?php echo $servicio_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($razonsocial_err)) ? 'has-error' : ''; ?>">
-                            <label>RAZONSOCIAL de la Estacion:</label>
-                            <input placeholder="RAZONSOCIAL DE LA ESTACION" type="text" name="razonsocial" class="form-control" value="<?php echo $razonsocial; ?>">
-                            <span class="help-block"><?php echo $razonsocial_err;?></span>
-                        </div>
-
-                         <div class="form-group <?php echo (!empty($rfc_err)) ? 'has-error' : ''; ?>">
-                            <label>RFC de la Estacion:</label>
-                            <input placeholder="RFC DE LA ESTACION" type="text" name="rfc" class="form-control" value="<?php echo $rfc; ?>">
-                            <span class="help-block"><?php echo $rfc_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
-                            <label>IMAGEN de la Estacion:</label>
-                            <input placeholder="IMAGEN DE LA ESTACION" type="text" name="imagen" class="form-control" value="<?php echo $imagen; ?>">
-                            <span class="help-block"><?php echo $imagen_err;?></span>
-                        </div>
+                       
                            
                        
                         <input type="submit" class="btn btn-primary" value="Agregar Nueva Estacion" >

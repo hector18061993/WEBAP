@@ -252,7 +252,9 @@
 
                                             echo "<a href='modificarestacion.php?id=".$row['idestacion']."'' title='PAGINA DE LA ESTACION AP' class='btn btn-primary btn-m'><span class='glyphicon glyphicon-globe' aria-hidden='true'></span></a>";
 
-                                            echo "<a href='crearestacion.php?id=".$row['idestacion']."'' title='NUEVA ESTACION AP' class='btn btn-warning btn-m'><span class='glyphicon glyphicon-map-marker' aria-hidden='true'></span></a>";
+                                            echo "<a href='crearestacion.php?id=".$row['idestacion']."'' title='NUEVA ESTACION AP' class='btn btn-warning btn-m'><span class='glyphicon glyphicon-pushpin' aria-hidden='true'></span></a>";
+
+                                            echo "<a href='eliminarestacion.php?id=".$row['idestacion']."'' title='ELIMINAR ESTACION AP' class='btn btn-danger btn-m'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a>";
 
                                             
                                         echo "</td>";
@@ -344,7 +346,7 @@
                position:direccion,
                map: mapa, 
                animation:google.maps.Animation.DROP,
-               draggable:true
+               draggable:false
            });
            //VIDEO 15
            $("#collapseOne").collapse('show');
@@ -436,13 +438,15 @@
            });
            return false;
         });
+
+
         //BORRAR
         $("#btn_borrar").on("click", function(){
             var f_eliminar = $("#formulario_eliminar");
             $.ajax({
                type:"POST",
                url:"iajax.php",
-               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  //checar id aqui-----------------//
+               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  
                dataType:"JSON",
                success:function(data){
                    if(data.estado=="ok")
@@ -532,8 +536,8 @@
           {
             return false;//NO HACER NADA, AL NO TENER ITEMS
           }
-          var cx = $("#select_resultados option:selected").data("lat");
-          var cy = $("#select_resultados option:selected").data("lng");
+          var lat = $("#select_resultados option:selected").data("lat");
+          var lng = $("#select_resultados option:selected").data("lng");
           //Crear variable coordenada
           var myLatLng = new google.maps.LatLng(lat, lng);
           //VARIABLE MAPA

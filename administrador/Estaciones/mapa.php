@@ -1,50 +1,89 @@
-﻿<!DOCTYPE html>
-<head>
-    <style>
-        #mapa{
-            width: 400px;
+style>
+        #mapa{ 
+            width: 475px;
             height: 400px;
-            float:left;
-            background: green;
+            float: left;
+            background: #CCC ;
         }
         #infor{
-            width: 400px;
-            height: 400px;
-            float:left;
+            width: 800px;
+            height: 50px;
+            float: left;
         }
-    </style>
-<!--IMPORTANTE RESPETAR EL ORDEN -->
-<!--ESTILOS DE BOOSTRAP -->
-<link href="css/bootstrap.min.css" rel="stylesheet" />
+		.titulo {
+	background-color: #F5F5F5;
+	letter-spacing: normal;
+	word-spacing: normal;
+	margin: 10px;
+	padding: 5px;
+	border-radius:10px;
+	alignment-adjust:central;
+}
+.titulo:hover{
+	opacity: .9;
+	background-color: #E5E5E5;}
+	
+.barra {
+	background-color: #90C;
+	border-radius:10px;
+	text-align:right;
+	color:#FFF;
+	padding:10px;
+	font-size:16px;
+}
+    #art-main .art-sheet.clearfix .art-layout-wrapper .art-content-layout .art-content-layout-row .art-layout-cell.art-content .art-post.art-article .art-postcontent.art-postcontent-0.clearfix .art-content-layout .art-content-layout-row .art-layout-cell.layout-item-0 #formulario table tr td div {
+	font-weight: bold;
+}
+ </style>
+
+
+
+<div id="mapa" > </div><form name="formulario" id="formulario" action="" method="post">
+                                  <table>
+                                    <tr>
+                                      <td>Coordenada X</td>
+                                      <td><input type="text" class="form-control" readonly  name="cx" id="cx" autocomplete="off"/></td>
+                                      <td>Coordenada Y</td>
+                                      <td><input type="text" class="form-control"  readonly name="cy" id="cy" autocomplete="off"/></td>
+                                       <td><a href="../TablaEstaciones/index.php" class="btn btn-default">Regresar a Insertar</a></td> 
+                                    </tr>
+
+                                  </table>   </form>
+
+<?php 
+?>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
+
+<!--IMPORTANTE RESPETAR EL ORDEN -->
+ESTILOS DE BOOSTRAP
+<link href="css/bootstrap.min.css" rel="stylesheet" /> 
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1aE0WtuiVtGobAxmOxnlDFAT_c1DM0ZE"type="text/javascript"></script>
-<!--ARCHIVOS JAVASCRIPT DE BOOTSTRAP -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
+ARCHIVOS JAVASCRIPT DE BOOTSTRAP
 <script type="text/javascript" src="js/bootstrap.min.js" ></script>
 <script>
     //VARIABLES GENERALES
-    //declaras fuera del ready de jquery
+		//declaras fuera del ready de jquery
     var nuevos_marcadores = [];
     var marcadores_bd= [];
     var mapa = null; //VARIABLE GENERAL PARA EL MAPA
     //FUNCION PARA QUITAR MARCADORES DE MAPA
     function limpiar_marcadores(lista)
-    {
-        for(i in lista)
-        {
-            //QUITAR MARCADOR DEL MAPA
-            lista[i].setMap(null);
-        }
-    }
+    	{for(i in lista)
+        	{ lista[i].setMap(null);//QUITAR MARCADOR DEL MAPA
+        }}
     $(document).on("ready", function(){
         
         //VARIABLE DE FORMULARIO
         var formulario = $("#formulario");
         
-        var punto = new google.maps.LatLng(19.163622,-99.545926);
+        var punto = new google.maps.LatLng( 19.257234615675644,-99.57647178649902);
         var config = {
-            zoom:4,
+            zoom:14,
             center:punto,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -59,10 +98,10 @@
            var lista = coordenadas.split(",");
            
            var direccion = new google.maps.LatLng(lista[0], lista[1]);
-           //PASAR LA INFORMACI�N AL FORMULARIO
-           formulario.find("input[name='nombre']").focus();
-           formulario.find("input[name='lat']").val(lista[0]);
-           formulario.find("input[name='lng']").val(lista[1]);
+           //PASAR LA INFORMACI?N AL FORMULARIO
+           formulario.find("input[name='titulo']").focus();
+           formulario.find("input[name='cx']").val(lista[0]);
+           formulario.find("input[name='cy']").val(lista[1]);
            
            
            var marcador = new google.maps.Marker({
@@ -91,21 +130,21 @@
             var f = $("#formulario");
             
             //VALIDAR CAMPO TITULO
-            if(f.find("input[name='nombre']").val().trim()=="")
+            if(f.find("input[name='titulo']").val().trim()=="")
             {
-                alert("Falta nombre");
+                alert("Falta título");
                 return false;
             }
             //VALIDAR CAMPO CX
-            if(f.find("input[name='lat']").val().trim()=="")
+            if(f.find("input[name='cx']").val().trim()=="")
             {
-                alert("Falta Coordenada lat");
+                alert("Falta Coordenada X");
                 return false;
             }
             //VALIDAR CAMPO CY
-            if(f.find("input[name='lng']").val().trim()=="")
+            if(f.find("input[name='cy']").val().trim()=="")
             {
-                alert("Falta Coordenada lng");
+                alert("Falta Coordenada Y");
                 return false;
             }
             //FIN VALIDACIONES
@@ -113,9 +152,9 @@
             if(f.hasClass("busy"))
             {
                 //Cuando se haga clic en el boton grabar
-                //se le marcar� con una clase 'busy' indicando
+                //se le marcar? con una clase 'busy' indicando
                 //que ya se ha presionado, y no permitir que se
-                //realiCe la misma operaci�n hasta que esta termine
+                //realiCe la misma operaci?n hasta que esta termine
                 //SI TIENE LA CLASE BUSY, YA NO HARA NADA
                 return false;
             }
@@ -132,16 +171,9 @@
                dataType:"JSON",
                data:f.serialize()+"&tipo=grabar",
                success:function(data){
-          if(data.estado=="ok")
-                    {
-                        loader_grabar.removeClass("label-warning").addClass("label-success")
-                        .text("Grabado OK").delay(4000).slideUp();
-                        listar();
-                    }
-                    else
-                    {
-                        alert(data.mensaje);
-                    }
+                   //alert(data.mensaje);
+                   
+                   listar();
                },
                beforeSend:function(){
                    //Notificar al usuario mientras que se procesa su solicitud
@@ -153,10 +185,12 @@
                    f.removeClass("busy");
                    f[0].reset();
                    //[0] jquery trabaja con array de elementos javascript no
-                   //asi que se debe especificar cual elemento se har� reset
+                   //asi que se debe especificar cual elemento se har? reset
                    //capricho de javascript
-                   //AHORA PERMITIR� OTRA VEZ QUE SE REALICE LA ACCION
+                   //AHORA PERMITIR? OTRA VEZ QUE SE REALICE LA ACCION
                    //Notificar que se ha terminado de procesar
+                   loader_grabar.removeClass("label-warning").addClass("label-success")
+                   .text("Grabado OK").delay(4000).slideUp();
                }
            });
            return false;
@@ -167,7 +201,7 @@
             $.ajax({
                type:"POST",
                url:"iajax.php",
-               data:"id="+f_eliminar.find("input[name='idestacion']").val()+"&tipo=borrar",  //checar id aqui-----------------//
+               data:"id="+f_eliminar.find("input[name='id']").val()+"&tipo=borrar",
                dataType:"JSON",
                success:function(data){
                    if(data.estado=="ok")
@@ -220,53 +254,7 @@
                }
             });
         });
-
-        //BUSCAR
-        $("#btn_buscar").on("click", function(){
-          var palabra_buscar = $("#palabra_buscar").val();
-          var select_resultados = $("#select_resultados");
-          $.ajax({
-            type:"POST",
-            dataType:"JSON",
-            url:"iajax.php",
-            data:"palabra_buscar="+palabra_buscar+"&tipo=buscar",
-            success: function(data){
-              if(data.estado=="ok")
-              {
-                $.each(data.mensaje, function(i, item){
-                  $("<option data-lat='"+item.lat+"' data-lng='"+item.lng+"' value='"+item.idestacion+"'>"+item.nombre+"</option>")
-                  .appendTo(select_resultados);
-                });
-              }
-
-            },
-            beforeSend: function(){
-              select_resultados.empty();//limpiar ComboBox
-            },
-            complete: function(){
-
-            }
-          });
-          return false;
-        });
-
-        //CENTRAR EL MARCADOR AL SELECCIONARLO
-        $("#select_resultados").on("click, change", function(){
-          //PEQUEÑA VALIDACION
-          if($(this).children().length<1)
-          {
-            return false;//NO HACER NADA, AL NO TENER ITEMS
-          }
-          var cx = $("#select_resultados option:selected").data("lat");
-          var cy = $("#select_resultados option:selected").data("lng");
-          //Crear variable coordenada
-          var myLatLng = new google.maps.LatLng(lat, lng);
-          //VARIABLE MAPA
-          mapa.setCenter(myLatLng);
-        });
-
-
-        //CARGAR PUNTOS AL TERMINAR DE CARGAR LA P�GINA
+        //CARGAR PUNTOS AL TERMINAR DE CARGAR LA P?GINA
         listar();//FUNCIONA, AHORA A GRAFICAR LOS PUNTOS EN EL MAPA
     });
     //FUERA DE READY DE JQUERY
@@ -288,14 +276,14 @@
                         //alert("Hay puntos en la BD");
                         $.each(data.mensaje, function(i, item){
                             //OBTENER LAS COORDENADAS DEL PUNTO
-                            var posi = new google.maps.LatLng(item.lat, item.lng);//bien
+                            var posi = new google.maps.LatLng(item.cx, item.cy);//bien
                             //CARGAR LAS PROPIEDADES AL MARCADOR
                             var marca = new google.maps.Marker({
-                                idMarcador:item.idestacion,
+                                idMarcador:item.IdPunto,
                                 position:posi,
-                                nombre: item.nombre,
-                                lat:item.lat,
-                                lng:item.lng
+                                titulo: item.Titulo,
+                                cx:item.cx,
+                                cy:item.cy
                             });
                             //AGREGAR EVENTO CLICK AL MARCADOR
                             google.maps.event.addListener(marca, "click", function(){
@@ -317,16 +305,16 @@
                                         coordenadas = coordenadas.replace("(", "");
                                         coordenadas = coordenadas.replace(")", "");
                                         var lista = coordenadas.split(",");
-                                        f_eliminar.find("input[name='lat']").val(lista[0]);
-                                        f_eliminar.find("input[name='lng']").val(lista[1]);
+                                        f_eliminar.find("input[name='cx']").val(lista[0]);
+                                        f_eliminar.find("input[name='cy']").val(lista[1]);
                                     } );
                                 }
                                 else
                                 {
                                     
-                                    f_eliminar.find("input[name='nombre']").val(marca.nombre);
-                                    f_eliminar.find("input[name='lat']").val(marca.lat);
-                                    f_eliminar.find("input[name='lng']").val(marca.lng);
+                                    f_eliminar.find("input[name='titulo']").val(marca.titulo);
+                                    f_eliminar.find("input[name='cx']").val(marca.cx);
+                                    f_eliminar.find("input[name='cy']").val(marca.cy);
                                     f_eliminar.find("input[name='id']").val(marca.idMarcador);
                                 }
                                 limpiar_marcadores(nuevos_marcadores);
@@ -351,56 +339,6 @@
            });
     }
     //PLANTILLA AJAX
-    
+     -->
 </script>
-</head>
-<body>
-    <div id="mapa">
-        <h2>Aquí ira el mapa!</h2>
-    </div>
-    
-    <div id="infor">
-        <div class="accordion" id="accordion2">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-               
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <h2>Ver Estacion</h2>
-                  
-              </div>
-             
-                <div class="accordion-inner">
-                  <form id="formulario_eliminar">
-                      <input type="hidden" class="form-control"  name="id"/>
-                        <table>
-                            <tr>
-                                <td>Nombre</td>
-                                <td><input type="text" class="form-control"  name="nombre" autocomplete="off"/></td>
-                            </tr>
-                            <tr>
-                                <td>Lat:</td>
-                                <td><input type="text" class="form-control" readonly  name="lat" autocomplete="off"/></td>
-                            </tr>
-                            <tr>
-                                <td>Lon:</td>
-                                <td><input type="text" class="form-control"  readonly name="lng" autocomplete="off"/></td>
-                            </tr>
-                            <!-- Aqui estar� se colocaran los mensajes para el usuario -->
-                            <tr>
-                                <td></td>
-                                <td><span id="loader_grabar" class=""></span></td>
-                            </tr>
-                            <tr>
-                                
-                                <td><a href="estaciondetalle.php?id=2" title="Ver Informacion de la Estacion" class="btn btn-warning btn-sm"><span>Ver estacion</span></a> </td>
-                            </tr>
-                            
-                        </table>
-                    </form>
-                </div>
-              </div>
-            </div>
-            
-</body>
-</html>
+<?php   ?>
