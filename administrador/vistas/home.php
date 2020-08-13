@@ -30,7 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Supervisores</h1> 
+									 <a href="index.html"> <h1>Bienvenido</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
@@ -223,7 +223,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
        <div class="chart-first-line">
     	<div class="col-md-6 chart-blo-1">
     	   <div class="dygno">
-    		     <h2>Doughnut</h2>
+    		     <h2>Servicios</h2>
 				
 				    <canvas id="doughnut" height="300" width="470" style="width: 470px; height: 300px;"></canvas>
 								<script>
@@ -251,7 +251,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     	 </div>
     	<div class="col-md-6 chart-blo-1">
     	    <div class="line-chart">
-    		<h3>Line Chart</h3>
+    		<h3>Datos Estadisticos</h3>
     		 <canvas id="line" height="300" width="400" style="width: 400px; height: 300px;"> </canvas>
                     <script>
                         var lineChartData = {
@@ -348,7 +348,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--inner block end here-->
 <!--copy rights start here-->
 <div class="copyrights">
-	 <p>© .  |   <a href="http://w3layouts.com/" target="_blank"></a> </p>
+	 <p>© datetime|   <a href="http://w3layouts.com/" target="_blank"></a> </p>
 </div>	
 <!--COPY rights end here-->
 </div>

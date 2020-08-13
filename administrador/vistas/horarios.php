@@ -1,48 +1,26 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Pantalla Horarios | Sistema: Administrador AP </title>
+<title>Pantalla Estadisticas | Sistema: Administrador AP </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
-<script src="js/jquery-2.1.1.min.js"></script> 
+<script src="../js/jquery-2.1.1.min.js"></script> 
 <!--icons-css-->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="../css/font-awesome.css" rel="stylesheet"> 
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-<!--//skycons-icons-->
-<!--pop up strat here-->
-<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
- <script>
-						$(document).ready(function() {
-						$('.popup-with-zoom-anim').magnificPopup({
-							type: 'inline',
-							fixedContentPos: false,
-							fixedBgPos: true,
-							overflowY: 'auto',
-							closeBtnInside: true,
-							preloader: false,
-							midClick: true,
-							removalDelay: 300,
-							mainClass: 'my-mfp-zoom-in'
-						});
-																						
-						});
-				</script>
-<!--pop up end here-->
+<!--static chart-->
+<script src="../js/Chart.min.js"></script>
+<!--//charts-->
 </head>
 <body>	
 <div class="page-container">	
@@ -56,13 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
-							<!--search-box-->
-								<div class="search-box">
-									<form>
-										<input type="text" placeholder="Search..." required="">	
-										<input type="submit" value="">					
-									</form>
-								</div><!--//end-search-box-->
+							
 							<div class="clearfix"> </div>
 						 </div>
 						 <div class="header-right">
@@ -244,212 +216,151 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 
 		});
 		</script>
-<!-- /script-for sticky-nav -->
+		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 <div class="inner-block">
-    <div class="price-block-main">
-    	<div class="prices-head">
-    		<h2>Prices</h2>
-    	</div>
-    	<div class="price-tables">
-	    		<div class="col-md-4 price-grid">
-	    		   <div class="price-block">
-		    			<div class="price-gd-top pric-clr1">
-		    				<h4>Basic</h4>
-		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 15days</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>1Gb Disk</li>
-			    					<li>10Gb Bandwidth Monthly</li>
-			    					<li>2 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr1">		    			   
-		    			   	  <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr2">
-		    				<h4>Professional</h4>
-		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 2 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>3Gb Disk</li>
-			    					<li>25Gb Bandwidth Monthly</li>
-			    					<li>5 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr2">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr3">
-		    				<h4>Premium</h4>
-		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 9 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>5Gb Disk</li>
-			    					<li>50Gb Bandwidth Monthly</li>
-			    					<li>10 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr3">
-		    			   	<a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-    	       </div>
-    	       
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr1">
-		    				<h4>Basic</h4>
-		    				<h3><span class="usa-dollar">$</span> 5<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 15days</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>1Gb Disk</li>
-			    					<li>10Gb Bandwidth Monthly</li>
-			    					<li>2 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr1">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr2">
-		    				<h4>Professional</h4>
-		    				<h3><span class="usa-dollar">$</span> 10<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 2 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>5Gb Disk</li>
-			    					<li>50Gb Bandwidth Monthly</li>
-			    					<li>5 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr2">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-	    		<div class="col-md-4 price-grid">
-	    			<div class="price-block">
-		    			<div class="price-gd-top pric-clr3">
-		    				<h4>Premium</h4>
-		    				<h3><span class="usa-dollar">$</span> 12<span class="per-month">/mon</span></h3>
-		    				<h5>Free for 9 months</h5>
-		    			</div>
-		    			<div class="price-gd-bottom">
-		    				<div class="price-list">
-			    				<ul>
-			    					<li>5Gb Disk</li>
-			    					<li>50Gb Bandwidth Monthly</li>
-			    					<li>10 Email Account</li>
-			    					<li>Unlimited Sub Domains</li>
-			    				</ul>
-		    				</div>
-		    			</div>
-		    		    <div class="price-selet pric-clr3">
-		    			   	 <a class="popup-with-zoom-anim" href="#small-dialog">Select Plan</a>
-		    			</div>
-		    		</div>
-	    		</div>
-    	  <div class="clearfix"> </div>
+    <div class="chart-main-block">
+       <div class="chart-first-line">
+    	<div class="col-md-6 chart-blo-1">
+    	   <div class="dygno">
+    		     <h2>Doughnut</h2>
+				
+				    <canvas id="doughnut" height="300" width="470" style="width: 470px; height: 300px;"></canvas>
+								<script>
+									var doughnutData = [
+									{
+										value: 30,
+										color:"#337AB7"
+									},
+									{
+										value : 50,
+										color : "#929292"
+									},
+									{
+										value : 100,
+										color : "#FC8213"
+									},
+									{
+										value : 40,
+										color : "#68AE00"
+									},
+									];
+									new Chart(document.getElementById("doughnut").getContext("2d")).Doughnut(doughnutData);
+								</script>
+			</div>	
+    	 </div>
+    	<div class="col-md-6 chart-blo-1">
+    	    <div class="line-chart">
+    		<h3>Line Chart</h3>
+    		 <canvas id="line" height="300" width="400" style="width: 400px; height: 300px;"> </canvas>
+                    <script>
+                        var lineChartData = {
+						labels : ["","","","","","",""],
+						datasets : [
+							{
+								fillColor : "rgba(252, 130, 19, 0.74)",
+								strokeColor : "#FC8213",
+								pointColor : "#FC8213",
+								pointStrokeColor : "#fff",
+								data : [65,59,90,81,56,55,40]
+							},
+							{
+								fillColor : "rgba(51, 122, 183, 0.71)",
+								strokeColor : "#337AB7",
+								pointColor : "#337AB7",
+								pointStrokeColor : "#fff",
+								data : [28,48,40,19,96,27,100]
+							}
+						]
+						
+					};
+                       new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
+
+                    </script>
+    	    </div>
     	  </div>
-   </div>
+    	  <div class="clearfix"> </div>
+    	</div>
+    	<div class="chart-second-line">
+    	<div class="col-md-6 chart-blo-1">
+    	    <div class="polararea">
+    		<h3>Polar Chart</h3>
+    		<canvas id="polarArea" height="300" width="300" style="width: 300px; height: 300px;"></canvas>
+				<script>
+					var chartData = [
+						{
+							value : Math.random(),
+							color: "#FC8213"
+						},
+						{
+							value : Math.random(),
+							color: "#68AE00"
+						},
+						{
+							value : Math.random(),
+							color: "#337AB7"
+						},
+						{
+							value : Math.random(),
+							color: "#FC8213"
+						},
+						{
+							value : Math.random(),
+							color: "#68AE00"
+						},
+						{
+							value : Math.random(),
+							color: "#337AB7"
+						}
+					];
+					new Chart(document.getElementById("polarArea").getContext("2d")).PolarArea(chartData);
+				</script>   
+			</div> 		
+    	  </div>   	
+    	<div class="col-md-6 chart-blo-1">
+    		<div class="chart-other">
+	    		<h3>Pie</h3> 		
+				<canvas id="pie" height="315" width="470" style="width: 470px; height: 315px;"></canvas>
+								<script>
+									var pieData = [
+										{
+											value: 30,
+											color:"#337AB7"
+										},
+										{
+											value : 50,
+											color : "#FC8213"
+										},
+										{
+											value : 100,
+											color : "#8BC34A"
+										}
+									
+									];
+									new Chart(document.getElementById("pie").getContext("2d")).Pie(pieData);
+								</script>
+            </div>
+    	</div>
+    	<div class="clearfix"> </div>
+    	</div>
+    </div>
 </div>
 <!--inner block end here-->
-<!--pop-up-grid-->
-				                 <div id="popup">
-								 <div id="small-dialog" class="mfp-hide">
-									<div class="pop_up">
-									 	<div class="payment-online-form-left">
-											<form>
-												<h4><span class="shoppong-pay-1"> </span>Shipping Details</h4>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}"></li>
-													<li><input class="text-box-dark" type="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></li>
-												</ul>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}"></li>
-													<li><input class="text-box-dark" type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}"></li>
-												</ul>
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}"></li>
-													<li><input class="text-box-dark" type="text" value="Pin Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Pin Code';}"></li>
-													
-												</ul>
-												<div class="clear"></div>
-												<h4 class="paymenthead"><span class="payment"></span>Payment Details</h4>
-												<div class="clear"></div>										
-												<ul>
-													<li><input class="text-box-dark" type="text" value="Card Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Card Number';}"></li>
-													<li><input class="text-box-dark" type="text" value="Name on card" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name on card';}"></li>
-												
-												</ul>
-												<ul>
-													<li><input class="text-box-light hasDatepicker" type="text" id="datepicker" value="Expiration Date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Expiration Date';}"><em class="pay-date"> </em></li>
-													<li><input class="text-box-dark" type="text" value="Security Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Security Code';}"></li>
-												
-												</ul>
-												<ul class="payment-sendbtns">
-													<li><input type="reset" value="Reset"></li>
-													<li><a href="#" class="order">Process order</a></li>
-												</ul>
-												<div class="clear"></div>
-											</form>
-										</div>
-						  			</div>
-								</div>
-								</div>
-								
-<!--pop-up-grid-->
 <!--copy rights start here-->
 <div class="copyrights">
-	 <p>© 2016 Shoppy. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+	 <p>© .  |   <a href="http://w3layouts.com/" target="_blank"></a> </p>
 </div>	
 <!--COPY rights end here-->
 </div>
 </div>
 <!--slider menu-->
-    <div class="sidebar-menu">
+  <div class="sidebar-menu">
 		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span> 
 			      <!--<img id="logo" src="" alt="Logo"/>--> 
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="gerenteturno.php"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
+		        <li><a href="home.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 
 		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
@@ -458,7 +369,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="../Estaciones/inicioestacion.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
                 <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
@@ -473,7 +384,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <li><a href="combustibles.php"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
 		        </li>
 
-		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
+		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
 		        </li>
 
 		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
@@ -511,8 +422,4 @@ $(".sidebar-icon").click(function() {
 <script src="js/bootstrap.js"> </script>
 <!-- mother grid end here-->
 </body>
-</html>
-
-
-                      
-						
+</html>					

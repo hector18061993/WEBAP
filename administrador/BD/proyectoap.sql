@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-08-2020 a las 19:01:25
+-- Tiempo de generación: 13-08-2020 a las 17:53:12
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.2.31
 
@@ -24,6 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `administrador`
+--
+
+CREATE TABLE `administrador` (
+  `id` int(11) NOT NULL,
+  `username` varchar(250) NOT NULL,
+  `fullname` varchar(500) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `created_at` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`id`, `username`, `fullname`, `email`, `password`, `created_at`) VALUES
+(4, 'administrador', 'administrador', 'administrador@gmail.com', 'administrador', '2020-08-13 10:17:30.000000'),
+(6, 'usuario1', 'usuario1', 'usuario1@hotmail.com', 'usuario1', '2020-08-13 10:26:16.000000'),
+(8, 'usuario1', 'usuario1', 'usuario1@hotmail.com', 'usuario1', '2020-08-13 10:41:18.000000'),
+(9, 'usuario1', 'usuario1', 'usuario1@hotmail.com', 'usuario1', '2020-08-13 10:42:00.000000');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `combustible`
 --
 
@@ -31,8 +56,8 @@ CREATE TABLE `combustible` (
   `idcombustible` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `imagen` varchar(100) NOT NULL,
-  `fecha` datetime(6) NOT NULL,
   `costo` decimal(11,2) NOT NULL,
+  `activo` tinyint(1) NOT NULL,
   `idestacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,9 +65,9 @@ CREATE TABLE `combustible` (
 -- Volcado de datos para la tabla `combustible`
 --
 
-INSERT INTO `combustible` (`idcombustible`, `nombre`, `imagen`, `fecha`, `costo`, `idestacion`) VALUES
-(1, 'Diesel g500', 'diesel1.1 ', '2020-08-06 00:00:06.000000', '18.22', 1),
-(2, 'Diesel G-500', 'diesel.png', '2020-08-06 00:00:00.000000', '18.22', 1);
+INSERT INTO `combustible` (`idcombustible`, `nombre`, `imagen`, `costo`, `activo`, `idestacion`) VALUES
+(1, 'Diesel g500', 'diesel1.1 ', '18.22', 0, 1),
+(2, 'Diesel G-500', 'diesel.png', '18.22', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -56,6 +81,14 @@ CREATE TABLE `diferenciador` (
   `descripcion` varchar(500) NOT NULL,
   `liga` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `diferenciador`
+--
+
+INSERT INTO `diferenciador` (`iddiferenciador`, `imagen`, `descripcion`, `liga`) VALUES
+(4, 'imagen3.9', 'crianza de perros', 'http:diferenciador/crianzaperros.com.mx'),
+(5, 'imagen26.png', 'nueva gasolina g500', 'http:diferenciador.com.mx/nuevagasolina');
 
 -- --------------------------------------------------------
 
@@ -83,8 +116,8 @@ CREATE TABLE `estacion` (
 --
 
 INSERT INTO `estacion` (`idestacion`, `nombre`, `lat`, `lng`, `direccion`, `telefono`, `email`, `activo`, `servicio`, `razonsocial`, `rfc`, `imagen`) VALUES
-(1, 'Estacion Toluca-Centro', '19.290787', '-99.050816', 'Avenida Independencia No. 208 colonia Centro', '2140101', 'estaciontoluca@hotmail.com', 1, 1, 'centrotoluca01', 'centrotoluca01', 'img1'),
-(2, 'Estacion lerma', '19.805609', '-100.205609', 'Avenida Lerma No. 1501 Colonia Centro ', '5508070605', NULL, 1, 1, 'lerma010', 'lerma010', 'lerma.imagen');
+(1, 'Estacion Toluca1', '19.290787', '-99.050816', 'Avenida Independencia No. 208 colonia Centro', '2140101', 'estaciontoluca@hotmail.com', 1, 1, 'centrotoluca01', 'centrotoluca01', 'img1'),
+(2, 'Estacion Zitacuaro', '19.805609', '-100.205609', 'Avenida Lerma No. 1501 Colonia Centro ', '5508070605', NULL, 1, 1, 'lerma010', 'lerma010', 'lerma.imagen');
 
 -- --------------------------------------------------------
 
@@ -162,19 +195,6 @@ INSERT INTO `horarios` (`idhorarios`, `nombredia`, `descripcion`, `idestacion`) 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `informacionempresa`
---
-
-CREATE TABLE `informacionempresa` (
-  `idinformacion` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(1000) NOT NULL,
-  `subdescripcion` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `nosotros`
 --
 
@@ -183,6 +203,13 @@ CREATE TABLE `nosotros` (
   `titulo` varchar(250) NOT NULL,
   `descripcion` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `nosotros`
+--
+
+INSERT INTO `nosotros` (`idnosotros`, `titulo`, `descripcion`) VALUES
+(2, 'Vision', 'Nuestra misión es comprometernos con nuestros clientes a brindarles un servicio de calidad');
 
 -- --------------------------------------------------------
 
@@ -227,9 +254,16 @@ CREATE TABLE `permiso` (
 
 CREATE TABLE `preguntasfrecuentes` (
   `idpreguntasfrecuentes` int(11) NOT NULL,
-  `titulo` int(11) NOT NULL,
-  `descripcion` int(11) NOT NULL
+  `titulo` varchar(250) DEFAULT NULL,
+  `descripcion` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `preguntasfrecuentes`
+--
+
+INSERT INTO `preguntasfrecuentes` (`idpreguntasfrecuentes`, `titulo`, `descripcion`) VALUES
+(4, '¿Cual es el mejor combustible del corporativo?', 'Tenemos muchos tipos de combustibles');
 
 -- --------------------------------------------------------
 
@@ -252,11 +286,16 @@ CREATE TABLE `prioridad` (
 
 CREATE TABLE `privacidad` (
   `idprivacidad` int(5) NOT NULL,
-  `titulo` varchar(100) NOT NULL,
-  `descripcion` varchar(500) NOT NULL,
-  `tipos` int(3) NOT NULL,
-  `fecha` datetime(6) NOT NULL
+  `titulo` varchar(250) NOT NULL,
+  `descripcion` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `privacidad`
+--
+
+INSERT INTO `privacidad` (`idprivacidad`, `titulo`, `descripcion`) VALUES
+(2, 'Privacidad2.2', 'Privacidad2.2');
 
 -- --------------------------------------------------------
 
@@ -322,6 +361,12 @@ INSERT INTO `supervisor` (`idsupervisor`, `nombre`, `apellido`, `email`, `telefo
 --
 
 --
+-- Indices de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `combustible`
 --
 ALTER TABLE `combustible`
@@ -367,12 +412,6 @@ ALTER TABLE `historialcombustible`
 ALTER TABLE `horarios`
   ADD PRIMARY KEY (`idhorarios`),
   ADD KEY `idestacion` (`idestacion`);
-
---
--- Indices de la tabla `informacionempresa`
---
-ALTER TABLE `informacionempresa`
-  ADD PRIMARY KEY (`idinformacion`);
 
 --
 -- Indices de la tabla `nosotros`
@@ -438,6 +477,12 @@ ALTER TABLE `supervisor`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `combustible`
 --
 ALTER TABLE `combustible`
@@ -447,13 +492,13 @@ ALTER TABLE `combustible`
 -- AUTO_INCREMENT de la tabla `diferenciador`
 --
 ALTER TABLE `diferenciador`
-  MODIFY `iddiferenciador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddiferenciador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `estacion`
 --
 ALTER TABLE `estacion`
-  MODIFY `idestacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idestacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `gerenteturno`
@@ -480,16 +525,10 @@ ALTER TABLE `horarios`
   MODIFY `idhorarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `informacionempresa`
---
-ALTER TABLE `informacionempresa`
-  MODIFY `idinformacion` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `nosotros`
 --
 ALTER TABLE `nosotros`
-  MODIFY `idnosotros` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idnosotros` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `noticia`
@@ -507,7 +546,7 @@ ALTER TABLE `permiso`
 -- AUTO_INCREMENT de la tabla `preguntasfrecuentes`
 --
 ALTER TABLE `preguntasfrecuentes`
-  MODIFY `idpreguntasfrecuentes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpreguntasfrecuentes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `prioridad`
@@ -519,7 +558,7 @@ ALTER TABLE `prioridad`
 -- AUTO_INCREMENT de la tabla `privacidad`
 --
 ALTER TABLE `privacidad`
-  MODIFY `idprivacidad` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `idprivacidad` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `productossecundarios`

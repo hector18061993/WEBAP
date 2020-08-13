@@ -273,22 +273,21 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                          </div>
                          <div class="header-right">
                             <div class="profile_details_left"><!--notifications of menu start -->
+                                <ul class="nofitications-dropdown"> 
+
+                                <a href="../vistas/home.php"><i class="fa fa-home"></i><span></span></span></a>
+                                
 
                                 <ul class="nofitications-dropdown">
                                     <li class="dropdown head-dpdn">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
+                                        
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <div class="notification_header">
-                                                    <h3>You have 3 new messages</h3>
-                                                </div>
+                                               
                                             </li>
                                             <li><a href="#">
                                                <div class="user_img"><img src="images/p4.png" alt=""></div>
-                                               <div class="notification_desc">
-                                                <p>Lorem ipsum dolor</p>
-                                                <p><span>1 hour ago</span></p>
-                                                </div>
+                                              
                                                <div class="clearfix"></div> 
                                             </a></li>
                                             <li class="odd"><a href="#">
@@ -309,56 +308,23 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                             </a></li>
                                             <li>
                                                 <div class="notification_bottom">
-                                                    <a href="#">See all messages</a>
+                                                    
                                                 </div> 
                                             </li>
                                         </ul>
                                     </li>
                                     <li class="dropdown head-dpdn">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">3</span></a>
+                                        
                                         <ul class="dropdown-menu">
-                                            <li>
-                                                <div class="notification_header">
-                                                    <h3>You have 3 new notification</h3>
-                                                </div>
-                                            </li>
-                                            <li><a href="#">
-                                                <div class="user_img"><img src="images/p5.png" alt=""></div>
-                                               <div class="notification_desc">
-                                                <p>Lorem ipsum dolor</p>
-                                                <p><span>1 hour ago</span></p>
-                                                </div>
-                                              <div class="clearfix"></div>  
-                                             </a></li>
-                                             <li class="odd"><a href="#">
-                                                <div class="user_img"><img src="images/p6.png" alt=""></div>
-                                               <div class="notification_desc">
-                                                <p>Lorem ipsum dolor</p>
-                                                <p><span>1 hour ago</span></p>
-                                                </div>
-                                               <div class="clearfix"></div> 
-                                             </a></li>
-                                             <li><a href="#">
-                                                <div class="user_img"><img src="images/p7.png" alt=""></div>
-                                               <div class="notification_desc">
-                                                <p>Lorem ipsum dolor</p>
-                                                <p><span>1 hour ago</span></p>
-                                                </div>
-                                               <div class="clearfix"></div> 
-                                             </a></li>
-                                             <li>
-                                                <div class="notification_bottom">
-                                                    <a href="#">See all notifications</a>
-                                                </div> 
-                                            </li>
+                                            
                                         </ul>
                                     </li>   
                                     <li class="dropdown head-dpdn">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">9</span></a>
+                                       
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <div class="notification_header">
-                                                    <h3>You have 8 pending task</h3>
+                                                  
                                                 </div>
                                             </li>
                                             <li><a href="#">
@@ -372,7 +338,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                             </a></li>
                                             <li><a href="#">
                                                 <div class="task-info">
-                                                    <span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
+                                                    <span class="task-desc"></span><span class="percentage">90%</span>
                                                    <div class="clearfix"></div> 
                                                 </div>
                                                 <div class="progress progress-striped active">
@@ -415,8 +381,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                                             <div class="profile_img">   
                                                 <span class="prfil-img"><img src="images/p1.png" alt=""> </span> 
                                                 <div class="user-name">
-                                                    <p>Malorum</p>
-                                                    <span>Administrator</span>
+                                                <p>Malorum</p>
+                                                <span>Administrator</span>
                                                 </div>
                                                 <i class="fa fa-angle-down lnr"></i>
                                                 <i class="fa fa-angle-up lnr"></i>
@@ -507,13 +473,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $direccion_err;?></span>
                         </div>
                     </div>
-                       
-
-
-
-
-
-                        
                 </div>
             </div>        
         </div>

@@ -1,9 +1,3 @@
-
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -14,18 +8,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
-<script src="js/jquery-2.1.1.min.js"></script> 
+<script src="../js/jquery-2.1.1.min.js"></script> 
 <!--icons-css-->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="../css/font-awesome.css" rel="stylesheet"> 
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
 <!--static chart-->
-<script src="js/Chart.min.js"></script>
+<script src="../js/Chart.min.js"></script>
 <!--//charts-->
 </head>
 <body>	
@@ -40,13 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
-							<!--search-box-->
-								<div class="search-box">
-									<form>
-										<input type="text" placeholder="Search..." required="">	
-										<input type="submit" value="">					
-									</form>
-								</div><!--//end-search-box-->
+							
 							<div class="clearfix"> </div>
 						 </div>
 						 <div class="header-right">
@@ -360,19 +348,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--inner block end here-->
 <!--copy rights start here-->
 <div class="copyrights">
-	 <p>© 2016 Shoppy. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+	 <p>© .  |   <a href="http://w3layouts.com/" target="_blank"></a> </p>
 </div>	
 <!--COPY rights end here-->
 </div>
 </div>
 <!--slider menu-->
-   <div class="sidebar-menu">
+  <div class="sidebar-menu">
 		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span> 
 			      <!--<img id="logo" src="" alt="Logo"/>--> 
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="gerenteturno.php"><i class="fa fa-users"></i><span>Gerente de Turno</span></span></a>
+		        <li><a href="home.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
 		        </li>
 
 		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios y Amenidades</span></span></a>
@@ -381,7 +369,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
 		        </li>
 
-		        <li><a href="estaciones.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="../Estaciones/inicioestacion.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
 
 
                 <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
@@ -399,7 +387,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
 		        </li>
 
-		        <li><a href="index.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
+		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
 		        </li>
 		        		         
 		      </ul>
