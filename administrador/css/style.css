@@ -3792,7 +3792,7 @@ span.malorum-pro {
 	width: 92%;
 }
 .page-container.sidebar-collapsed .sidebar-menu {
-	 width:100px;	
+	 width:180px;	
 	transition: all 100ms ease-in-out;
 	transition-delay: 300ms;
 }
@@ -3801,7 +3801,7 @@ span.malorum-pro {
 	transition: all 100ms ease-in-out;
 }
 #menu li a {
-    padding: 5px 10px;
+    padding: 20px 20px;
     text-align: left !important;
 }
 #menu .fa {

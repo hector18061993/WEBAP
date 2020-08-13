@@ -223,32 +223,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
        <div class="chart-first-line">
     	<div class="col-md-6 chart-blo-1">
     	   <div class="dygno">
-    		     <h2>Doughnut</h2>
-				
-				    <canvas id="doughnut" height="300" width="470" style="width: 470px; height: 300px;"></canvas>
-								<script>
-									var doughnutData = [
-									{
-										value: 30,
-										color:"#337AB7"
-									},
-									{
-										value : 50,
-										color : "#929292"
-									},
-									{
-										value : 100,
-										color : "#FC8213"
-									},
-									{
-										value : 40,
-										color : "#68AE00"
-									},
-									];
-									new Chart(document.getElementById("doughnut").getContext("2d")).Doughnut(doughnutData);
-								</script>
-			</div>	
-    	 </div>
+    		     <h2>Noticias</h2>
+				    <canvas id="doughnut" height="1" width="1" style="width: 1px; height: 1px;"></canvas>
+					    <table class='table table-striped table-hover'>
+                            <thead>
+                                <tr>
+                                    <th>Noticia</th>
+                                    <th>Texto</th>
+                                    <th>Imagen</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                    <td>Noticia1</td>
+                                    <td>Noticia1</td>
+                                    <td>Noticia1</td>
+                                    </td>
+                                    <td>
+                                              <a href="vercombustible.php?id='.$row['idcombustible'].'" title="Ver Informacion del Combustible" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> 
+
+                                                 <a href="modificarcombustible.php?id='.$row['idcombustible'].'" title="Actualizar la informacion del Tipo de Combustible" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+
+                                                 <a href="eliminarcombustible.php?id='.$row['idcombustible'].'" title="Eliminar el registro del Combustible" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+
+                                                  </td>
+                                                </tr>
+                                            </tbody>                            
+                                        </table>
+			                        </div>	
+    	                        </div>
     	<div class="col-md-6 chart-blo-1">
     	    <div class="line-chart">
     		<h3>Line Chart</h3>
