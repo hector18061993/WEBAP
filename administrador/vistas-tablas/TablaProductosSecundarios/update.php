@@ -1,17 +1,17 @@
 <?php
-// Include config file
+
 require_once "config.php";
  
-// Define variables and initialize with empty values
-$nombre = $descripcion = $categoria = $costo = $imagen  = $descuento = "";
-$nombre_err = $descripcion_err = $categoria_err = $costo_err  =  $imagen_err = $descuento_err = "";
+
+$nombre = $descripcion = $imagen = $costo = $activo  = "";
+$nombre_err = $descripcion_err = $imagen_err = $costo_err  =  $activo_err = "";
  
-// Processing form data when form is submitted
+
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-    // Get hidden input value
+    
     $id = $_POST["id"];
     
-    // Validate name
+    
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
         $nombre_err = "Por favor ingrese un apellido.";     
@@ -19,7 +19,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $nombre = $input_nombre;
     }
     
-    // Validate lastname
+    
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
         $descripcion_err = "Por favor ingrese un apellido.";     
@@ -28,15 +28,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 
      
-    // Validate email
-    $input_categoria = trim($_POST["categoria"]);
-    if(empty($input_categoria)){
-        $categoria_err = "Por favor ingrese un usuario.";     
+    
+    $input_imagen = trim($_POST["imagen"]);
+    if(empty($input_imagen)){
+        $imagen_err = "Por favor ingrese un usuario.";     
     } else{
-        $categoria = $input_categoria;
+        $imagen = $input_imagen;
     }
     
-    // Validate email
+    
     $input_costo = trim($_POST["costo"]);
     if(empty($input_costo)){
         $costo_err = "Por favor ingrese un usuario.";     
@@ -45,46 +45,39 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
     
    
-     // Validate email
-    $input_imagen = trim($_POST["imagen"]);
-    if(empty($input_imagen)){
-        $imagen_err = "Por favor ingrese una imagen.";     
-    } else{
-        $imagen = $input_imagen;
-    }
-
-    // Validate email
-    $input_descuento = trim($_POST["descuento"]);
-    if(empty($input_descuento)){
-        $descuento_err = "Por favor ingrese un usuario.";     
-    } else{
-        $descuento = $input_descuento;
-    }
     
-    // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($descripcion_err) && empty($categoria_err) && empty($costo_err)  && empty($imagen_err)
-                         && empty($descuento_err)){
+    $input_activo = trim($_POST["activo"]);
+    if(empty($input_activo)){
+        $activo_err = "Por favor ingrese una imagen.";     
+    } else{
+        $activo = $input_activo;
+    }
 
-        // Prepare an update statement
-        $sql = "UPDATE t_producto SET nombre=?, descripcion=?, categoria=?, costo=?, imagen=?,descuento=?  WHERE id=?";
+       
+    
+    if(empty($nombre_err) && empty($descripcion_err) && empty($imagen_err) && empty($costo_err)  
+        && empty($activo_err)){
+
+    
+        $sql = "UPDATE productossecundarios SET nombre=?, descripcion=?, imagen=?, costo=?, activo=? 
+                WHERE idproductossecundarios=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssssssi", $param_nombre, $param_descripcion, 
-                $param_categoria, $param_costo, $param_imagen, $param_descuento, $param_id);
             
-            // Set parameters
+            mysqli_stmt_bind_param($stmt, "sssssi", $param_nombre, $param_descripcion, 
+                $param_imagen, $param_costo, $param_activo, $param_id);
+            
+            
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
-            $param_categoria = $categoria;
-            $param_costo = $costo;
             $param_imagen = $imagen;
-            $param_descuento = $descuento;
+            $param_costo = $costo;
+            $param_activo = $activo;
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
-                // Records updated successfully. Redirect to landing page
+                
                 header("location: index.php");
                 exit();
             } else{
@@ -92,46 +85,45 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
          
-        // Close statement
+        
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
+   
     mysqli_close($link);
 } else{
-    // Check existence of id parameter before processing further
+    
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-        // Get URL parameter
+        
         $id =  trim($_GET["id"]);
         
-        // Prepare a select statement
-        $sql = "SELECT * FROM t_producto WHERE id = ?";
+       
+        $sql = "SELECT * FROM productossecundarios WHERE idproductosssecundarios = ?";
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            
             mysqli_stmt_bind_param($stmt, "i", $param_id);
             
-            // Set parameters
+            
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
                 $result = mysqli_stmt_get_result($stmt);
     
                 if(mysqli_num_rows($result) == 1){
-                    /* Fetch result row as an associative array. Since the result set
-                    contains only one row, we don't need to use while loop */
+                   
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
-                    // Retrieve individual field value
+                   
                     $nombre = $row["nombre"];
                     $descripcion = $row["descripcion"];
-                    $categoria = $row["categoria"];
-                    $costo = $row["costo"];
                     $imagen = $row["imagen"];
-                    $descuento = $row["descuento"];
+                    $costo = $row["costo"];
+                    $activo = $row["activo"];
+                    
                     
                 } else{
-                    // URL doesn't contain valid id. Redirect to error page
+                   
                     header("location: errorpagina.php");
                     exit();
                 }
@@ -141,13 +133,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
         
-        // Close statement
+        
         mysqli_stmt_close($stmt);
         
-        // Close connection
+       
         mysqli_close($link);
     }  else{
-        // URL doesn't contain id parameter. Redirect to error page
+        
         header("location: errorpagina.php");
         exit();
     }
@@ -178,6 +170,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     <p>Edite los datos de entrada y envíe para actualizar el registro de usuarios.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
 
+
                         <div class="form-group <?php echo (!empty($nombre_err)) ? 'has-error' : ''; ?>">
                             <label>Nombre del Producto:</label>
                             <input type="text" name="nombre" class="form-control" value="<?php echo $nombre; ?>">
@@ -190,10 +183,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
-                       <div class="form-group <?php echo (!empty($categoria_err)) ? 'has-error' : ''; ?>">
+                       <div class="form-group <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
                             <label>Categoria del Producto:</label>
-                            <input type="text" name="categoria" class="form-control" value="<?php echo $categoria; ?>">
-                            <span class="help-block"><?php echo $categoria_err;?></span>
+                            <input type="text" name="imagen" class="form-control" value="<?php echo $imagen; ?>">
+                            <span class="help-block"><?php echo $imagen_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($costo_err)) ? 'has-error' : ''; ?>">
@@ -202,18 +195,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $costo_err;?></span>
                         </div>
 
-                        <div class="form-group  <?php echo (!empty($imagen_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group  <?php echo (!empty($activo_err)) ? 'has-error' : ''; ?>">
                         <label>Imagen del Producto:</label>
-                        <input type="file" name="imagen" value="<?php echo $imagen; ?>">
-                        <span class="help-block"><?php echo $imagen_err;?></span>
+                        <input type="file" name="activo" value="<?php echo $activo; ?>">
+                        <span class="help-block"><?php echo $activo_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($descuento_err)) ? 'has-error' : ''; ?>">
-                            <label>Descuento del Producto:</label>
-                            <input type="text" name="descuento" class="form-control" value="<?php echo $descuento; ?>">
-                            <span class="help-block"><?php echo $descuento_err;?></span>
-                        </div>
-
+                        
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Guardar Producto">
                         <a href="inicioestacion.php" class="btn btn-success">Regresar a Pantalla Principal</a>

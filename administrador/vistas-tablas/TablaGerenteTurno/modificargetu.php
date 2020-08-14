@@ -1,18 +1,17 @@
 <?php
-// Include config file
+
 require_once "config.php";
  
-// Define variables and initialize with empty values
-$nombre =  $apellidos = $turno = $direccion = $telefono = $email = $usuariogerente = $clavegerente = "";
+$nombre =  $apellido = $direccion = $telefono = $email = $usuario = $password = "";
 
-$nombre_err = $apellidos_err = $turno_err = $direccion_err = $telefono_err = $email_err = $usuariogerente_err = $clavegerente_err = "";
+$nombre_err = $apellido_err = $direccion_err = $telefono_err = $email_err = $usuario_err = $password_err = "";
  
-// Processing form data when form is submitted
+
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-    // Get hidden input value
+    
     $id = $_POST["id"];
     
-    // Validando el campo Nombre(s) 
+     
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
         $nombre_err = "Favor de ingresar el nuevo nombre(s) del gerente en turno de la Estacion.";     
@@ -20,23 +19,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $nombre = $input_nombre;
     }
 
-    // Validando el campo Nombre(s) 
-    $input_apellidos = trim($_POST["apellidos"]);
-    if(empty($input_apellidos)){
-        $apellidos_err = "Favor de ingresar los nuevos apellidos del gerente en turno de la Estacion.";     
+     
+    $input_apellido = trim($_POST["apellido"]);
+    if(empty($input_apellido)){
+        $apellido_err = "Favor de ingresar los nuevos apellidos del gerente en turno de la Estacion.";     
     } else{
-        $apellidos = $input_apellidos;
+        $apellido = $input_apellido;
     }
 
-    // Validando el campo Nombre(s) 
-    $input_turno = trim($_POST["turno"]);
-    if(empty($input_turno)){
-        $turno_err = "Favor de ingresar el nuevo turno del gerente en turno de la Estacion..";     
-    } else{
-        $turno = $input_turno;
-    }
-
-    // Validando el campo Apellido(s)
     $input_direccion = trim($_POST["direccion"]);
     if(empty($input_direccion)){
         $direccion_err = "Favor de ingresar la nueva direccion del gerente de la Estacion.";     
@@ -44,7 +34,6 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $direccion = $input_direccion;
     }
 
-    // Validando el campo Email
     $input_telefono = trim($_POST["telefono"]);
     if(empty($input_telefono)){
         $telefono_err = "Favor de ingresar el nuevo telefono del gerente de la Estacion.";     
@@ -52,7 +41,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $telefono = $input_telefono;
     }
 
-    // Validando el campo Telefono
+    
     $input_email = trim($_POST["email"]);
     if(empty($input_email)){
         $email_err = "Favor de ingresar el nuevo correo del gerente de la Estacion.";     
@@ -60,51 +49,46 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $email = $input_email;
     }
 
-    // Validando el campo Tipo de Usuario
-    $input_usuariogerente = trim($_POST["usuariogerente"]);
-    if(empty($input_usuariogerente)){
-        $usuariogerente_err = "Favor de ingresar el nuevo nombre de usuario del gerente de la Estacion.";     
+    $input_usuario = trim($_POST["usuario"]);
+    if(empty($input_usuario)){
+        $usuario_err = "Favor de ingresar el nuevo nombre de usuario del gerente de la Estacion.";     
     } else{
-        $usuariogerente = $input_usuariogerente;
+        $usuario = $input_usuario;
     }
 
-
-    // Validar el campo Usuario
-    $input_clavegerente = trim($_POST["clavegerente"]);
-    if(empty($input_clavegerente)){
-        $clavegerente_err = "Favor de ingresar la nueva contraseña del gerente de la Estacion.";     
+    $input_password = trim($_POST["password"]);
+    if(empty($input_password)){
+        $password_err = "Favor de ingresar la nueva contraseña del gerente de la Estacion.";     
     } else{
-        $clavegerente = $input_clavegerente;
+        $password = $input_password;
     }
   
     
-    // Check input errors before inserting in database
-     if(empty($nombre_err) && empty($apellidos_err) && empty($turno_err) && empty($direccion_err) && empty($telefono_err) 
-        && empty($email_err) && empty($usuariogerente_err) && empty($clavegerente_err)){
+    if(empty($nombre_err) && empty($apellido_err) && empty($direccion_err) && empty($telefono_err) 
+    && empty($email_err) && empty($usuario_err) && empty($password_err)){
 
-        // Prepare an update statement
-        $sql = "UPDATE t_gerenteturno SET nombre=?, apellidos=?, turno=?, direccion=?, telefono=?, email=?, usuariogerente=?, clavegerente=? 
-               WHERE id=?";
+        
+        $sql = "UPDATE gerenteturno SET nombre=?, apellido=?, direccion=?, telefono=?, email=?, usuario=?, password=? 
+               WHERE idgerenteturno=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssssssssi", $param_nombre, $param_apellidos, $param_turno, $param_direccion, $param_telefono, $param_email, 
-                                  $param_usuariogerente, $param_clavegerente, $param_id);
             
-            // Set parameters
+            mysqli_stmt_bind_param($stmt, "sssssssi", $param_nombre, $param_apellido, $param_direccion, $param_telefono, 
+                $param_email, $param_usuario, $param_password, $param_id);
+            
+            
             $param_nombre = $nombre;
-            $param_apellidos = $apellidos;
-            $param_turno = $turno;
+            $param_apellido = $apellido;
             $param_direccion = $direccion;
             $param_telefono = $telefono;
             $param_email = $email;
-            $param_usuariogerente = $usuariogerente;
-            $param_clavegerente = $clavegerente;
+            $param_usuario = $usuario;
+            $param_password = $password;
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
-                // Records updated successfully. Redirect to landing page
+                
                 header("location: iniciogetu.php");
                 exit();
             } else{
@@ -112,47 +96,45 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
          
-        // Close statement
+        
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
+    
     mysqli_close($link);
 } else{
-    // Check existence of id parameter before processing further
+    
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-        // Get URL parameter
+        
         $id =  trim($_GET["id"]);
         
-        // Prepare a select statement
-        $sql = "SELECT * FROM t_gerenteturno WHERE id = ?";
+        $sql = "SELECT * FROM gerenteturno WHERE idgerenteturno = ?";
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            
             mysqli_stmt_bind_param($stmt, "i", $param_id);
             
-            // Set parameters
+            
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
                 $result = mysqli_stmt_get_result($stmt);
     
                 if(mysqli_num_rows($result) == 1){
-                    /* Fetch result row as an associative array. Since the result set
-                    contains only one row, we don't need to use while loop */
+                   
+
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
-                    // Retrieve individual field value
+                    
                     $nombre = $row["nombre"];
-                    $apellidos = $row["apellidos"];
-                    $turno = $row["turno"];
+                    $apellido = $row["apellido"];
                     $direccion = $row["direccion"];
                     $telefono = $row["telefono"];
                     $email = $row["email"];
-                    $usuariogerente = $row["usuariogerente"];
-                    $clavegerente = $row["clavegerente"];
+                    $usuario = $row["usuario"];
+                    $password = $row["password"];
                 } else{
-                    // URL doesn't contain valid id. Redirect to error page
+                    
                     header("location: errorgetu.php");
                     exit();
                 }
@@ -162,13 +144,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
         
-        // Close statement
+        
         mysqli_stmt_close($stmt);
         
-        // Close connection
+        
         mysqli_close($link);
     }  else{
-        // URL doesn't contain id parameter. Redirect to error page
+       
+
         header("location: errorgetu.php");
         exit();
     }
@@ -205,16 +188,10 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($apellidos_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($apellido_err)) ? 'has-error' : ''; ?>">
                             <label>Apellidos del gerente en turno:</label>
-                            <input placeholder="NUEVO APELLIDO(S)" type="text" name="apellidos" class="form-control" value="<?php echo $apellidos; ?>">
-                            <span class="help-block"><?php echo $apellidos_err;?></span>
-                        </div>
-
-                       <div class="form-group <?php echo (!empty($turno_err)) ? 'has-error' : ''; ?>">
-                            <label>Nuevo Turno del Gerente:</label>
-                            <input placeholder="NUEVO TURNO" type="text" name="turno" class="form-control" value="<?php echo $turno; ?>">
-                            <span class="help-block"><?php echo $turno_err;?></span>
+                            <input placeholder="NUEVO APELLIDO(S)" type="text" name="apellido" class="form-control" value="<?php echo $apellido; ?>">
+                            <span class="help-block"><?php echo $apellido_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($direccion_err)) ? 'has-error' : ''; ?>">
@@ -235,16 +212,16 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $email_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($usuariogerente_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($usuario_err)) ? 'has-error' : ''; ?>">
                             <label>Usuario del gerente en turno:</label>
-                            <input placeholder="NUEVO USUARIO" type="text" name="usuariogerente" class="form-control" value="<?php echo $usuariogerente; ?>">
-                            <span class="help-block"><?php echo $usuariogerente_err;?></span>
+                            <input placeholder="NUEVO USUARIO" type="text" name="usuario" class="form-control" value="<?php echo $usuario; ?>">
+                            <span class="help-block"><?php echo $usuario_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($clavegerente_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                             <label>Clave del gerente en turno:</label>
-                            <input placeholder="NUEVA CONTRASEÑA" type="text" name="clavegerente" class="form-control" value="<?php echo $clavegerente; ?>">
-                            <span class="help-block"><?php echo $clavegerente_err;?></span>
+                            <input placeholder="NUEVA CONTRASEÑA" type="text" name="password" class="form-control" value="<?php echo $password; ?>">
+                            <span class="help-block"><?php echo $password_err;?></span>
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>

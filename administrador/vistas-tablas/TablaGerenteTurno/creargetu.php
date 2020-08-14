@@ -1,16 +1,16 @@
 <?php
-// Incluimos nuestro archivo config 
+
 require_once "config.php";
  
-// Definimos las variables a utilizar 
-$nombre =  $apellidos = $turno = $direccion = $telefono = $email = $usuariogerente = $clavegerente = "";
 
-$nombre_err = $apellidos_err = $turno_err = $direccion_err = $telefono_err = $email_err = $usuariogerente_err = $clavegerente_err = "";
+$nombre =  $apellido =  $direccion = $telefono = $email = $usuario = $password = "";
+
+$nombre_err = $apellido_err = $direccion_err = $telefono_err = $email_err = $usuario_err = $password_err = "";
  
-// Processing form data when form is submitted
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    // Validando el campo Nombre(s) 
+   
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
         $nombre_err = "Favor de ingresar el nombre(s) del gerente en turno de la Estacion.";     
@@ -18,23 +18,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre = $input_nombre;
     }
 
-    // Validando el campo Nombre(s) 
-    $input_apellidos = trim($_POST["apellidos"]);
-    if(empty($input_apellidos)){
-        $apellidos_err = "Favor de ingresar los apellidos del gerente en turno de la Estacion.";     
+    
+    $input_apellido = trim($_POST["apellido"]);
+    if(empty($input_apellido)){
+        $apellido_err = "Favor de ingresar los apellidos del gerente en turno de la Estacion.";     
     } else{
-        $apellidos = $input_apellidos;
+        $apellido = $input_apellido;
     }
 
-    // Validando el campo Nombre(s) 
-    $input_turno = trim($_POST["turno"]);
-    if(empty($input_turno)){
-        $turno_err = "Favor de ingresar el turno del gerente en turno de la Estacion.";     
-    } else{
-        $turno = $input_turno;
-    }
 
-    // Validando el campo Apellido(s)
     $input_direccion = trim($_POST["direccion"]);
     if(empty($input_direccion)){
         $direccion_err = "Favor de ingresar la direccion del gerente de la Estacion.";     
@@ -42,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $direccion = $input_direccion;
     }
 
-    // Validando el campo Email
+    
     $input_telefono = trim($_POST["telefono"]);
     if(empty($input_telefono)){
         $telefono_err = "Favor de ingresar el telefono del gerente de la Estacion.";     
@@ -50,7 +42,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $telefono = $input_telefono;
     }
 
-    // Validando el campo Telefono
     $input_email = trim($_POST["email"]);
     if(empty($input_email)){
         $email_err = "Favor de ingresar el correo del gerente de la Estacion.";     
@@ -58,51 +49,49 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email = $input_email;
     }
 
-    // Validando el campo Tipo de Usuario
-    $input_usuariogerente = trim($_POST["usuariogerente"]);
-    if(empty($input_usuariogerente)){
-        $usuariogerente_err = "Favor de ingresar el nombre de usuario del gerente de la Estacion.";     
+    
+    $input_usuario = trim($_POST["usuario"]);
+    if(empty($input_usuario)){
+        $usuario_err = "Favor de ingresar el nombre de usuario del gerente de la Estacion.";     
     } else{
-        $usuariogerente = $input_usuariogerente;
+        $usuario = $input_usuario;
     }
 
 
-    // Validar el campo Usuario
-    $input_clavegerente = trim($_POST["clavegerente"]);
-    if(empty($input_clavegerente)){
-        $clavegerente_err = "Favor de ingresar la contraseña del gerente de la Estacion.";     
+    
+    $input_password = trim($_POST["password"]);
+    if(empty($input_password)){
+        $password_err = "Favor de ingresar la contraseña del gerente de la Estacion.";     
     } else{
-        $clavegerente = $input_clavegerente;
+        $password = $input_password;
     }
 
-  
-    // Check input errors before inserting in database
-    if(empty($nombre_err) && empty($apellidos_err) && empty($turno_err) && empty($direccion_err) && empty($telefono_err) 
-        && empty($email_err) && empty($usuariogerente_err) && empty($clavegerente_err)){
+   
+    
+    if(empty($nombre_err) && empty($apellido_err) && empty($direccion_err) && empty($telefono_err) 
+        && empty($email_err) && empty($usuario_err) && empty($password_err) ){
         
-        // Prepare an insert statement
-        $sql = "INSERT INTO t_gerenteturno (nombre, apellidos, turno, direccion, telefono, email, usuariogerente, clavegerente) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        $sql = "INSERT INTO gerenteturno (nombre, apellido, direccion, telefono, email, usuario, password) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssssssss", $param_nombre, $param_apellidos, $param_turno, $param_direccion, $param_telefono, 
-                $param_email, $param_usuariogerente, $param_clavegerente);
+           
+            mysqli_stmt_bind_param($stmt, "sssssss", $param_nombre, $param_apellido, $param_direccion, $param_telefono, 
+                $param_email, $param_usuario, $param_password);
             
-            // Set parameters
+         
             $param_nombre = $nombre;
-            $param_apellidos = $apellidos;
-            $param_turno = $turno;
+            $param_apellido = $apellido;
             $param_direccion = $direccion;
             $param_telefono = $telefono;
             $param_email = $email;
-            $param_usuariogerente = $usuariogerente;
-            $param_clavegerente = $clavegerente;
+            $param_usuario = $usuario;
+            $param_password = $password;
             
             
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                // Records created successfully. Redirect to landing page
+                
                 header("location: iniciogetu.php");
                 exit();
             } else{
@@ -110,11 +99,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
          
-        // Close statement
+        
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
+    
     mysqli_close($link);
 }
 ?>
@@ -149,16 +138,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $nombre_err;?></span>
                         </div>
                         
-                        <div class="form-group <?php echo (!empty($apellidos_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($apellido_err)) ? 'has-error' : ''; ?>">
                             <label>Apellidos del Gerente en Turno:</label>
-                            <input placeholder="APELLIDO(S)" type="text" name="apellidos" class="form-control" value="<?php echo $apellidos; ?>">
-                            <span class="help-block"><?php echo $apellidos_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($turno_err)) ? 'has-error' : ''; ?>">
-                            <label>Turno del Gerente:</label>
-                            <input placeholder="TURNO" type="text" name="turno" class="form-control" value="<?php echo $turno; ?>">
-                            <span class="help-block"><?php echo $turno_err;?></span>
+                            <input placeholder="APELLIDO(S)" type="text" name="apellido" class="form-control" value="<?php echo $apellido; ?>">
+                            <span class="help-block"><?php echo $apellido_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($direccion_err)) ? 'has-error' : ''; ?>">
@@ -179,18 +162,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $email_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($usuariogerente_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($usuario_err)) ? 'has-error' : ''; ?>">
                             <label>Usuario de Acceso del Gerente en Turno:</label>
-                            <input placeholder="USUARIO" type="text" name="usuariogerente" class="form-control" value="<?php echo $usuariogerente; ?>">
-                            <span class="help-block"><?php echo $usuariogerente_err;?></span>
+                            <input placeholder="USUARIO" type="text" name="usuario" class="form-control" value="<?php echo $usuario; ?>">
+                            <span class="help-block"><?php echo $usuario_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($clavegerente_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                             <label>Clave de Acceso del Gerente en Turno:</label>
-                            <input placeholder="CONTRASEÑA" type="text" name="clavegerente" class="form-control" value="<?php echo $clavegerente; ?>">
-                            <span class="help-block"><?php echo $clavegerente_err;?></span>
+                            <input placeholder="CONTRASEÑA" type="text" name="password" class="form-control" value="<?php echo $password; ?>">
+                            <span class="help-block"><?php echo $password_err;?></span>
                         </div>
                         
+                                               
                        
                         <input type="submit" class="btn btn-primary" value="Agregar Gerente al Sistema" >
                         <a href="iniciogetu.php" class="btn btn-success">Regresar a Pantalla Principal</a>

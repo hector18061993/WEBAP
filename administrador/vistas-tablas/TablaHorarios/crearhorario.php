@@ -1,16 +1,16 @@
 <?php
-// Incluimos nuestro archivo config 
+
 require_once "config.php";
  
-// Definimos las variables a utilizar 
-$nombredia = $horaapertura = $horacierre = "";
 
-$nombredia_err = $horaapertura_err = $horacierre_err = "";
+$nombredia = $descripcion = "";
+
+$nombredia_err = $descripcion_err = "";
  
-// Processing form data when form is submitted
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    // Validando el campo Nombre(s) 
+    
     $input_nombredia = trim($_POST["nombredia"]);
     if(empty($input_nombredia)){
         $nombredia_err = "Favor de ingresar el nombre de un dia valido.";     
@@ -18,39 +18,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombredia = $input_nombredia;
     }
 
-    // Validando el campo Email
-    $input_horaapertura = trim($_POST["horaapertura"]);
-    if(empty($input_horaapertura)){
-        $horaapertura_err = "Favor de ingresar la hora de apertura.";     
+    
+    $input_descripcion = trim($_POST["descripcion"]);
+    if(empty($input_descripcion)){
+        $descripcion_err = "Favor de ingresar la hora de cierre.";     
     } else{
-        $horaapertura = $input_horaapertura;
-    }
-
-     // Validando el campo Email
-    $input_horacierre = trim($_POST["horacierre"]);
-    if(empty($input_horacierre)){
-        $horacierre_err = "Favor de ingresar la hora de cierre.";     
-    } else{
-        $horacierre = $input_horacierre;
+        $descripcion = $input_descripcion;
     }    
-    // Check input errors before inserting in database
-    if(empty($nombredia_err) && empty($horaapertura_err)  && empty($horacierre_err)){
+    
+
+    if(empty($nombredia_err) && empty($descripcion_err)){
         
-        // Prepare an insert statement
-        $sql = "INSERT INTO t_horarios (nombredia, horaapertura, horacierre) VALUES (?, ?, ?)";
+        
+        $sql = "INSERT INTO horarios (nombredia, descripcion) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_nombredia, $param_horaapertura, $param_horacierre);
             
-            // Set parameters
-            $param_nombredia = $nombredia;
-            $param_horaapertura = $horaapertura;          
-            $param_horacierre = $horacierre; 
+            mysqli_stmt_bind_param($stmt, "ss", $param_nombredia, $param_descripcion);
+            
+            
+            $param_nombredia = $nombredia;       
+            $param_descripcion = $descripcion; 
 
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
-                // Records created successfully. Redirect to landing page
+                
                 header("location: iniciohorario.php");
                 exit();
             } else{
@@ -58,11 +50,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
          
-        // Close statement
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
     mysqli_close($link);
 }
 ?>
@@ -97,20 +87,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $nombredia_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($horaapertura_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
                             <label>Hora de Apertura:</label>
-                            <p>Formato de Horario 00:00:00</p>
-                            <input placeholder="HORA EN FORMATO 00:00:00" type="text" name="horaapertura" class="form-control" value="<?php echo $horaapertura; ?>">
-                            <span class="help-block"><?php echo $horaapertura_err;?></span>
+                            <input placeholder="Descripcion de la Aperturas" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <span class="help-block"><?php echo $descripcion_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($horacierre_err)) ? 'has-error' : ''; ?>">
-                            <label>Hora de Cierre:</label>
-                            <p>Formato de Horario 00:00:00</p>
-                            <input placeholder="HORA EN FORMATO 00:00:00" type="text" name="horacierre" class="form-control" value="<?php echo $horacierre; ?>">
-                            <span class="help-block"><?php echo $horacierre_err;?></span>
-                        </div>
-
+                       
                         <input type="submit" class="btn btn-primary" value="Agregar Nuevos Datos de Registro" >
                         <a href="iniciohorario.php" class="btn btn-success">Regresar a Pantalla Principal</a>
                     </form>

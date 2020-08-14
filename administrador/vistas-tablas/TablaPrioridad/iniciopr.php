@@ -34,11 +34,11 @@
                         <br><a href="crearpr.php" class="btn btn-warning pull-right">Agregar Nueva Prioridad de Estacion</a></div>
                     </div>
                     <?php
-                    // Include config file
+                    
                     require_once "config.php";
                     
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM t_prioridad";
+                    
+                    $sql = "SELECT * FROM prioridad";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -46,20 +46,18 @@
                                     echo "<tr>";
                                         echo "<th>Indice</th>";
                                         echo "<th>Nombre</th>";
-                                        echo "<th>Descripcion</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td>" . $row['numero'] . "</td>";
                                         echo "<td>" . $row['nombre'] . "</td>";
-                                        echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='verpr.php?id=". $row['id'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificarpr.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminarpr.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='verpr.php?id=". $row['idprioridad'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarpr.php?id=". $row['idprioridad'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarpr.php?id=". $row['idprioridad'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

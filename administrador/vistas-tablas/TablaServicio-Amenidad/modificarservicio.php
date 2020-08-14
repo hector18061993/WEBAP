@@ -1,17 +1,17 @@
 <?php
-// Include config file
+
 require_once "config.php";
  
-// Define variables and initialize with empty values
+
 $imagen =  $nombre  =  $descripcion = "";
 $imagen_err = $nombre_err = $descripcion_err = "";
  
-// Processing form data when form is submitted
+
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-    // Get hidden input value
+    
     $id = $_POST["id"];
     
-    // Validate name
+    
     $input_imagen = trim($_POST["imagen"]);
     if(empty($input_imagen)){
         $imagen_err = "Favor de ingresar el nuevo nombre del Combustible.";     
@@ -19,7 +19,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $imagen = $input_imagen;
     }
 
-    // Validate email
+    
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
         $nombre_err = "Favor de ingresar el nuevo costo del Combustible.";     
@@ -34,26 +34,26 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $descripcion = $input_descripcion;
     }
 
-    // Check input errors before inserting in database
+
     if(empty($imagen_err) && empty($nombre_err)  && empty($descripcion_err)){
 
-        // Prepare an update statement
-        $sql = "UPDATE t_servicio SET imagen=?, nombre=?, descripcion=? WHERE id=?";
+        
+        $sql = "UPDATE serviciosamenidades SET imagen=?, nombre=?, descripcion=? 
+                WHERE idserviciosamenidades=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            
             mysqli_stmt_bind_param($stmt, "sssi", $param_imagen, $param_nombre, 
                 $param_descripcion, $param_id);
             
-            // Set parameters
             $param_imagen = $imagen;
             $param_nombre = $nombre;
             $param_descripcion = $descripcion;
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
-                // Records updated successfully. Redirect to landing page
+                
                 header("location: inicioservicio.php");
                 exit();
             } else{
@@ -61,20 +61,20 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
          
-        // Close statement
+        
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
+    
     mysqli_close($link);
 } else{
-    // Check existence of id parameter before processing further
+    
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-        // Get URL parameter
+        
         $id =  trim($_GET["id"]);
         
-        // Prepare a select statement
-        $sql = "SELECT * FROM t_servicio WHERE id = ?";
+        
+        $sql = "SELECT * FROM serviciosamenidades WHERE idserviciosamenidades = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -87,17 +87,16 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                 $result = mysqli_stmt_get_result($stmt);
     
                 if(mysqli_num_rows($result) == 1){
-                    /* Fetch result row as an associative array. Since the result set
-                    contains only one row, we don't need to use while loop */
+                    
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
-                    // Retrieve individual field value
+                    
                     $imagen = $row["imagen"];
                     $nombre = $row["nombre"];
                     $descripcion = $row["descripcion"];
                     
                 } else{
-                    // URL doesn't contain valid id. Redirect to error page
+                    
                     header("location: errorservicio.php");
                     exit();
                 }

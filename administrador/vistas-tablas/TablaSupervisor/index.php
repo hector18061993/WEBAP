@@ -34,11 +34,11 @@
                         <br><a href="create.php" class="btn btn-success pull-right">Agregar nuevo Producto</a></div>
                     </div>
                     <?php
-                    // Include config file
+                    
                     require_once "config.php";
                     
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM t_supervisor";
+                    
+                    $sql = "SELECT * FROM supervisor";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -47,9 +47,7 @@
                                         echo "<th>Nombre</th>";
                                         echo "<th>Apellidos</th>";
                                         echo "<th>Correo</th>";
-                                        echo "<th>Zona</th>";
                                         echo "<th>Telefono</th>";
-                                        echo "<th>Estacion</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -57,21 +55,19 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
-                                        echo "<td>" . $row['apellidos'] . "</td>";
-                                        echo "<td>" . $row['correo'] . "</td>";
-                                        echo "<td>" . $row['zona'] . "</td>";
+                                        echo "<td>" . $row['apellido'] . "</td>";
+                                        echo "<td>" . $row['email'] . "</td>";
                                         echo "<td>" . $row['telefono'] . "</td>";
-                                        echo "<td>" . $row['estacion'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='read.php?id=". $row['id'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='update.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='delete.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='read.php?id=". $row['idsupervisor'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='update.php?id=". $row['idsupervisor'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='delete.php?id=". $row['idsupervisor'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
-                            // Free result set
+                            
                             mysqli_free_result($result);
                         } else{
                             echo "<p class='lead'><em>No records were found.</em></p>";
@@ -79,8 +75,7 @@
                     } else{
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
- 
-                    // Close connection
+                    
                     mysqli_close($link);
                     ?>
                 </div>

@@ -1,16 +1,14 @@
 <?php
-// Incluimos nuestro archivo config 
+
 require_once "config.php";
  
-// Definimos las variables a utilizar 
+ 
 $imagen = $nombre = $descripcion = "";
 
 $imagen_err = $nombre_err = $descripcion_err = "";
  
-// Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    // Validando el campo Nombre(s) 
+ 
     $input_imagen = trim($_POST["imagen"]);
     if(empty($input_imagen)){
         $imagen_err = "Favor de ingresar la imagen.";     
@@ -18,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $imagen = $input_imagen;
     }
 
-    // Validando el campo Email
+    
     $input_nombre = trim($_POST["nombre"]);
     if(empty($input_nombre)){
         $nombre_err = "Favor de ingresar el nombre del servicio.";     
@@ -26,31 +24,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $nombre = $input_nombre;
     }
 
-     // Validando el campo Email
+    
     $input_descripcion = trim($_POST["descripcion"]);
     if(empty($input_descripcion)){
         $descripcion_err = "Favor de ingresar la hora de cierre.";     
     } else{
         $descripcion = $input_descripcion;
     }    
-    // Check input errors before inserting in database
+    
+
     if(empty($imagen_err) && empty($nombre_err)  && empty($descripcion_err)){
         
-        // Prepare an insert statement
-        $sql = "INSERT INTO t_servicio (imagen, nombre, descripcion) VALUES (?, ?, ?)";
+        
+        $sql = "INSERT INTO serviciosamenidades (imagen, nombre, descripcion) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            
             mysqli_stmt_bind_param($stmt, "sss", $param_imagen, $param_nombre, $param_descripcion);
             
-            // Set parameters
+            
             $param_imagen = $imagen;
             $param_nombre = $nombre;          
             $param_descripcion = $descripcion; 
 
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
-                // Records created successfully. Redirect to landing page
+               
                 header("location: inicioservicio.php");
                 exit();
             } else{
@@ -58,11 +57,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
         }
          
-        // Close statement
+     
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
+
     mysqli_close($link);
 }
 ?>

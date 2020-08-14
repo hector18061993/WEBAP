@@ -34,38 +34,36 @@
                         <br><a href="crearie.php" class="btn btn-warning pull-right">Agregar nueva Informacion</a></div>
                     </div>
                     <?php
-                    // Include config file
+                    
                     require_once "config.php";
                     
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM t_informacionempresa";
+                    
+                    $sql = "SELECT * FROM nosotros";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>Nombre de la Informacion</th>";
+                                        echo "<th>Titulo</th>";
                                         echo "<th>Descripcion de la Informacion</th>";
-                                        echo "<th>Subdescripcion</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['nombre'] . "</td>";
+                                        echo "<td>" . $row['titulo'] . "</td>";
                                         echo "<td>" . $row['descripcion'] . "</td>";
-                                        echo "<td>" . $row['subdescripcion'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='verie.php?id=". $row['id'] ."' title='Ver Informacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificarie.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminarie.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='verie.php?id=". $row['idnosotros'] ."' title='Ver Informacion' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarie.php?id=". $row['idnosotros'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarie.php?id=". $row['idnosotros'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
-                            // Free result set
+                            
                             mysqli_free_result($result);
                         } else{
                             echo "<p class='lead'><em>No records were found.</em></p>";
@@ -74,7 +72,7 @@
                         echo "ERROR: Problema al ejecutar el SQL " . mysqli_error($link);
                     }
  
-                    // Close connection
+                    
                     mysqli_close($link);
                     ?>
                 </div>

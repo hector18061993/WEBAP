@@ -1,38 +1,35 @@
 <?php
-// Check existence of id parameter before processing further
+
 if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-    // Include config file
+    
     require_once "config.php";
     
-    // Prepare a select statement
-    $sql = "SELECT * FROM t_gerenteturno WHERE id = ?";
+    
+    $sql = "SELECT * FROM supervisor WHERE idsupervisor = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
+        
         mysqli_stmt_bind_param($stmt, "i", $param_id);
         
-        // Set parameters
+        
         $param_id = trim($_GET["id"]);
         
-        // Attempt to execute the prepared statement
+        
         if(mysqli_stmt_execute($stmt)){
             $result = mysqli_stmt_get_result($stmt);
     
             if(mysqli_num_rows($result) == 1){
-                /* Fetch result row as an associative array. Since the result set
-                contains only one row, we don't need to use while loop */
+                
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
-                // Retrieve individual field value
+                
                 $nombre = $row["nombre"];
-                $direccion = $row["direccion"];
-                $telefono = $row["telefono"];
+                $apellido = $row["apellido"];
                 $email = $row["email"];
-                $usuario = $row["usuario"];
-                $clave = $row["clave"];
-                                
+                $telefono = $row["telefono"];
+                                                
             } else{
-                // URL doesn't contain valid id parameter. Redirect to error page
+                
                 header("location: error.php");
                 exit();
             }
@@ -42,13 +39,14 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         }
     }
      
-    // Close statement
+
     mysqli_stmt_close($stmt);
     
-    // Close connection
+    
     mysqli_close($link);
+
 } else{
-    // URL doesn't contain id parameter. Redirect to error page
+    
     header("location: error.php");
     exit();
 }
@@ -75,29 +73,22 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <h2>Ver Productos</h2>
                     </div>
                     <div class="form-group">
-                        <label>Nombre del Gerente en turno:</label>
+                        <label>Nombre Supervisor:</label>
                         <p class="form-control-static"><?php echo $row["nombre"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Direccion del gerente en turno:</label>
-                        <p class="form-control-static"><?php echo $row["direccion"]; ?></p>
+                        <label>Apellido Supervisor:</label>
+                        <p class="form-control-static"><?php echo $row["apellido"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Telefono del Gerente en Turno:</label>
-                        <p class="form-control-static"><?php echo $row["telefono"]; ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Correo del Gerente en Turno:</label>
+                        <label>Email Supervisor:</label>
                         <p class="form-control-static"><?php echo $row["email"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Usuario del Gerente en Turno:</label>
-                        <p class="form-control-static"><?php echo $row["usuario"]; ?></p>
-                    </div>  
-                    <div class="form-group">
-                        <label>Usuario del Gerente en Turno:</label>
-                        <p class="form-control-static"><?php echo $row["clave"]; ?></p>
-                    </div>   
+                        <label>Telefono Supervisor:</label>
+                        <p class="form-control-static"><?php echo $row["telefono"]; ?></p>
+                    </div>
+                       
 
                     <p><a href="index.php" class="btn btn-primary">Volver</a></p>
                 </div>

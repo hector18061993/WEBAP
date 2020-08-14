@@ -38,15 +38,14 @@
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM t_horarios";
+                    $sql = "SELECT * FROM horarios";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>Dia de la Semana</th>";
-                                        echo "<th>Horario de Apertura</th>";
-                                        echo "<th>Horario de Cierre</th>";
+                                        echo "<th>Descripcion del horario de Servicio</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -54,18 +53,17 @@
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
                                         echo "<td>" . $row['nombredia'] . "</td>";
-                                        echo "<td>" . $row['horaapertura'] . "</td>";
-                                        echo "<td>" . $row['horacierre'] . "</td>";
+                                        echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='verhorario.php?id=". $row['id'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificarhorario.php?id=". $row['id'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminarhorario.php?id=". $row['id'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='verhorario.php?id=". $row['idhorarios'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarhorario.php?id=". $row['idhorarios'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarhorario.php?id=". $row['idhorarios'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
-                            // Free result set
+                            
                             mysqli_free_result($result);
                         } else{
                             echo "<p class='lead'><em>No records were found.</em></p>";
@@ -74,7 +72,6 @@
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
  
-                    // Close connection
                     mysqli_close($link);
                     ?>
                 </div>

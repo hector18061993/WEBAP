@@ -34,11 +34,11 @@
                         <br><a href="crearservicio.php" class="btn btn-warning pull-right">Agregar un Servicio y/o Amenidad</a></div>
                     </div>
                     <?php
-                    // Include config file
+                    
                     require_once "config.php";
                     
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM t_servicio";
+                    
+                    $sql = "SELECT * FROM serviciosamenidades";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -57,9 +57,9 @@
                                         echo "<td>" . $row['nombre'] . "</td>";
                                        echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='verservicio.php?id=". $row['id'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificarservicio.php?id=". $row['id'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminarservicio.php?id=". $row['id'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='verservicio.php?id=". $row['idserviciosamenidades'] ."' title='Ver tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarservicio.php?id=". $row['idserviciosamenidades'] ."' title='Actualizar la informacion del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarservicio.php?id=". $row['idserviciosamenidades'] ."' title='Eliminar el registro del Tipo de Combustible' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

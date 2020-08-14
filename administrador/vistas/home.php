@@ -375,38 +375,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--slider menu-->
   <div class="sidebar-menu">
 		  	<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span> 
-			      <!--<img id="logo" src="" alt="Logo"/>--> 
+			       
 			  </a> </div>		  
 		    <div class="menu">
 		      <ul id="menu" >
-		        <li><a href="home.php"><i class="fa fa-home"></i><span>Inicio</span></span></a>
+		        <li><a href="home.php"><i class="fa fa-home"></i><span></span></span></a>
 		        </li>
 
-		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span>Servicios</span></span></a>
+		        <li><a href="servicios.php"><i class="fa fa-coffee"></i><span></span></span></a>
 		        </li>
 
-		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span>Supervisores</span></span></a>
+		        <li><a href="supervisores.php"><i class="fa fa-user"></i><span></span></span></a>
 		        </li>
 
-		        <li><a href="../Estaciones/inicioestacion.php"><i class="fa fa-map-marker"></i><span>Estaciones</span></a></li>
+		        <li><a href="../Estaciones/inicioestacion.php"><i class="fa fa-map-marker"></i><span></span></a></li>
 
 
-                <li><a href="noticias.php"><i class="fa fa-file-text"></i><span>Noticias</span></span></a>
+                <li><a href="noticias.php"><i class="fa fa-file-text"></i><span></span></span></a>
 		        </li>
 		        
-                <li><a href="productos.php"><i class="fa fa-car"></i><span>Productos</span></span></a>
+                <li><a href="productos.php"><i class="fa fa-car"></i><span></span></span></a>
 		        </li>
 
-		        <li><a href="prioridades.php"><i class="fa fa-list-alt"></i><span>Prioridades</span></span></a>
+		        <li><a href="prioridades.php"><i class="fa fa-list-alt"></i><span></span></span></a>
 		        </li>
 
-		        <li><a href="combustibles.php"><i class="fa fa-fire"></i><span>Combustibles</span></span></a>
+		        <li><a href="combustibles.php"><i class="fa fa-fire"></i><span></span></span></a>
 		        </li>
 
-		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span>Horarios</span></span></a>
+		        <li><a href="horarios.php"><i class="fa fa-calendar"></i><span></span></span></a>
 		        </li>
 
-		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span>Estadisticas</span></span></a>
+		        <li><a href="estadisticas.php"><i class="fa fa-bar-chart"></i><span></span></span></a>
 		        </li>
 		        		         
 		      </ul>

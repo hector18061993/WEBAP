@@ -3,8 +3,8 @@
 require_once "config.php";
  
 
-$nombredia =  $horaapertura =  $horacierre = "";
-$nombredia_err = $horaapertura_err = $horacierre_err = "";
+$nombredia =  $descripcion = "";
+$nombredia_err = $descripcion_err = "";
  
 
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -19,34 +19,26 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
 
 
-    $input_horaapertura = trim($_POST["horaapertura"]);
-    if(empty($input_horaapertura)){
-        $horaapertura_err = "Favor de ingresar el nuevo costo del Combustible.";     
+    $input_descripcion = trim($_POST["descripcion"]);
+    if(empty($input_descripcion)){
+        $descripcion_err = "Favor de ingresar el nuevo costo del Combustible.";     
     } else{
-        $horaapertura = $input_horaapertura;
-    }
-
-    $input_horacierre = trim($_POST["horacierre"]);
-    if(empty($input_horacierre)){
-        $horacierre_err = "Favor de ingresar el nuevo costo del Combustible.";     
-    } else{
-        $horacierre = $input_horacierre;
+        $descripcion = $input_descripcion;
     }
 
 
-    if(empty($nombredia_err) && empty($horaapertura_err) && empty($horacierre_err)){
+    if(empty($nombredia_err) && empty($descripcion_err)){
 
     
-        $sql = "UPDATE t_horarios SET nombredia=?, horaapertura=?, horacierre=? WHERE id=?";
+        $sql = "UPDATE horarios SET nombredia=?, descripcion=? WHERE idhorarios=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             
-            mysqli_stmt_bind_param($stmt, "sssi", $param_nombredia, $param_horaapertura, $param_horacierre, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssi", $param_nombredia, $param_descripcion, $param_id);
             
             
             $param_nombredia = $nombredia;
-            $param_horaapertura = $horaapertura;
-            $param_horacierre = $horacierre;
+            $param_descripcion = $descripcion;
             $param_id = $id;
             
             
@@ -68,34 +60,33 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 } else{
     
     if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-        // Get URL parameter
+        
         $id =  trim($_GET["id"]);
         
-        // Prepare a select statement
-        $sql = "SELECT * FROM t_horarios WHERE id = ?";
+        
+        $sql = "SELECT * FROM horarios WHERE idhorarios = ?";
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            
             mysqli_stmt_bind_param($stmt, "i", $param_id);
             
-            // Set parameters
+            
             $param_id = $id;
             
-            // Attempt to execute the prepared statement
+            
             if(mysqli_stmt_execute($stmt)){
                 $result = mysqli_stmt_get_result($stmt);
     
                 if(mysqli_num_rows($result) == 1){
-                    /* Fetch result row as an associative array. Since the result set
-                    contains only one row, we don't need to use while loop */
+                    
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
-                    // Retrieve individual field value
+                    
                     $nombredia = $row["nombredia"];
-                    $horaapertura = $row["horaapertura"];
-                    $horacierre = $row["horacierre"];
+                    $descripcion = $row["descripcion"];
+                    
                     
                 } else{
-                    // URL doesn't contain valid id. Redirect to error page
+                    
                     header("location: errorcombustible.php");
                     exit();
                 }
@@ -105,13 +96,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             }
         }
         
-        // Close statement
+        
         mysqli_stmt_close($stmt);
         
-        // Close connection
+        
         mysqli_close($link);
     }  else{
-        // URL doesn't contain id parameter. Redirect to error page
+        
         header("location: errorcombustible.php");
         exit();
     }
@@ -145,24 +136,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 
                         <div class="form-group <?php echo (!empty($nombredia_err)) ? 'has-error' : ''; ?>">
                             <label>Dia:</label>
-                            <input placeholder="DIA LUNES, MARTES, MIERCOLES, ETC..." type="text" name="nombredia" class="form-control" value="<?php echo $nombredia; ?>">
+                            <input placeholder="ELEGIR LOS DIAS DE LA SEMANA" type="text" name="nombredia" class="form-control" value="<?php echo $nombredia; ?>">
                             <span class="help-block"><?php echo $nombredia_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($horaapertura_err)) ? 'has-error' : ''; ?>">
+                        <div class="form-group <?php echo (!empty($descripcion_err)) ? 'has-error' : ''; ?>">
                             <label>Hora de Apertura:</label>
-                            <p>Formato de Horario 00:00:00</p>
-                            <input placeholder="HORA EN FORMATO 00:00:00" type="text" name="horaapertura" class="form-control" value="<?php echo $horaapertura; ?>">
-                            <span class="help-block"><?php echo $horaapertura_err;?></span>
-                        </div>
-
-                        <div class="form-group <?php echo (!empty($horacierre_err)) ? 'has-error' : ''; ?>">
-                            <label>Hora de Cierre:</label>
-                            <p>Formato de Horario 00:00:00</p>
-                            <input placeholder="HORA EN FORMATO 00:00:00" type="text" name="horacierre" class="form-control" value="<?php echo $horacierre; ?>">
-                            <span class="help-block"><?php echo $horacierre_err;?></span>
-                        </div>
-                           
+                            <input placeholder="Descripcion" type="text" name="descripcion" class="form-control" value="<?php echo $descripcion; ?>">
+                            <span class="help-block"><?php echo $descripcion_err;?></span>
+                        </div>                        
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Actualizar los datos del registro">

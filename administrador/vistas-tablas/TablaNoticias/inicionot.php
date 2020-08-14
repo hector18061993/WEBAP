@@ -39,7 +39,7 @@
                     require_once "config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM t_noticia";
+                    $sql = "SELECT * FROM noticia";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -48,6 +48,9 @@
                                         echo "<th>Nombre</th>";
                                         echo "<th>Descripcion</th>";
                                         echo "<th>Imagen</th>";
+                                        echo "<th>Fecha de Elaboracion</th>";
+                                        echo "<th>Fecha de Publicacion</th>";
+                                        echo "<th>Activo</th>";
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
@@ -57,16 +60,19 @@
                                         echo "<td>" . $row['nombre'] . "</td>";
                                         echo "<td>" . $row['descripcion'] . "</td>";
                                         echo "<td>" . $row['imagen'] . "</td>";
+                                        echo "<td>" . $row['fechaelaboracion'] . "</td>";
+                                        echo "<td>" . $row['fechapublicacion'] . "</td>";
+                                        echo "<td>" . $row['activo'] . "</td>";
                                         echo "<td>";
-                                            echo "<a href='vernot.php?id=". $row['id'] ."' title='Ver usuario' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificarnot.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminarnot.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+                                            echo "<a href='vernot.php?id=". $row['idnoticia'] ."' title='Ver usuario' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+                                            echo "<a href='modificarnot.php?id=". $row['idnoticia'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='eliminarnot.php?id=". $row['idnoticia'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
-                            // Free result set
+                            
                             mysqli_free_result($result);
                         } else{
                             echo "<p class='lead'><em>No records were found.</em></p>";
@@ -75,7 +81,7 @@
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
  
-                    // Close connection
+                    
                     mysqli_close($link);
                     ?>
                 </div>

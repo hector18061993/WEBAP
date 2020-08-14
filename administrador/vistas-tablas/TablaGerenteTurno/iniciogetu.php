@@ -34,48 +34,56 @@
                         <br><a href="creargetu.php" class="btn btn-warning pull-right">Agregar nuevo Gerente</a></div>
                     </div>
                     <?php
-                    // Include config file
+                    
                     require_once "config.php";
                     
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM t_gerenteturno";
+                    $sql = "SELECT * FROM gerenteturno";
+
                     if($result = mysqli_query($link, $sql)){
+
                         if(mysqli_num_rows($result) > 0){
+
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>Nombre</th>";
                                         echo "<th>Apellidos</th>";
-                                        echo "<th>Turno Actual</th>";
                                         echo "<th>Direccion</th>";
                                         echo "<th>Telefono</th>";
                                         echo "<th>Correo</th>";
                                         echo "<th>Nombre de Usuario</th>";
                                         echo "<th>Clave de Usuario</th>";
+                                        
                                         echo "<th>Acción</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
+
                                 while($row = mysqli_fetch_array($result)){
-                                    echo "<tr>";
+
+                                        echo "<tr>";
                                         echo "<td>" . $row['nombre'] . "</td>";
-                                        echo "<td>" . $row['apellidos'] . "</td>";
-                                        echo "<td>" . $row['turno'] . "</td>";
+                                        echo "<td>" . $row['apellido'] . "</td>";
                                         echo "<td>" . $row['direccion'] . "</td>";
                                         echo "<td>" . $row['telefono'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";
-                                        echo "<td>" . $row['usuariogerente'] . "</td>";
-                                        echo "<td>" . $row['clavegerente'] . "</td>";
+                                        echo "<td>" . $row['usuario'] . "</td>";
+                                        echo "<td>" . $row['password'] . "</td>";
+                                      
                                         echo "<td>";
-                                            echo "<a href='vergetu.php?id=". $row['id'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
-                                            echo "<a href='modificargetu.php?id=". $row['id'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                            echo "<a href='eliminargetu.php?id=". $row['id'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+
+                                            echo "<a href='vergetu.php?id=". $row['idgerenteturno'] ."' title='Ver producto a detalle' data-toggle='tooltip'><span class='glyphicon glyphicon-zoom-in'></span></a>";
+
+                                            echo "<a href='modificargetu.php?id=". $row['idgerenteturno'] ."' title='Actualizar' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+
+                                            echo "<a href='eliminargetu.php?id=". $row['idgerenteturno'] ."' title='Eliminar' data-toggle='tooltip'><span class='glyphicon glyphicon-remove'></span></a>";
+
                                         echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
                             echo "</table>";
-                            // Free result set
+                            
                             mysqli_free_result($result);
                         } else{
                             echo "<p class='lead'><em>No records were found.</em></p>";
@@ -84,7 +92,7 @@
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
  
-                    // Close connection
+                    
                     mysqli_close($link);
                     ?>
                 </div>
